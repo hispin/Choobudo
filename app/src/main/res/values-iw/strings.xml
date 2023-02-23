@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Choobudo</string>
+    <string name="secret_number">6!13569$E4B64!047E@4ACDF1^5A21857$$E526976F566E!841C@@4#362##8DB76#36C!996255E9</string>
+    <string name="login">Log in</string>
+    <string name="welcome">ברוכים הבאים!</string>
+    <string name="connect">התחברות</string>
+    <string name="start">בואו נתחיל!</string>
+    <string name="user">משתמש</string>
+    <string name="password">סיסמה</string>
+    <string name="forgot_user">שכחת סיסמה?</string>
+    <string name="continue_by">המשך באמצעות</string>
+</resources>
