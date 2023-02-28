@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Choobudo</string>
+    <string name="secret_number">6!13569$E4B64!047E@4ACDF1^5A21857$$E526976F566E!841C@@4#362##8DB76#36C!996255E9</string>
+    <string name="login">Log in</string>
+    <string name="welcome">welcome!</string>
+    <string name="connect">Connect</string>
+    <string name="start">lets start!</string>
+    <string name="user">user</string>
+    <string name="password">password</string>
+    <string name="forgot_user">forgot user?</string>
+    <string name="continue_by">continue by</string>
+    <string name="select_registration_method">Select a registration method:</string>
+    <string name="contributing_user">Contributing user</string>
+    <string name="association">association</string>
+</resources>

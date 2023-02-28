@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/association"
+        android:checked="true"
+        android:color="@color/btn_type_reg"
+        android:iconTint="@color/white"
+        android:title="@string/association"
+        tools:ignore="UnusedAttribute" />
+
+
+    <item
+        android:id="@+id/contributing"
+        android:color="@color/btn_type_reg"
+        android:iconTint="@color/white"
+        android:title="@string/contributing_user"
+        tools:ignore="UnusedAttribute" />
+
+    <!--    <item-->
+    <!--        android:id="@+id/viewMonth"-->
+    <!--        android:color="@color/offwhite"-->
+    <!--        android:icon="@drawable/ic_noun_calendar_month_4588255"-->
+    <!--        android:iconTint="@color/offwhite"-->
+    <!--        android:title="@string/month"-->
+    <!--        tools:ignore="UnusedAttribute" />-->
+
+</menu>

@@ -10,4 +10,7 @@
     <string name="password">סיסמה</string>
     <string name="forgot_user">שכחת סיסמה?</string>
     <string name="continue_by">המשך באמצעות</string>
+    <string name="select_registration_method">בחר שיטת רישום:</string>
+    <string name="contributing_user">משתמש תורם</string>
+    <string name="association">עמותה</string>
 </resources>
