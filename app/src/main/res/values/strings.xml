@@ -12,4 +12,13 @@
     <string name="select_registration_method">בחר שיטת רישום:</string>
     <string name="contributing_user">משתמש תורם</string>
     <string name="association">עמותה</string>
+    <string name="next">הבא</string>
+    <string name="you_have_already">יש לך כבר משתמש Choobudo</string>
+    <string name="connect_from_here">התחבר מכאן</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="private_name">שם פרטי</string>
+    <string name="family_name">שם משפחה</string>
+    <string name="selected_association">העמותה שבחרתי</string>
+    <string name="didnt_find">לא מצאתי עמותה אנה צרפו את:</string>
+
 </resources>

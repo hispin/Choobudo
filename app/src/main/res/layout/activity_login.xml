@@ -38,12 +38,12 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUser"
+        app:layout_constraintStart_toStartOf="@+id/etUserPName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.235" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etUser"
+        android:id="@+id/etUserPName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/frame_user"
@@ -63,7 +63,7 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUser"
+        app:layout_constraintStart_toStartOf="@+id/etUserPName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.355" />
 
@@ -88,7 +88,7 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUser"
+        app:layout_constraintStart_toStartOf="@+id/etUserPName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.468" />
 

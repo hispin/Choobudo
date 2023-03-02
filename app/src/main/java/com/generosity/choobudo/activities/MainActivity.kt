@@ -1,10 +1,12 @@
-package com.generosity.choobudo
+package com.generosity.choobudo.activities
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.generosity.choobudo.R
+import com.generosity.choobudo.Session
 import com.generosity.choobudo.databinding.ActivityMainBinding
 import com.generosity.choobudo.models.LoginResponse
 import com.generosity.choobudo.retrofit.BaseResponse

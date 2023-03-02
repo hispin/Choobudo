@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_registration">
+    android:background="@drawable/bg_registration"
+    android:fitsSystemWindows="true">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/reg_title"
@@ -32,7 +33,7 @@
         app:layout_constraintVertical_bias="0.155" />
 
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_tabs_type"
@@ -65,31 +66,61 @@
             android:text="@string/contributing_user"
             android:textColor="@color/white" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <!--    <io.ak1.BubbleTabBar-->
-    <!--        android:id="@+id/bubbleTabBar"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="#FFF"-->
-    <!--        android:elevation="16dp"-->
-    <!--        android:padding="7dp"-->
-    <!--        app:bubbletab_menuResource="@menu/registration_type"-->
-    <!--        app:bubbletab_disabled_icon_color="@color/green"-->
-    <!--        app:bubbletab_horizontal_padding="20dp"-->
-    <!--        app:bubbletab_icon_size="20dp"-->
-    <!--        app:bubbletab_title_size="16sp"-->
-    <!--        app:bubbletab_icon_padding="5sp"-->
-    <!--        app:bubbletab_vertical_padding="10dp"-->
-    <!--        app:bubbletab_tab_corner_radius="25dp"-->
-    <!--        app:layout_constraintVertical_bias="0.228"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <com.google.android.material.circularreveal.CircularRevealFrameLayout
+        android:id="@+id/frContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
+        app:layout_constraintVertical_bias="0.579" />
 
-    <!--        />-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNextReg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:background="@drawable/registration_next"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.860" />
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.927">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/you_have_already"
+            android:textColor="#A2A2A2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnConnectFromHere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:linksClickable="true"
+            android:textColorLink="@color/button_choobudo" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

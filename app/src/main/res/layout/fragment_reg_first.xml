@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.RegFirstFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/private_name"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etUserPName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_fill"
+        android:drawableStart="@drawable/ic_vi_user"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPUser"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.93" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvfUserTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/family_name"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.303" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etUserFName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_fill"
+        android:drawableStart="@drawable/ic_vi_user"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvfUserTitle"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.93" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSelectedAssociationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selected_association"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_unfill"
+        app:layout_constraintEnd_toEndOf="@+id/etUserFName"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintStart_toStartOf="@+id/etUserFName"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelectedAssociationTitle"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.93">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@drawable/ic_spinner_arrow" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDidntFindTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/didnt_find"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.771" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etPassword"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_unfill"
+        android:paddingStart="10dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintStart_toStartOf="@+id/tvDidntFindTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvDidntFindTitle"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.93" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,4 +13,11 @@
     <string name="select_registration_method">Select a registration method:</string>
     <string name="contributing_user">Contributing user</string>
     <string name="association">association</string>
+    <string name="next">next</string>
+    <string name="you_have_already">ש לך כבר משתמש Choobudo?</string>
+    <string name="connect_from_here">connect from here</string>
+    <string name="private_name">private name</string>
+    <string name="family_name">family name</string>
+    <string name="selected_association">selected association</string>
+    <string name="didnt_find">I did not find an association and added the:</string>
 </resources>
