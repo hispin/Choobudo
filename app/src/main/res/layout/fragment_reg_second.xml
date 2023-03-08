@@ -10,16 +10,16 @@
         android:id="@+id/tvDateBirth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/private_name"
+        android:text="@string/mobile"
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintStart_toStartOf="@+id/etEmail"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.049" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etUserPName"
+        android:id="@+id/etTelNum"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_fill"
@@ -37,16 +37,16 @@
         android:id="@+id/tvEmailTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/family_name"
+        android:text="@string/email"
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintStart_toStartOf="@+id/etEmail"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.303" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etUserFName"
+        android:id="@+id/etEmail"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_fill"
@@ -64,51 +64,38 @@
         android:id="@+id/tvCityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/selected_association"
+        android:text="@string/city"
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintStart_toStartOf="@+id/etEmail"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.537" />
 
-    <RelativeLayout
+    <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/shape_field_unfill"
-        app:layout_constraintEnd_toEndOf="@+id/etUserFName"
+        android:background="@drawable/shape_field_fill"
+        android:drawableStart="@drawable/ic_vi_user"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/etEmail"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintStart_toStartOf="@+id/etUserFName"
+        app:layout_constraintStart_toStartOf="@+id/etEmail"
         app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.93">
+        app:layout_constraintWidth_percent="0.93" />
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginEnd="5dp"
-            android:contentDescription="@string/app_name"
-            app:srcCompat="@drawable/ic_spinner_arrow" />
-    </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCountryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/didnt_find"
+        android:text="@string/country"
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintStart_toStartOf="@+id/etEmail"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.771" />
 

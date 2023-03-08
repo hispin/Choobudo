@@ -20,4 +20,9 @@
     <string name="family_name">שם משפחה</string>
     <string name="selected_association">העמותה שבחרתי</string>
     <string name="didnt_find">לא מצאתי עמותה אנה צרפו את:</string>
+    <string name="mobile">נייד</string>
+    <string name="email">אימייל</string>
+    <string name="city">עיר</string>
+    <string name="country">מדינה</string>
+    <string name="dateBirth">תאריך לידה</string>
 </resources>

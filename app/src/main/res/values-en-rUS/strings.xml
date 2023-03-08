@@ -20,4 +20,9 @@
     <string name="family_name">family name</string>
     <string name="selected_association">selected association</string>
     <string name="didnt_find">I did not find an association and added the:</string>
+    <string name="mobile">mobile</string>
+    <string name="email">Email</string>
+    <string name="city">city</string>
+    <string name="country">Country</string>
+    <string name="dateBirth">Date of birth</string>
 </resources>
