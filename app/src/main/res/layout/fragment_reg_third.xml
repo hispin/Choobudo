@@ -14,23 +14,22 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
+        app:layout_constraintStart_toStartOf="@+id/etUser"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.049" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDayBirth"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/date1"
         android:gravity="center"
         android:text="@string/dateBirth"
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.065"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="@+id/etUser"
         app:layout_constraintTop_toBottomOf="@+id/tvDateBirth"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.241" />
@@ -47,7 +46,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvDayBirth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.065"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvDayBirth"
@@ -66,7 +65,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvDayBirth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.065"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvDayBirth"
@@ -75,19 +74,19 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvEmailTitle"
+        android:id="@+id/tvUserTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/email"
+        android:text="@string/username"
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
+        app:layout_constraintStart_toStartOf="@+id/etUser"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.303" />
+        app:layout_constraintVertical_bias="0.233" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etUser"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_fill"
@@ -97,60 +96,81 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmailTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCityTitle"
+        android:id="@+id/tvPasswordTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/city"
+        android:text="@string/password"
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
+        app:layout_constraintStart_toStartOf="@+id/etUser"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.537" />
+        app:layout_constraintVertical_bias="0.467" />
 
     <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etPassword"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_fill"
         android:drawableStart="@drawable/ic_vi_user"
         android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/etEmail"
+        app:layout_constraintEnd_toEndOf="@+id/etUser"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
+        app:layout_constraintStart_toStartOf="@+id/etUser"
+        app:layout_constraintTop_toBottomOf="@+id/tvPasswordTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 
 
-    <!--    <androidx.appcompat.widget.AppCompatTextView-->
-    <!--        android:id="@+id/tvCountryTitle"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="@string/country"-->
-    <!--        android:textColor="@color/grey1"-->
-    <!--        android:textSize="12sp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/etEmail"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.771" />-->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:lines="4"
+        android:maxLines="4"
+        android:text="@string/description"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/etPassword"
+        app:layout_constraintStart_toStartOf="@+id/etPassword"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.807" />
 
-    <!--    <androidx.appcompat.widget.AppCompatEditText-->
-    <!--        android:id="@+id/etCountry"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:background="@drawable/shape_field_unfill"-->
-    <!--        android:paddingStart="10dp"-->
-    <!--        app:layout_constraintHeight_default="percent"-->
-    <!--        app:layout_constraintHeight_percent="0.134"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/tvCountryTitle"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/tvCountryTitle"-->
-    <!--        app:layout_constraintWidth_default="percent"-->
-    <!--        app:layout_constraintWidth_percent="0.93" />-->
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/cbIRead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/secondary_choobudo"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="@string/i_red"
+        android:textColor="@color/grey1"
+        app:layout_constraintStart_toStartOf="@+id/tvDescription"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTermOfUse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/term_of_use"
+        android:textColor="@color/button_choobudo"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbIRead"
+        app:layout_constraintStart_toEndOf="@+id/cbIRead"
+        app:layout_constraintTop_toTopOf="@+id/cbIRead" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

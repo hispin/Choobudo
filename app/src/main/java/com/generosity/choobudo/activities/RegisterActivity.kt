@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.generosity.choobudo.R
 import com.generosity.choobudo.fragments.RegFirstFragment
 import com.generosity.choobudo.fragments.RegSecondFragment
+import com.generosity.choobudo.fragments.RegThirdFragment
 import kotlinx.android.synthetic.main.activity_registration.*
 
 
@@ -51,6 +52,15 @@ class RegisterActivity : BaseActivity() {
         t.commit()
     }
 
+    /**
+     * show third stage
+     */
+    private fun showThirdStage() {
+        val t: FragmentTransaction=supportFragmentManager.beginTransaction()
+        t.replace(R.id.frContainer, RegThirdFragment())
+        t.commit()
+    }
+
     private fun initViews() {
         btnAssociation.setOnClickListener {
             setAssociatingStatus()
@@ -74,7 +84,11 @@ class RegisterActivity : BaseActivity() {
                     }
 
                     StageContributer.two -> {
-
+                        showThirdStage()
+                        typeContributer=StageContributer.three
+                        llTabsContainer.visibility=View.GONE
+                        btnLongContributer.visibility=View.VISIBLE
+                        btnNextReg.text=resources.getString(R.string.registration)
                     }
                     StageContributer.three -> {
 

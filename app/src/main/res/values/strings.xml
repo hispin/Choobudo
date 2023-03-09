@@ -27,5 +27,10 @@
     <string name="country">מדינה</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="dateBirth">תאריך לידה</string>
+    <string name="description">"מהרגע שתלחצו \"הרשמה\" - תוכלו להמשיך ולרכוש באתרי הקניות שבהסדר* כל רכישה תזכה את העמותה שלכם באחוזים מהעלות הקניה. בכל רגע נתון תוכלו לחזור לאזור האישי. "</string>
+    <string name="username">שם משתמש</string>
+    <string name="i_red">קראתי והבנתי את</string>
+    <string name="term_of_use">תנאי שימוש והתקנה</string>
+    <string name="registration">הרשמה</string>
 
 </resources>
