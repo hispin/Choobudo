@@ -7,81 +7,28 @@
     tools:context=".fragments.RegFirstFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDateBirth"
+        android:id="@+id/tvTypeOrganization"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/private_name"
+        android:text="@string/type_of_organization"
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintStart_toStartOf="@+id/rlTypeOrganization"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.049" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etUserPName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/shape_field_fill"
-        android:drawableStart="@drawable/ic_vi_user"
-        android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateBirth"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.93" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvEmailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/family_name"
-        android:textColor="@color/grey1"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.303" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etUserFName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/shape_field_fill"
-        android:drawableStart="@drawable/ic_vi_user"
-        android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmailTitle"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.93" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCityTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/selected_association"
-        android:textColor="@color/grey1"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.537" />
 
     <RelativeLayout
+        android:id="@+id/rlTypeOrganization"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
-        app:layout_constraintEnd_toEndOf="@+id/etUserFName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintStart_toStartOf="@+id/etUserFName"
-        app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTypeOrganization"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93">
 
@@ -102,27 +49,104 @@
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCountryTitle"
+        android:id="@+id/tvAssociateNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/didnt_find"
+        android:text="@string/association_name"
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintStart_toStartOf="@+id/rlTypeOrganization"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.303" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etUserFName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_fill"
+        android:drawableStart="@drawable/ic_vi_user"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssociateNameTitle"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.93" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stage46"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rlTypeOrganization"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llTabsContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_tabs_type"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/etUserFName"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etUserFName"
+        app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.93">
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/unselected_type_bg"
+            android:text="@string/yes"
+            android:textColor="@color/grey4" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:background="@drawable/selected_type_bg_stage46"
+            android:text="@string/no"
+            android:textColor="@color/white" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRoleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/role"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rlTypeOrganization"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.771" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etCountry"
+        android:id="@+id/etRole"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
         android:paddingStart="10dp"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintStart_toStartOf="@+id/tvCountryTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvCountryTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvRoleTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvRoleTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 

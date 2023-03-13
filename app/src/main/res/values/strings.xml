@@ -32,5 +32,13 @@
     <string name="i_red">קראתי והבנתי את</string>
     <string name="term_of_use">תנאי שימוש והתקנה</string>
     <string name="registration">הרשמה</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="type_of_organization">סוג ההתארגנות</string>
+    <string name="stage46">האם יש סעיף 46?</string>
+    <string name="role">תפקיד</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="association_name">שם ההתארגנות</string>
+    <string name="private_name_contact">שם פרטי איש קשר</string>
 
 </resources>
