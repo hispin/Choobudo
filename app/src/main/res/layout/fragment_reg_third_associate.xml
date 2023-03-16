@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.RegFirstFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAssociateAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/organization_address"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rlCity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etAssociateAddress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_unfill"
+        android:paddingStart="10dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintStart_toStartOf="@+id/tvAssociateAddress"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssociateAddress"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.622" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAssociateAddressNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/number"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAssociateAddress"
+        app:layout_constraintStart_toStartOf="@+id/etNumAddress"
+        app:layout_constraintTop_toTopOf="@+id/tvAssociateAddress" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etNumAddress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_unfill"
+        android:paddingStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/rlCity"
+        app:layout_constraintHeight_default="percent"
+
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssociateAddress"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.219" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/city"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rlCity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.303" />
+
+
+    <RelativeLayout
+        android:id="@+id/rlCity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_unfill"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.93">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@drawable/arrow_down" />
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/country"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rlCity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537" />
+
+
+    <RelativeLayout
+        android:id="@+id/rlCountry"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_unfill"
+        app:layout_constraintEnd_toEndOf="@+id/rlCity"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintStart_toStartOf="@+id/rlCity"
+        app:layout_constraintTop_toBottomOf="@+id/tvCountry"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.93">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@drawable/arrow_down" />
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPostalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/postal"
+        android:textColor="@color/grey1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/rlCity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.771" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etEmail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_field_unfill"
+        android:drawableStart="@drawable/ic_vi_password"
+        android:paddingStart="10dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.134"
+        app:layout_constraintStart_toStartOf="@+id/tvPostalTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvPostalTitle"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.93" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,4 +21,5 @@
     <color name="button_choobudo">#E81F63</color>
     <color name="secondary_choobudo">#008FE8</color>
     <color name="grey5">#A2A2A2</color>
+    <color name="error">#E80000</color>
 </resources>

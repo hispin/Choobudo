@@ -35,6 +35,19 @@
     <string name="role">תפקיד</string>
     <string name="yes">כן</string>
     <string name="no">לא</string>
-    <string name="association_name">שם ההתארגנות</string>
     <string name="private_name_contact">שם פרטי איש קשר</string>
+    <string name="association_name">שם ההתארגנות</string>
+    <string name="organization_address">Organization address</string>
+    <string name="postal">postal</string>
+    <string name="number">number</string>
+    <string name="account_name">account name</string>
+    <string name="account_num">account number</string>
+    <string name="branch_name">branch_name</string>
+    <string name="branch_number">branch number</string>
+    <string name="bank_num">מספר בנק</string>
+    <string name="passOrder">At least 8 characters must be entered</string>
+    <string name="num_participants">מספר משתמשים</string>
+    <string name="personal_link">Personal association link</string>
+    <string name="descriptionAssociate">מהרגע שתלחצו ״הרשמה״ - תוכלו להמשיך ולרכוש באתרי הקניות שבהסדר*. כל רכישה תזכה את העמותה שלכם באחוזים מהעלות הקניה. בכל רגע נתון תוכלו לחזור לאזור האישי.</string>
+    <string name="i_confirm">אני מאשר קבלת עדכונים במייל, SMS, ווצאפ (ניתן לשנות העדפות בעמוד הפרופיל האישי)</string>
 </resources>

@@ -7,18 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.generosity.choobudo.R
 
-class RegSecondAssociateFragment : Fragment() {
+class RegThirdAssociateFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view=inflater.inflate(R.layout.fragment_reg_second_association, container, false)
+        val view=inflater.inflate(R.layout.fragment_reg_third_associate, container, false)
         return view
     }
 

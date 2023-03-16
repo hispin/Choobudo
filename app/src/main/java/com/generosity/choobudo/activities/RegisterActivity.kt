@@ -83,6 +83,34 @@ class RegisterActivity : BaseActivity() {
         t.commit()
     }
 
+    /**
+     * show association third stage
+     */
+    private fun showAssociateThirdStage() {
+        val t: FragmentTransaction=supportFragmentManager.beginTransaction()
+        t.replace(R.id.frContainer, RegThirdAssociateFragment())
+        t.commit()
+    }
+
+    /**
+     * show association forth stage
+     */
+    private fun showAssociateForthStage() {
+        val t: FragmentTransaction=supportFragmentManager.beginTransaction()
+        t.replace(R.id.frContainer, RegForthAssociateFragment())
+        t.commit()
+    }
+
+    /**
+     * show association fifth stage
+     */
+    private fun showAssociateFifthStage() {
+        val t: FragmentTransaction=supportFragmentManager.beginTransaction()
+        t.replace(R.id.frContainer, RegFifthAssociateFragment())
+        t.commit()
+    }
+
+
     private fun initViews() {
         btnAssociation.setOnClickListener {
             setAssociatingStatus()
@@ -103,18 +131,14 @@ class RegisterActivity : BaseActivity() {
                     StageContributer.one -> {
                         showSecondStage()
                         typeContributer=StageContributer.two
-                        llTabsContainer.visibility=View.GONE
-                        btnLongContributer.text=resources.getString(R.string.contributing_user)
-                        btnLongContributer.visibility=View.VISIBLE
+                        configureContributerUI()
                         btnNextReg.text=resources.getString(R.string.next)
                     }
 
                     StageContributer.two -> {
                         showThirdStage()
                         typeContributer=StageContributer.three
-                        llTabsContainer.visibility=View.GONE
-                        btnLongContributer.text=resources.getString(R.string.contributing_user)
-                        btnLongContributer.visibility=View.VISIBLE
+                        configureContributerUI()
                         btnNextReg.text=resources.getString(R.string.registration)
                     }
                     StageContributer.three -> {
@@ -127,19 +151,27 @@ class RegisterActivity : BaseActivity() {
                     StageAssociate.one -> {
                         showAssociateSecondStage()
                         typeAssociate=StageAssociate.two
-                        llTabsContainer.visibility=View.GONE
-                        btnLongContributer.text=resources.getString(R.string.association)
-                        btnLongContributer.visibility=View.VISIBLE
+                        configureAssociationUI()
                         btnNextReg.text=resources.getString(R.string.next)
                     }
 
                     StageAssociate.two -> {
+                        showAssociateThirdStage()
+                        typeAssociate=StageAssociate.three
+                        configureAssociationUI()
+                        btnNextReg.text=resources.getString(R.string.next)
                     }
                     StageAssociate.three -> {
-
+                        showAssociateForthStage()
+                        typeAssociate=StageAssociate.four
+                        configureAssociationUI()
+                        btnNextReg.text=resources.getString(R.string.next)
                     }
                     StageAssociate.four -> {
-
+                        showAssociateFifthStage()
+                        typeAssociate=StageAssociate.five
+                        configureAssociationUI()
+                        btnNextReg.text=resources.getString(R.string.registration)
                     }
                     else -> {}
                 }
@@ -152,25 +184,80 @@ class RegisterActivity : BaseActivity() {
                     StageContributer.two -> {
                         showFirstStage()
                         typeContributer=StageContributer.one
-                        llTabsContainer.visibility=View.VISIBLE
-                        btnLongContributer.visibility=View.GONE
-                        btnNextReg.text=resources.getString(R.string.next)
+                        configurePrevToOneUI()
+
                     }
 
                     StageContributer.three -> {
                         showSecondStage()
                         typeContributer=StageContributer.two
-                        llTabsContainer.visibility=View.GONE
-                        btnLongContributer.visibility=View.VISIBLE
-                        btnNextReg.text=resources.getString(R.string.next)
+                        configurePrevUI()
                     }
                     StageContributer.one -> {
 
                     }
                     else -> {}
                 }
+            } else if (type == TypeUser.association) {
+                when (typeAssociate) {
+                    StageAssociate.five -> {
+                        showAssociateForthStage()
+                        typeAssociate=StageAssociate.four
+                        configurePrevUI()
+                    }
+
+                    StageAssociate.four -> {
+                        showAssociateThirdStage()
+                        typeAssociate=StageAssociate.three
+                        configurePrevUI()
+                    }
+                    StageAssociate.three -> {
+                        showAssociateSecondStage()
+                        typeAssociate=StageAssociate.two
+                        configurePrevUI()
+                    }
+                    StageAssociate.two -> {
+                        showAssociateFirstStage()
+                        typeAssociate=StageAssociate.one
+                        configurePrevToOneUI()
+                    }
+                    else -> {}
+                }
             }
         }
+    }
+
+    /**
+     * configure previous UI
+     */
+    private fun configurePrevToOneUI() {
+        llTabsContainer.visibility=View.VISIBLE
+        btnLongContributer.visibility=View.GONE
+        btnNextReg.text=resources.getString(R.string.next)
+    }
+
+    private fun configurePrevUI() {
+        llTabsContainer.visibility=View.GONE
+        btnLongContributer.visibility=View.VISIBLE
+        btnNextReg.text=resources.getString(R.string.next)
+    }
+
+    /**
+     * configure association UI
+     */
+    private fun configureAssociationUI() {
+        llTabsContainer.visibility=View.GONE
+        btnLongContributer.text=resources.getString(R.string.association)
+        btnLongContributer.visibility=View.VISIBLE
+    }
+
+    /**
+     * configure contributer UI
+     */
+    private fun configureContributerUI() {
+        llTabsContainer.visibility=View.GONE
+        btnLongContributer.text=resources.getString(R.string.contributing_user)
+        btnLongContributer.visibility=View.VISIBLE
     }
 
     /**
