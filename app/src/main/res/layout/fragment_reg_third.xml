@@ -18,15 +18,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.029" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDayBirth"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etDayBirth"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/date1"
         android:gravity="center"
-        android:text="@string/dateBirth"
+        android:hint="@string/dateBirth"
         android:textColor="@color/grey1"
         android:textSize="12sp"
+        android:inputType="number"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="@+id/etUser"
@@ -34,41 +35,43 @@
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.241" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMonthBirth"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etMonthBirth"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/date1"
         android:gravity="center"
-        android:text="@string/dateBirth"
+        android:hint="@string/dateBirth"
+        android:inputType="number"
         android:textColor="@color/grey1"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDayBirth"
+        app:layout_constraintBottom_toBottomOf="@+id/etDayBirth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvDayBirth"
+        app:layout_constraintTop_toTopOf="@+id/etDayBirth"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.241" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvYearBirth"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etYearBirth"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/date1"
         android:gravity="center"
-        android:text="@string/dateBirth"
+        android:hint="@string/dateBirth"
+        android:inputType="number"
         android:textColor="@color/grey1"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDayBirth"
+        app:layout_constraintBottom_toBottomOf="@+id/etDayBirth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvDayBirth"
+        app:layout_constraintTop_toTopOf="@+id/etDayBirth"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.291" />
 

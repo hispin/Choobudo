@@ -6,6 +6,8 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.EditText
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import com.generosity.choobudo.R
@@ -14,6 +16,12 @@ import com.generosity.choobudo.R
 class RegThirdFragment : Fragment() {
 
     private var tvTermOfUse: AppCompatTextView?=null
+    var etDayBirth: EditText?=null
+    var etMonthBirth: EditText?=null
+    var etYearBirth: EditText?=null
+    var etUser: EditText?=null
+    var etPassword: EditText?=null
+    var cbIRead: CheckBox?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +39,12 @@ class RegThirdFragment : Fragment() {
     private fun initView(view: View?) {
         tvTermOfUse=view?.findViewById(R.id.tvTermOfUse)
         makeLink()
+        etDayBirth=view?.findViewById(R.id.etDayBirth)
+        etMonthBirth=view?.findViewById(R.id.etMonthBirth)
+        etYearBirth=view?.findViewById(R.id.etYearBirth)
+        etUser=view?.findViewById(R.id.etUser)
+        etPassword=view?.findViewById(R.id.etPassword)
+        cbIRead=view?.findViewById(R.id.cbIRead)
     }
 
     /**

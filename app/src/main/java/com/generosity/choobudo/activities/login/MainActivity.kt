@@ -1,4 +1,4 @@
-package com.generosity.choobudo.activities
+package com.generosity.choobudo.activities.login
 
 import android.os.Bundle
 import android.view.View
@@ -10,12 +10,14 @@ import com.generosity.choobudo.Session
 import com.generosity.choobudo.databinding.ActivityMainBinding
 import com.generosity.choobudo.models.LoginResponse
 import com.generosity.choobudo.retrofit.BaseResponse
-import com.generosity.choobudo.retrofit.UserViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Callback<LoginResponse> {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel by viewModels<UserViewModel>()
+    private val viewModel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
                 is BaseResponse.Success -> {
                     stopLoading()
-                    processLogin(it.data)
                 }
 
                 is BaseResponse.Error -> {
@@ -50,21 +51,21 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-//        binding.btnRegister.setOnClickListener {
-//            doSignup()
-//        }
 
     }
 
-    private fun navigateToHome() {
-//        val intent = Intent(this, LogoutActivity::class.java)
-//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-//        intent.addFlags(FLAG_ACTIVITY_NO_HISTORY)
-//        startActivity(intent)
+    override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        TODO("Not yet implemented")
     }
+
+    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+        TODO("Not yet implemented")
+    }
+
 
     fun doLogin() {
-        val email="arielmunk+6@gmail.com"//"App@API_user1!"//binding.txtInputEmail.text.toString()
+        val email=
+            "hag.hispin@gmail.com"//"arielmunk+6@gmail.com"//"App@API_user1!"//binding.txtInputEmail.text.toString()
         val pwd="1234"//resources.getString(R.string.password)//binding.txtPass.text.toString()
         viewModel.loginUser(email=email, pwd=pwd)
 

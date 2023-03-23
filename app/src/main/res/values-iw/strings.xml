@@ -50,4 +50,5 @@
     <string name="personal_link">לינק עמותה אישי</string>
     <string name="descriptionAssociate">מהרגע שתלחצו ״הרשמה״ - תוכלו להמשיך ולרכוש באתרי הקניות שבהסדר*. כל רכישה תזכה את העמותה שלכם באחוזים מהעלות הקניה. בכל רגע נתון תוכלו לחזור לאזור האישי.</string>
     <string name="i_confirm">אני מאשר קבלת עדכונים במייל, SMS, ווצאפ (ניתן לשנות העדפות בעמוד הפרופיל האישי)</string>
+    <string name="success_msg">הפעולה הצליחה</string>
 </resources>

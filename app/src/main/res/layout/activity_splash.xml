@@ -44,11 +44,13 @@
         app:layout_constraintVertical_bias="0.772">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnConnect"
+            android:id="@+id/ivogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/transparent"
+            android:clickable="true"
+            android:focusable="true"
             app:srcCompat="@drawable/button_connect" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -69,10 +71,12 @@
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintVertical_bias="0.873">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnStart"
+            android:id="@+id/ivRegistration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

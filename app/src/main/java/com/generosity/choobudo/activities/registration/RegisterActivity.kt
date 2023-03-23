@@ -1,12 +1,17 @@
-package com.generosity.choobudo.activities
+package com.generosity.choobudo.activities.registration
 
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
 import com.generosity.choobudo.R
+import com.generosity.choobudo.activities.BaseActivity
 import com.generosity.choobudo.fragments.*
 import kotlinx.android.synthetic.main.activity_registration.*
 
@@ -27,23 +32,39 @@ class RegisterActivity : BaseActivity() {
         one, two, three, four, five
     }
 
+    private var myFragment: Fragment?=null
     var type=TypeUser.contributing
     var typeContributer=StageContributer.one
     var typeAssociate=StageAssociate.one
+    private val viewModel by viewModels<RegisterViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
         initViews()
+        setListener()
         showFirstStage()
+    }
+
+    private fun setListener() {
+        viewModel.isSuccess?.observe(this, Observer {
+            if (it) {
+                Toast.makeText(
+                    this@RegisterActivity,
+                    resources.getString(R.string.success_msg),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
     }
 
     /**
      * show default fragment
      */
     private fun showFirstStage() {
+        myFragment=RegFirstFragment()
         val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-        t.replace(R.id.frContainer, RegFirstFragment())
+        t.replace(R.id.frContainer, myFragment as RegFirstFragment)
         t.commit()
     }
 
@@ -51,8 +72,9 @@ class RegisterActivity : BaseActivity() {
      * show second fragment
      */
     private fun showSecondStage() {
+        myFragment=RegSecondFragment()
         val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-        t.replace(R.id.frContainer, RegSecondFragment())
+        t.replace(R.id.frContainer, myFragment as RegSecondFragment)
         t.commit()
     }
 
@@ -60,8 +82,9 @@ class RegisterActivity : BaseActivity() {
      * show third stage
      */
     private fun showThirdStage() {
+        myFragment=RegThirdFragment()
         val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-        t.replace(R.id.frContainer, RegThirdFragment())
+        t.replace(R.id.frContainer, myFragment as RegThirdFragment)
         t.commit()
     }
 
@@ -69,8 +92,9 @@ class RegisterActivity : BaseActivity() {
      * show association first stage
      */
     private fun showAssociateFirstStage() {
+        myFragment=RegFirstAssociateFragment()
         val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-        t.replace(R.id.frContainer, RegFirstAssociateFragment())
+        t.replace(R.id.frContainer, myFragment as RegFirstAssociateFragment)
         t.commit()
     }
 
@@ -78,8 +102,9 @@ class RegisterActivity : BaseActivity() {
      * show association second stage
      */
     private fun showAssociateSecondStage() {
+        myFragment=RegSecondAssociateFragment()
         val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-        t.replace(R.id.frContainer, RegSecondAssociateFragment())
+        t.replace(R.id.frContainer, myFragment as RegSecondAssociateFragment)
         t.commit()
     }
 
@@ -87,8 +112,9 @@ class RegisterActivity : BaseActivity() {
      * show association third stage
      */
     private fun showAssociateThirdStage() {
+        myFragment=RegThirdAssociateFragment()
         val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-        t.replace(R.id.frContainer, RegThirdAssociateFragment())
+        t.replace(R.id.frContainer, myFragment as RegThirdAssociateFragment)
         t.commit()
     }
 
@@ -96,8 +122,9 @@ class RegisterActivity : BaseActivity() {
      * show association forth stage
      */
     private fun showAssociateForthStage() {
+        myFragment=RegForthAssociateFragment()
         val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-        t.replace(R.id.frContainer, RegForthAssociateFragment())
+        t.replace(R.id.frContainer, myFragment as RegForthAssociateFragment)
         t.commit()
     }
 
@@ -105,8 +132,9 @@ class RegisterActivity : BaseActivity() {
      * show association fifth stage
      */
     private fun showAssociateFifthStage() {
+        myFragment=RegFifthAssociateFragment()
         val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-        t.replace(R.id.frContainer, RegFifthAssociateFragment())
+        t.replace(R.id.frContainer, myFragment as RegFifthAssociateFragment)
         t.commit()
     }
 
@@ -129,6 +157,13 @@ class RegisterActivity : BaseActivity() {
             if (type == TypeUser.contributing) {
                 when (typeContributer) {
                     StageContributer.one -> {
+                        if (myFragment is RegFirstFragment) {
+                            viewModel.setContributerStage1(
+                                (myFragment as RegFirstFragment).etUserPName?.text.toString(),
+                                (myFragment as RegFirstFragment).etUserFName?.text.toString(),
+                                "8e8b988a-8af9-4383-a410-192c01f552a0"
+                            )
+                        }
                         showSecondStage()
                         typeContributer=StageContributer.two
                         configureContributerUI()
@@ -136,13 +171,30 @@ class RegisterActivity : BaseActivity() {
                     }
 
                     StageContributer.two -> {
+                        if (myFragment is RegSecondFragment) {
+                            viewModel.setContributerStage2(
+                                (myFragment as RegSecondFragment).etTelNum?.text.toString(),
+                                (myFragment as RegSecondFragment).etEmail?.text.toString(),
+                                (myFragment as RegSecondFragment).etCity?.text.toString(),
+                                (myFragment as RegSecondFragment).etCountry?.text.toString()
+                            )
+                        }
                         showThirdStage()
                         typeContributer=StageContributer.three
                         configureContributerUI()
                         btnNextReg.text=resources.getString(R.string.registration)
                     }
                     StageContributer.three -> {
-
+                        if (myFragment is RegThirdFragment) {
+                            viewModel.setContributerStage3(
+                                (myFragment as RegThirdFragment).etDayBirth?.text.toString(),
+                                (myFragment as RegThirdFragment).etMonthBirth?.text.toString(),
+                                (myFragment as RegThirdFragment).etYearBirth?.text.toString(),
+                                (myFragment as RegThirdFragment).etPassword?.text.toString(),
+                                (myFragment as RegThirdFragment).cbIRead?.isChecked == true
+                            )
+                        }
+                        viewModel.register()
                     }
                     else -> {}
                 }

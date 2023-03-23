@@ -103,7 +103,7 @@
         app:layout_constraintVertical_bias="0.557">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnConnect"
+            android:id="@+id/ivogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -133,7 +133,7 @@
         app:layout_constraintVertical_bias="0.650">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnStart"
+            android:id="@+id/ivRegistration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
