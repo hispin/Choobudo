@@ -54,6 +54,12 @@ class RegisterActivity : BaseActivity() {
                     resources.getString(R.string.success_msg),
                     Toast.LENGTH_SHORT
                 ).show()
+            }else{
+                Toast.makeText(
+                    this@RegisterActivity,
+                    resources.getString(R.string.failed_msg),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
     }

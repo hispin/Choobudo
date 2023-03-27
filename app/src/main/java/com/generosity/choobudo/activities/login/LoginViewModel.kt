@@ -6,9 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.generosity.choobudo.models.LoginRequest
 import com.generosity.choobudo.models.LoginResponse
-import com.generosity.choobudo.retrofit.BaseResponse
 import com.generosity.choobudo.retrofit.UserRepository
-import com.google.gson.JsonObject
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,40 +15,52 @@ import retrofit2.Response
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-
+    var loginRequest:LoginRequest?=null
     val userRepo=UserRepository()
-    var loginResult: MutableLiveData<BaseResponse<JsonObject>>?=null
+    var loginResponse: MutableLiveData<LoginResponse>?=MutableLiveData()
+    var isSuccess: MutableLiveData<Boolean>?=null
 
-    fun loginUser(email: String, pwd: String) {
+    init {
+        isSuccess=MutableLiveData(false)
+    }
 
-        loginResult=MutableLiveData()
+    fun loginUser() {
 
-        loginResult?.value=BaseResponse.Loading()
         this.viewModelScope.launch {
             try {
 
-                var callBackRegistraPagador: Callback<LoginResponse?> =
+                val callBackLogin: Callback<LoginResponse?> =
 
                     object : Callback<LoginResponse?> {
 
                         override fun onResponse(
                             call: Call<LoginResponse?>, response: Response<LoginResponse?>
                         ) {
-                            val n=10
+                            loginResponse?.value= response.body()
+                            isSuccess?.value=true
                         }
 
                         override fun onFailure(call: Call<LoginResponse?>, t: Throwable) {
-                            val n=10
+                            isSuccess?.value=false
                         }
                     }
 
-                val loginResponse=userRepo.loginUser(LoginRequest(email, pwd))
-                loginResponse?.enqueue(callBackRegistraPagador)
+                if(loginRequest!=null) {
+                    val loginResponse=userRepo.loginUser(loginRequest!!)
+                    loginResponse?.enqueue(callBackLogin)
+                }
 
             } catch (ex: Exception) {
-                loginResult?.value=BaseResponse.Error(ex.message)
+                //loginResult?.value=BaseResponse.Error(ex.message)
             }
         }
+    }
+
+    /**
+     * fill user details
+     */
+    fun setUser(email: String, pwd: String){
+        loginRequest=LoginRequest(email, pwd)
     }
 
 

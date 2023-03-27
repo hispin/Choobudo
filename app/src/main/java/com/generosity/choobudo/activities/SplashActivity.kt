@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.generosity.choobudo.R
+import com.generosity.choobudo.activities.login.LoginActivity
 import com.generosity.choobudo.activities.registration.RegisterActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
@@ -19,6 +20,9 @@ class SplashActivity : AppCompatActivity() {
     private fun initView() {
         ivRegistration.setOnClickListener {
             startActivity(Intent(this@SplashActivity, RegisterActivity::class.java))
+        }
+        ivLogin.setOnClickListener {
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
         }
     }
 }

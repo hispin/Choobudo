@@ -23,7 +23,7 @@ interface Api {
 //    fun jsonLogin(@Body params: String): Call<LoginResponse>
 
     @POST("/user/login")
-    fun jsonLogin(@Body params: LoginRequest): Call<LoginResponse>
+    fun userLogin(@Body params: LoginRequest): Call<LoginResponse>
 
     @POST("/user/register")
     fun userContributerReg(@Body params: UserContributer): Call<RegistrationResponse>

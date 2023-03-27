@@ -6,17 +6,26 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\Haggay\\haggay\\AndroidStudioProjects\\Choobudo\\app\\ChoobudoKeyStore.jks')
+            storePassword 'choobudo'
+            keyPassword 'choobudo'
+            keyAlias 'ChoobudoAlias'
+        }
+    }
     namespace 'com.generosity.choobudo'
     compileSdk 33
 
     defaultConfig {
         applicationId "com.generosity.choobudo"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
     }
     buildscript {
         repositories {
@@ -30,8 +39,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -41,6 +50,7 @@ android {
         dataBinding = true
         viewBinding = true
     }
+    buildToolsVersion '33.0.1'
 
 }
 

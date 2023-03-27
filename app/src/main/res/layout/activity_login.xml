@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/main_bg">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -38,12 +39,12 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintStart_toStartOf="@+id/etUsername"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.235" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etUserPName"
+        android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/frame_user"
@@ -53,7 +54,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.276"
+        tools:ignore="RtlSymmetry"
+        />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
@@ -63,12 +66,12 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintStart_toStartOf="@+id/etUsername"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.355" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etCountry"
+        android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/frame_password"
@@ -78,7 +81,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.402" />
+        app:layout_constraintVertical_bias="0.402"
+        tools:ignore="RtlSymmetry"
+        />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
@@ -88,7 +93,7 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/etUserPName"
+        app:layout_constraintStart_toStartOf="@+id/etUsername"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.468" />
 
@@ -103,7 +108,7 @@
         app:layout_constraintVertical_bias="0.557">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivogin"
+            android:id="@+id/ivLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

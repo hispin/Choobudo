@@ -10,7 +10,7 @@ class UserRepository {
 
     suspend fun loginUser(param: LoginRequest): Call<LoginResponse>? {
         //return Api.getApi()?.loginUser(loginRequest=loginRequest)
-        return Api.getApi()?.jsonLogin(param)
+        return Api.getApi()?.userLogin(param)
 
     }
 

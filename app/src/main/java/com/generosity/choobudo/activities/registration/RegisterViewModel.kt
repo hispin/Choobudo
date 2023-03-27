@@ -5,6 +5,9 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.generosity.choobudo.common.common.Constant.COOKIE_CONTENT
+import com.generosity.choobudo.common.common.Constant.COOKIE_NAME
+import com.generosity.choobudo.common.setStringInPreference
 import com.generosity.choobudo.models.RegistrationResponse
 import com.generosity.choobudo.models.UserContributer
 import com.generosity.choobudo.retrofit.BaseResponse
@@ -49,9 +52,14 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
                         ) {
                             isSuccess?.value=true
                             Log.d("responseReg", "success")
+                            val cookie=response.headers()["Set-Cookie"]
+                            //save the content of cookie in share preference
+                            setStringInPreference(getApplication<Application?>().applicationContext,COOKIE_CONTENT,cookie)
+
                             //save the response
                             registrationResponse?.value=response.body()
-                            //response.body().
+                            setStringInPreference(getApplication<Application?>().applicationContext,COOKIE_NAME,registrationResponse?.value?.token_key)
+
                         }
 
                         override fun onFailure(call: Call<RegistrationResponse?>, t: Throwable) {
