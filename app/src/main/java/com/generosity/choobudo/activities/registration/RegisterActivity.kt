@@ -31,7 +31,7 @@ class RegisterActivity : BaseActivity() {
     enum class StageAssociate {
         one, two, three, four, five
     }
-
+    private var isAction=false
     private var myFragment: Fragment?=null
     var type=TypeUser.contributing
     var typeContributer=StageContributer.one
@@ -46,20 +46,23 @@ class RegisterActivity : BaseActivity() {
         showFirstStage()
     }
 
+
     private fun setListener() {
         viewModel.isSuccess?.observe(this, Observer {
-            if (it) {
-                Toast.makeText(
-                    this@RegisterActivity,
-                    resources.getString(R.string.success_msg),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }else{
-                Toast.makeText(
-                    this@RegisterActivity,
-                    resources.getString(R.string.failed_msg),
-                    Toast.LENGTH_SHORT
-                ).show()
+            if (isAction) {
+                if (it) {
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        resources.getString(R.string.success_msg),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        resources.getString(R.string.failed_msg),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         })
     }
@@ -167,7 +170,7 @@ class RegisterActivity : BaseActivity() {
                             viewModel.setContributerStage1(
                                 (myFragment as RegFirstFragment).etUserPName?.text.toString(),
                                 (myFragment as RegFirstFragment).etUserFName?.text.toString(),
-                                "8e8b988a-8af9-4383-a410-192c01f552a0"
+                                (myFragment as RegFirstFragment).getSelectedAssociation()//"8e8b988a-8af9-4383-a410-192c01f552a0"
                             )
                         }
                         showSecondStage()
@@ -200,6 +203,7 @@ class RegisterActivity : BaseActivity() {
                                 (myFragment as RegThirdFragment).cbIRead?.isChecked == true
                             )
                         }
+                        isAction=true
                         viewModel.register()
                     }
                     else -> {}
@@ -254,7 +258,9 @@ class RegisterActivity : BaseActivity() {
                     StageContributer.one -> {
 
                     }
-                    else -> {}
+                    else -> {
+                        onBackPressedDispatcher.onBackPressed()
+                    }
                 }
             } else if (type == TypeUser.association) {
                 when (typeAssociate) {
@@ -279,7 +285,9 @@ class RegisterActivity : BaseActivity() {
                         typeAssociate=StageAssociate.one
                         configurePrevToOneUI()
                     }
-                    else -> {}
+                    else -> {
+                        onBackPressedDispatcher.onBackPressed()
+                    }
                 }
             }
         }

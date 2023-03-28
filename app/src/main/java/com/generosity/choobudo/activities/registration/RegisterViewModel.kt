@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.generosity.choobudo.common.common.Constant.COOKIE_CONTENT
 import com.generosity.choobudo.common.common.Constant.COOKIE_NAME
 import com.generosity.choobudo.common.setStringInPreference
+import com.generosity.choobudo.models.AssociationsResponse
 import com.generosity.choobudo.models.RegistrationResponse
 import com.generosity.choobudo.models.UserContributer
 import com.generosity.choobudo.retrofit.BaseResponse
@@ -26,6 +27,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     var registerResult: MutableLiveData<BaseResponse<JsonObject>>?=null
     var isSuccess: MutableLiveData<Boolean>?=null
     var registrationResponse: MutableLiveData<RegistrationResponse>?=MutableLiveData()
+    var associationsResponse: MutableLiveData<List<AssociationsResponse>>?=MutableLiveData()
 
     init {
         userContributer=UserContributer()
@@ -79,10 +81,48 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
 
     }
 
+
+    /**
+     * get associations
+     */
+    fun getAssociations() {
+
+        this.viewModelScope.launch {
+            try {
+
+                val callBackGetAssociations: Callback<List<AssociationsResponse>?> =
+
+                    object : Callback<List<AssociationsResponse>?> {
+
+                        override fun onResponse(
+                            call: Call<List<AssociationsResponse>?>,
+                            response: Response<List<AssociationsResponse>?>
+                        ) {
+                            isSuccess?.value=true
+                            associationsResponse?.value=response.body()
+                        }
+
+                        override fun onFailure(
+                            call: Call<List<AssociationsResponse>?>, t: Throwable
+                        ) {
+                            isSuccess?.value=false
+                        }
+                    }
+
+                val associationResponse=userRepo.getAssociations()
+                associationResponse?.enqueue(callBackGetAssociations)
+
+            } catch (ex: Exception) {
+                //loginResult?.value=BaseResponse.Error(ex.message)
+            }
+        }
+    }
+
+
     /**
      * set stage 1 of registration contributer
      */
-    fun setContributerStage1(pName: String, fName: String, associationType: String) {
+    fun setContributerStage1(pName: String, fName: String, associationType: String?) {
         userContributer?.first_name=pName
         userContributer?.last_name=fName
         userContributer?.organization_guid=associationType

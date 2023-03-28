@@ -15,7 +15,7 @@ import retrofit2.Response
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    var loginRequest:LoginRequest?=null
+    var loginRequest: LoginRequest?=null
     val userRepo=UserRepository()
     var loginResponse: MutableLiveData<LoginResponse>?=MutableLiveData()
     var isSuccess: MutableLiveData<Boolean>?=null
@@ -24,6 +24,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         isSuccess=MutableLiveData(false)
     }
 
+    /**
+     * do login
+     */
     fun loginUser() {
 
         this.viewModelScope.launch {

@@ -31,5 +31,5 @@ class UserContributer(
     var birth_year: Int=0
 
     @SerializedName("organization_guid")
-    var organization_guid: String=""
+    var organization_guid: String?=""
 }
