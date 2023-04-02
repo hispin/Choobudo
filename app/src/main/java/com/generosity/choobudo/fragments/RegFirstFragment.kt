@@ -58,7 +58,7 @@ class RegFirstFragment : Fragment() {
      * fill associations
      */
     private fun fillAssocationSpinner() {
-        if (spAssociation != null) {
+        if (spAssociation != null && activity!=null) {
             val adapter=ArrayAdapter(
                 requireActivity(),
                 android.R.layout.simple_spinner_item,
