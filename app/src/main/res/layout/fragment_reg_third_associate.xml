@@ -14,7 +14,7 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/rlCity"
+        app:layout_constraintStart_toStartOf="@+id/etCity"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.049" />
 
@@ -48,7 +48,7 @@
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
         android:paddingStart="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/rlCity"
+        app:layout_constraintEnd_toEndOf="@+id/etCity"
         app:layout_constraintHeight_default="percent"
 
         app:layout_constraintHeight_percent="0.134"
@@ -65,39 +65,22 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/rlCity"
+        app:layout_constraintStart_toStartOf="@+id/etCity"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.303" />
 
-
-    <RelativeLayout
-        android:id="@+id/rlCity"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/shape_field_unfill"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.93">
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginEnd="5dp"
-            android:contentDescription="@string/app_name"
-            app:srcCompat="@drawable/arrow_down" />
-    </RelativeLayout>
+    <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etCity"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_field_unfill"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.134"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.93"/>
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -108,39 +91,23 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/rlCity"
+        app:layout_constraintStart_toStartOf="@+id/etCity"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.537" />
 
 
-    <RelativeLayout
-        android:id="@+id/rlCountry"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/shape_field_unfill"
-        app:layout_constraintEnd_toEndOf="@+id/rlCity"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintStart_toStartOf="@+id/rlCity"
-        app:layout_constraintTop_toBottomOf="@+id/tvCountry"
-        app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.93">
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginEnd="5dp"
-            android:contentDescription="@string/app_name"
-            app:srcCompat="@drawable/arrow_down" />
-    </RelativeLayout>
+    <androidx.appcompat.widget.AppCompatEditText
+    android:id="@+id/etCountry"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@drawable/shape_field_unfill"
+    app:layout_constraintEnd_toEndOf="@+id/etCity"
+    app:layout_constraintHeight_default="percent"
+    app:layout_constraintHeight_percent="0.134"
+    app:layout_constraintStart_toStartOf="@+id/etCity"
+    app:layout_constraintTop_toBottomOf="@+id/tvCountry"
+    app:layout_constraintWidth_default="percent"
+    app:layout_constraintWidth_percent="0.93"/>
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -151,12 +118,12 @@
         android:textColor="@color/grey1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/rlCity"
+        app:layout_constraintStart_toStartOf="@+id/etCity"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.771" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etPostal"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"

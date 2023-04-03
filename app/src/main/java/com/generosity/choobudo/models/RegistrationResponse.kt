@@ -23,7 +23,7 @@ class RegistrationResponse
     var user_details: User_details?=null
 }
 
-class User_details {
+  class User_details {
     @SerializedName("phone")
     var phone: String=""
 
@@ -35,9 +35,6 @@ class User_details {
 
     @SerializedName("state")
     var state: String=""
-
-    @SerializedName("Token")
-    var token: String=""
 
     //class
     @SerializedName("group_donations")

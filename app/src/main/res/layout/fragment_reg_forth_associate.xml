@@ -173,7 +173,7 @@
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="@+id/etAccountNum"
         app:layout_constraintHeight_default="percent"
-
+        android:inputType="number"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintTop_toBottomOf="@+id/tvBranchName"
         app:layout_constraintWidth_default="percent"
@@ -192,9 +192,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.771" />
 
-
-    <RelativeLayout
-        android:id="@+id/rlBankNum"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etBankNum"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
@@ -203,23 +202,7 @@
         app:layout_constraintStart_toStartOf="@+id/tvBankNum"
         app:layout_constraintTop_toBottomOf="@+id/tvBankNum"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.93">
-
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginEnd="5dp"
-            android:contentDescription="@string/app_name"
-            app:srcCompat="@drawable/arrow_down" />
-    </RelativeLayout>
+        app:layout_constraintWidth_percent="0.93"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

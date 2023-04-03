@@ -204,13 +204,21 @@ class RegisterActivity : BaseActivity() {
                             )
                         }
                         isAction=true
-                        viewModel.register()
+                        viewModel.registerContributer()
                     }
                     else -> {}
                 }
             } else if (type == TypeUser.association) {
                 when (typeAssociate) {
                     StageAssociate.one -> {
+                        if (myFragment is RegFirstAssociateFragment) {
+                            viewModel.setAssociationStage1(
+                                (myFragment as RegFirstAssociateFragment).getSelectedTypeAssociation(),
+                                (myFragment as RegFirstAssociateFragment).etAssociationName?.text.toString(),
+                                (myFragment as RegFirstAssociateFragment).haveSection46,
+                                (myFragment as RegFirstAssociateFragment).etContactPosition?.text.toString()//"8e8b988a-8af9-4383-a410-192c01f552a0"
+                            )
+                        }
                         showAssociateSecondStage()
                         typeAssociate=StageAssociate.two
                         configureAssociationUI()
@@ -218,22 +226,60 @@ class RegisterActivity : BaseActivity() {
                     }
 
                     StageAssociate.two -> {
+                        if (myFragment is RegSecondAssociateFragment) {
+                            viewModel.setAssociationStage2(
+                                (myFragment as RegSecondAssociateFragment).etPNameContact?.text.toString(),
+                                (myFragment as RegSecondAssociateFragment).etFamilyName?.text.toString(),
+                                (myFragment as RegSecondAssociateFragment).etMobile?.text.toString(),
+                                (myFragment as RegSecondAssociateFragment).etEmail?.text.toString()
+                            )
+                        }
                         showAssociateThirdStage()
                         typeAssociate=StageAssociate.three
                         configureAssociationUI()
                         btnNextReg.text=resources.getString(R.string.next)
                     }
                     StageAssociate.three -> {
+                        if (myFragment is RegThirdAssociateFragment) {
+                            viewModel.setAssociationStage3(
+                                (myFragment as RegThirdAssociateFragment).etAssociateAddress?.text.toString(),
+                                (myFragment as RegThirdAssociateFragment).etNumAddress?.text.toString(),
+                                (myFragment as RegThirdAssociateFragment).etCity?.text.toString(),
+                                (myFragment as RegThirdAssociateFragment).etCountry?.text.toString(),//"8e8b988a-8af9-4383-a410-192c01f552a0"
+                                (myFragment as RegThirdAssociateFragment).etPostal?.text.toString()//"8e8b988a-8af9-4383-a410-192c01f552a0"
+                            )
+                        }
                         showAssociateForthStage()
                         typeAssociate=StageAssociate.four
                         configureAssociationUI()
                         btnNextReg.text=resources.getString(R.string.next)
                     }
                     StageAssociate.four -> {
+                        if (myFragment is RegForthAssociateFragment) {
+                            viewModel.setAssociationStage4(
+                                (myFragment as RegForthAssociateFragment).etAccountName?.text.toString(),
+                                (myFragment as RegForthAssociateFragment).etAccountNum?.text.toString(),
+                                (myFragment as RegForthAssociateFragment).etBranchName?.text.toString(),
+                                (myFragment as RegForthAssociateFragment).etBranchNum?.text.toString(),//"8e8b988a-8af9-4383-a410-192c01f552a0"
+                                (myFragment as RegForthAssociateFragment).etBankNum?.text.toString()//"8e8b988a-8af9-4383-a410-192c01f552a0"
+                            )
+                        }
                         showAssociateFifthStage()
                         typeAssociate=StageAssociate.five
                         configureAssociationUI()
                         btnNextReg.text=resources.getString(R.string.registration)
+                    }
+                    StageAssociate.five -> {
+                        if (myFragment is RegFifthAssociateFragment) {
+                            viewModel.setAssociationStage5(
+                                (myFragment as RegFifthAssociateFragment).etPasswordNum?.text.toString(),
+                                (myFragment as RegFifthAssociateFragment).etPersonalAssociationLink?.text.toString(),
+                                (myFragment as RegFifthAssociateFragment).cbIConfirm?.isChecked,
+                                (myFragment as RegFifthAssociateFragment).cbIRead?.isChecked
+                            )
+                            isAction=true
+                            viewModel.registerAssociation()
+                        }
                     }
                     else -> {}
                 }

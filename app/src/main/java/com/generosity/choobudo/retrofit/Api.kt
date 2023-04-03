@@ -19,6 +19,9 @@ interface Api {
     @POST("/user/register")
     fun userContributerReg(@Body params: UserContributer): Call<RegistrationResponse>
 
+    @POST("/user/register")
+    fun userAssociationReg(@Body params: UserAssociation): Call<RegistrationAssociationResponse>
+
     companion object {
         fun getApi(): Api? {
             return ApiClient.ApiClient.client?.create(Api::class.java)

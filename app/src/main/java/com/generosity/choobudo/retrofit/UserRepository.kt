@@ -17,10 +17,21 @@ class UserRepository {
 
     }
 
-    suspend fun regUser(param: UserContributer): Call<RegistrationResponse>? {
+    /**
+     * contributer registration
+     */
+    suspend fun regContributerUser(param: UserContributer): Call<RegistrationResponse>? {
         //return Api.getApi()?.loginUser(loginRequest=loginRequest)
         return Api.getApi()?.userContributerReg(param)
 
     }
 
+    /**
+     * association registration
+     */
+    suspend fun regAssociationUser(param: UserAssociation): Call<RegistrationAssociationResponse>? {
+        //return Api.getApi()?.loginUser(loginRequest=loginRequest)
+        return Api.getApi()?.userAssociationReg(param)
+
+    }
 }

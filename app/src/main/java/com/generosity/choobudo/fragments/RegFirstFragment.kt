@@ -83,7 +83,7 @@ class RegFirstFragment : Fragment() {
 
     private fun initView(view: View?) {
         etUserPName=view?.findViewById(R.id.etUserPName)
-        etUserFName=view?.findViewById(R.id.etUserFName)
+        etUserFName=view?.findViewById(R.id.etAssociationName)
         spAssociation=view?.findViewById(R.id.spAssociation)
         etNotFindAssociation=view?.findViewById(R.id.etNotFindAssociation)
     }

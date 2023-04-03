@@ -52,4 +52,10 @@
     <string name="i_confirm">אני מאשר קבלת עדכונים במייל, SMS, ווצאפ (ניתן לשנות העדפות בעמוד הפרופיל האישי)</string>
     <string name="success_msg">הפעולה הצליחה</string>
     <string name="failed_msg">הפעולה נכשלה</string>
+    <string-array name="type_organization">
+        <item>עמותה</item>
+        <item>חל"צ</item>
+        <item>מטרה טובה ללא מסגרת רשמית</item>
+        <item>אחר</item>
+    </string-array>
 </resources>

@@ -32,11 +32,6 @@
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93">
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent" />
-
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,6 +41,16 @@
             android:layout_marginEnd="5dp"
             android:contentDescription="@string/app_name"
             app:srcCompat="@drawable/arrow_down" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spTypeOrganization"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:entries="@array/type_organization"
+            />
+
+
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -61,7 +66,7 @@
         app:layout_constraintVertical_bias="0.303" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etUserFName"
+        android:id="@+id/etAssociationName"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_fill"
@@ -96,11 +101,11 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/etUserFName"
+        app:layout_constraintEnd_toEndOf="@+id/etAssociationName"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/etUserFName"
+        app:layout_constraintStart_toStartOf="@+id/etAssociationName"
         app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93">
@@ -138,7 +143,7 @@
         app:layout_constraintVertical_bias="0.771" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etRole"
+        android:id="@+id/etContactPosition"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"

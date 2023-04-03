@@ -30,7 +30,7 @@ open class User
     var state: String=""
 
     @SerializedName("term_accepted")
-    var term_accepted: Boolean=false
+    var term_accepted: Boolean?=null
 
     @SerializedName("group_donations")
     var group_donations: Int=0
