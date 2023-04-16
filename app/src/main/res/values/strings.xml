@@ -59,6 +59,11 @@
     <string name="failed_msg">הפעולה נכשלה</string>
     <string name="who_we_are">מי אנחנו?</string>
     <string name="faq">FAQ</string>
+    <string name="profile">פרופיל</string>
+    <string name="saved">שמורים</string>
+    <string name="stores">חנויות</string>
+    <string name="associations">עמותות</string>
+    <string name="content" translatable="false">content</string>
 
     <string-array name="type_organization">
         <item>עמותה</item>

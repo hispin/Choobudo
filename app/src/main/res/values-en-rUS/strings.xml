@@ -54,6 +54,10 @@
     <string name="failed_msg">the action has been failed</string>
     <string name="who_we_are">who we are?</string>
     <string name="faq">FAQ</string>
+    <string name="profile">profile</string>
+    <string name="saved">saved</string>
+    <string name="stores">stores</string>
+    <string name="associations">associations</string>
     <string-array name="type_organization">
         <item>עמותה</item>
         <item>חל"צ</item>
