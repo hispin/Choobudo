@@ -3,10 +3,15 @@ package com.generosity.choobudo.retrofit
 import com.generosity.choobudo.models.*
 import retrofit2.Call
 
-class UserRepository {
+class Repository {
+
+
+    suspend fun getWebsite(cookie: String?, token: String?): Call<List<WebsiteResponse>>? {
+        return Api.getApiWithCookie(token,cookie)?.getWebsites()
+
+    }
 
     suspend fun getAssociations(): Call<List<AssociationsResponse>>? {
-        //return Api.getApi()?.loginUser(loginRequest=loginRequest)
         return Api.getApi()?.getAssociations()
 
     }

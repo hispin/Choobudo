@@ -58,6 +58,8 @@
     <string name="saved">שמורים</string>
     <string name="stores">חנויות</string>
     <string name="associations">עמותות</string>
+    <string name="add_logo">הוסף לוגו עמותה</string>
+    <string name="choose_association">בחר עמותה</string>
     <string-array name="type_organization">
         <item>עמותה</item>
         <item>חל"צ</item>

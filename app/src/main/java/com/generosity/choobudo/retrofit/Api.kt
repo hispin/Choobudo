@@ -9,6 +9,10 @@ import retrofit2.http.POST
 
 interface Api {
 
+
+    @GET("/websites/")
+    fun getWebsites(): Call<List<WebsiteResponse>>
+
     @GET("/associations/")
     fun getAssociations(): Call<List<AssociationsResponse>>
 
@@ -25,6 +29,14 @@ interface Api {
     companion object {
         fun getApi(): Api? {
             return ApiClient.ApiClient.client?.create(Api::class.java)
+        }
+
+        fun getApiWithCookie(cookie: String?, token: String?): Api? {
+            if(token==null || cookie ==null)
+                   return null
+            ApiClient.Constant.token=token
+            ApiClient.Constant.cookie=cookie
+            return ApiClient.ApiClientWithCookie.client?.create(Api::class.java)
         }
     }
 

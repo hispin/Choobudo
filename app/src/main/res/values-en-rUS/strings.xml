@@ -58,6 +58,8 @@
     <string name="saved">saved</string>
     <string name="stores">stores</string>
     <string name="associations">associations</string>
+    <string name="add_logo">Add an association logo</string>
+    <string name="choose_association">choose association</string>
     <string-array name="type_organization">
         <item>עמותה</item>
         <item>חל"צ</item>

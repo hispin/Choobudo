@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import com.generosity.choobudo.R
 import com.generosity.choobudo.activities.BaseActivity
+import com.generosity.choobudo.common.common.Companion.openLogin
 import com.generosity.choobudo.fragments.*
 import kotlinx.android.synthetic.main.activity_registration.*
 
@@ -29,7 +30,7 @@ class RegisterActivity : BaseActivity() {
 
     //stages of registration of contributer
     enum class StageAssociate {
-        one, two, three, four, five
+        one, two, three, four, five,six
     }
     private var isAction=false
     private var myFragment: Fragment?=null
@@ -64,6 +65,16 @@ class RegisterActivity : BaseActivity() {
                     ).show()
                 }
             }
+        })
+        //listener to first registration validation
+        viewModel.isRegFirstValidate?.observe(this, Observer {
+                if (it) {
+                    btnNextReg.setBackgroundResource(R.drawable.registration_next)
+                    btnNextReg.isEnabled=true
+                } else {
+                    btnNextReg.setBackgroundResource(R.drawable.registration_next_disable)
+                    btnNextReg.isEnabled=false
+                }
         })
     }
 
@@ -141,9 +152,19 @@ class RegisterActivity : BaseActivity() {
      * show association fifth stage
      */
     private fun showAssociateFifthStage() {
-        myFragment=RegFifthAssociateFragment()
+        myFragment=RegfifthAssociateFragment()
         val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-        t.replace(R.id.frContainer, myFragment as RegFifthAssociateFragment)
+        t.replace(R.id.frContainer, myFragment as RegfifthAssociateFragment)
+        t.commit()
+    }
+
+    /**
+     * show association sixth stage
+     */
+    private fun showAssociateSixthStage() {
+        myFragment=RegSixthAssociateFragment()
+        val t: FragmentTransaction=supportFragmentManager.beginTransaction()
+        t.replace(R.id.frContainer, myFragment as RegSixthAssociateFragment)
         t.commit()
     }
 
@@ -267,15 +288,30 @@ class RegisterActivity : BaseActivity() {
                         showAssociateFifthStage()
                         typeAssociate=StageAssociate.five
                         configureAssociationUI()
-                        btnNextReg.text=resources.getString(R.string.registration)
+                        btnNextReg.text=resources.getString(R.string.next)
                     }
                     StageAssociate.five -> {
-                        if (myFragment is RegFifthAssociateFragment) {
-                            viewModel.setAssociationStage5(
-                                (myFragment as RegFifthAssociateFragment).etPasswordNum?.text.toString(),
-                                (myFragment as RegFifthAssociateFragment).etPersonalAssociationLink?.text.toString(),
-                                (myFragment as RegFifthAssociateFragment).cbIConfirm?.isChecked,
-                                (myFragment as RegFifthAssociateFragment).cbIRead?.isChecked
+//                        if (myFragment is RegForthAssociateFragment) {
+//                            viewModel.setAssociationStage4(
+//                                (myFragment as RegForthAssociateFragment).etAccountName?.text.toString(),
+//                                (myFragment as RegForthAssociateFragment).etAccountNum?.text.toString(),
+//                                (myFragment as RegForthAssociateFragment).etBranchName?.text.toString(),
+//                                (myFragment as RegForthAssociateFragment).etBranchNum?.text.toString(),//"8e8b988a-8af9-4383-a410-192c01f552a0"
+//                                (myFragment as RegForthAssociateFragment).etBankNum?.text.toString()//"8e8b988a-8af9-4383-a410-192c01f552a0"
+//                            )
+//                        }
+                        showAssociateSixthStage()
+                        typeAssociate=StageAssociate.six
+                        configureAssociationUI()
+                        btnNextReg.text=resources.getString(R.string.registration)
+                    }
+                    StageAssociate.six -> {
+                        if (myFragment is RegSixthAssociateFragment) {
+                            viewModel.setAssociationStage6(
+                                (myFragment as RegSixthAssociateFragment).etPasswordNum?.text.toString(),
+                                (myFragment as RegSixthAssociateFragment).etPersonalAssociationLink?.text.toString(),
+                                (myFragment as RegSixthAssociateFragment).cbIConfirm?.isChecked,
+                                (myFragment as RegSixthAssociateFragment).cbIRead?.isChecked
                             )
                             isAction=true
                             viewModel.registerAssociation()
@@ -310,6 +346,13 @@ class RegisterActivity : BaseActivity() {
                 }
             } else if (type == TypeUser.association) {
                 when (typeAssociate) {
+
+                    StageAssociate.six -> {
+                        showAssociateFifthStage()
+                        typeAssociate=StageAssociate.five
+                        configurePrevUI()
+                    }
+
                     StageAssociate.five -> {
                         showAssociateForthStage()
                         typeAssociate=StageAssociate.four
@@ -382,7 +425,7 @@ class RegisterActivity : BaseActivity() {
         val text="<a href=''>$source </a>"
         btnConnectFromHere.text=Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY)
         btnConnectFromHere.setOnClickListener {
-            //TODO
+            openLogin(this)
         }
     }
 

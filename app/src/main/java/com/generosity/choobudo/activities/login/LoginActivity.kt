@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.generosity.choobudo.R
 import com.generosity.choobudo.Session
+import com.generosity.choobudo.common.common.Companion.openMainScreen
 import com.generosity.choobudo.databinding.ActivityMainBinding
 import com.generosity.choobudo.models.LoginResponse
 import kotlinx.android.synthetic.main.activity_login.*
@@ -16,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<LoginViewModel>()
+    private var isAction=false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,18 +26,22 @@ class LoginActivity : AppCompatActivity() {
         val token=Session.SessionManager.getToken(this)
 
         viewModel.isSuccess?.observe(this, Observer {
-            if (it) {
-                Toast.makeText(
-                    this@LoginActivity,
-                    resources.getString(R.string.success_msg),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }else{
-                Toast.makeText(
-                    this@LoginActivity,
-                    resources.getString(R.string.failed_msg),
-                    Toast.LENGTH_SHORT
-                ).show()
+
+            if (isAction) {
+                if (it) {
+                    Toast.makeText(
+                        this@LoginActivity,
+                        resources.getString(R.string.success_msg),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    openMainScreen(this)
+                } else {
+                    Toast.makeText(
+                        this@LoginActivity,
+                        resources.getString(R.string.failed_msg),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         })
 //        viewModel.loginResult?.observe(this) {
@@ -74,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
         val pwd=etPassword.text.toString()//"1234"//resources.getString(R.string.password)//binding.txtPass.text.toString()
         viewModel.setUser(email, pwd)
         viewModel.loginUser()
-
+        isAction=true
     }
 
     //

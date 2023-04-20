@@ -10,7 +10,7 @@ import com.generosity.choobudo.common.common.Constant.COOKIE_NAME
 import com.generosity.choobudo.common.setStringInPreference
 import com.generosity.choobudo.models.*
 import com.generosity.choobudo.retrofit.BaseResponse
-import com.generosity.choobudo.retrofit.UserRepository
+import com.generosity.choobudo.retrofit.Repository
 import com.google.gson.JsonObject
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -22,17 +22,20 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     //{ "email": "hag.hispin@gmail.com", "password": 1234, "first_name": "אריאל ", "last_name": " בדיקת APP API", "phone": "054-7557804", "city": " ירושלי ם ", "state": " ישראל ", "birth_day": 1, "birth_month": 1, "birth_year": 1970, "organization_guid": "8e8b988a-8af9-4383-a410-192c01f552a0", "term_accepted": true, "group_donation": 194, "user_type": 180 }
     var userContributer: UserContributer?=null
     var userAssociation: UserAssociation?=null
-    val userRepo=UserRepository()
+    val userRepo=Repository()
     var registerResult: MutableLiveData<BaseResponse<JsonObject>>?=null
     var isSuccess: MutableLiveData<Boolean>?=null
     var registrationResponse: MutableLiveData<RegistrationResponse>?=MutableLiveData()
     var registrationAssociationResponse: MutableLiveData<RegistrationAssociationResponse>?=MutableLiveData()
     var associationsResponse: MutableLiveData<List<AssociationsResponse>>?=MutableLiveData()
+    var isRegFirstValidate: MutableLiveData<Boolean>?=null
+
 
     init {
         userContributer=UserContributer()
         userAssociation=UserAssociation()
         isSuccess=MutableLiveData(false)
+        isRegFirstValidate=MutableLiveData(false)
     }
 
     fun registerContributer() {
@@ -273,7 +276,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     /**
      * set stage 5 of association registration
      */
-    fun setAssociationStage5(password: String, personalAssociationLink: String, iconFirm: Boolean?, iRead: Boolean?) {
+    fun setAssociationStage6(password: String, personalAssociationLink: String, iconFirm: Boolean?, iRead: Boolean?) {
         userAssociation?.password = password
         userAssociation?.website_link = personalAssociationLink
         userAssociation?.update_in_mail = iconFirm
@@ -285,6 +288,10 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
         userAssociation?.group_donation_abroad_account_in_jgive =false
         userAssociation?.group_donation_abroad_uk_tormet = false
         userAssociation?.organization_summary = "טקס גיבור המערב הפרוע"
+    }
+
+    fun setRegFirstValidate(validate: Boolean) {
+        isRegFirstValidate?.value=validate
     }
 
 
