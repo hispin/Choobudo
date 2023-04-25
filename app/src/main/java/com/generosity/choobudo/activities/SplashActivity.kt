@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.generosity.choobudo.R
-import com.generosity.choobudo.activities.login.LoginActivity
-import com.generosity.choobudo.activities.registration.RegisterActivity
+import com.generosity.choobudo.login.LoginActivity
+import com.generosity.choobudo.registration.RegisterActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {

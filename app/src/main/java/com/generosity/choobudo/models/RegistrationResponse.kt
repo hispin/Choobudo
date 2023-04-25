@@ -55,6 +55,9 @@ class RegistrationResponse
 
     @SerializedName("birthday")
     var birthday: String=""
+
+      @SerializedName("orders")
+      var orders: List<Order>? = null
 }
 
 class Group_donations {

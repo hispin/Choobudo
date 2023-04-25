@@ -2,8 +2,8 @@ package com.generosity.choobudo.common
 
 import android.content.Context
 import android.content.Intent
-import com.generosity.choobudo.activities.login.LoginActivity
-import com.generosity.choobudo.activities.main.MainScreenActivity
+import com.generosity.choobudo.login.LoginActivity
+import com.generosity.choobudo.main.MainScreenActivity
 
 class common {
     object Constant {

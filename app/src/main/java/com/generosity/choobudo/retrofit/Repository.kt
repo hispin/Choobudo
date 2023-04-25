@@ -6,6 +6,10 @@ import retrofit2.Call
 class Repository {
 
 
+    suspend fun getUser(cookie: String?, token: String?): Call<RegistrationResponse>? {
+        return Api.getApiWithCookie(token,cookie)?.getUser()
+    }
+
     suspend fun getWebsite(cookie: String?, token: String?): Call<List<WebsiteResponse>>? {
         return Api.getApiWithCookie(token,cookie)?.getWebsites()
 

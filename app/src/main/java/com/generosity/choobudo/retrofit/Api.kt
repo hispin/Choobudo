@@ -9,6 +9,8 @@ import retrofit2.http.POST
 
 interface Api {
 
+    @GET("/user/")
+    fun getUser(): Call<RegistrationResponse>
 
     @GET("/websites/")
     fun getWebsites(): Call<List<WebsiteResponse>>

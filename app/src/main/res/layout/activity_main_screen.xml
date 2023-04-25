@@ -100,10 +100,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.758"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/conHeader"
 
-         />
+        app:layout_constraintTop_toBottomOf="@+id/conHeader" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/conFooter"
         android:layout_width="match_parent"
