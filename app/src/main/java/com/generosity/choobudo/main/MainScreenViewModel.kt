@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.generosity.choobudo.common.common
 import com.generosity.choobudo.common.getStringInPreference
-import com.generosity.choobudo.models.RegistrationResponse
+import com.generosity.choobudo.models.UserResponse
 import com.generosity.choobudo.models.WebsiteResponse
 import com.generosity.choobudo.retrofit.Repository
 import kotlinx.coroutines.launch
@@ -18,8 +18,9 @@ class MainScreenViewModel (application: Application) : AndroidViewModel(applicat
 
     val websiteRepo=Repository()
     var websiteResponse: MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
+    var userOrders: MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
     var isSuccess: MutableLiveData<Boolean>?=null
-    var userResponse: MutableLiveData<RegistrationResponse>?=MutableLiveData()
+    var userResponse: MutableLiveData<UserResponse>?=MutableLiveData()
 
     init {
         isSuccess=MutableLiveData(false)
@@ -40,6 +41,7 @@ class MainScreenViewModel (application: Application) : AndroidViewModel(applicat
                             ) {
                                 isSuccess?.value=true
                                 websiteResponse?.value=response.body()
+                                getUser()
                             }
 
                             override fun onFailure(
@@ -72,20 +74,21 @@ class MainScreenViewModel (application: Application) : AndroidViewModel(applicat
         this.viewModelScope.launch {
             try {
 
-                val callBackGetUser: Callback<RegistrationResponse> =
+                val callBackGetUser: Callback<UserResponse> =
 
-                    object : Callback<RegistrationResponse> {
+                    object : Callback<UserResponse> {
 
                         override fun onResponse(
-                            call: Call<RegistrationResponse>,
-                            response: Response<RegistrationResponse>
+                            call: Call<UserResponse>,
+                            response: Response<UserResponse>
                         ) {
                             isSuccess?.value=true
                             userResponse?.value=response.body()
+                            getOrderUserById()
                         }
 
                         override fun onFailure(
-                            call: Call<RegistrationResponse>, t: Throwable
+                            call: Call<UserResponse>, t: Throwable
                         ) {
                             isSuccess?.value=false
                         }
@@ -104,5 +107,24 @@ class MainScreenViewModel (application: Application) : AndroidViewModel(applicat
                 //loginResult?.value=BaseResponse.Error(ex.message)
             }
         }
+    }
+
+    /**
+     * get orders of user
+     */
+    private fun getOrderUserById() {
+       if(websiteResponse!=null
+           && userResponse!=null
+           && userResponse?.value?.orders!=null) {
+           val uo = ArrayList<WebsiteResponse>()
+           for (order in userResponse?.value?.orders!!) {
+               for (website in websiteResponse?.value!!) {
+                   if(order.website_id == website.id){
+                       uo.add(website)
+                   }
+               }
+           }
+           userOrders?.value = uo
+       }
     }
 }

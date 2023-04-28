@@ -88,7 +88,7 @@ class ApiClient {
                                 "Basic QXBwQEFQSV91c2VyMSE6NiExMzU2OSRFNEI2NCEwNDdFQDRBQ0RGMV41QTIxODU3JCRFNTI2OTc2RjU2NkUhODQxQ0BANCMzNjIjIzhEQjc2IzM2QyE5OTYyNTVFOQ=="
                             )
                             .addHeader(
-                                "Set-Cookie", cookie!!
+                                "Cookie", cookie!!
                             )
                             .addHeader(
                                 "token_key", token!!

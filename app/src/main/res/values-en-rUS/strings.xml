@@ -60,6 +60,8 @@
     <string name="associations">associations</string>
     <string name="add_logo">Add an association logo</string>
     <string name="choose_association">choose association</string>
+    <string name="special_for_you">special for you</string>
+    <string name="search_store">search store …</string>
     <string-array name="type_organization">
         <item>עמותה</item>
         <item>חל"צ</item>

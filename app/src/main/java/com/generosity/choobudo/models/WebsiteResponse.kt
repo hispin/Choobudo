@@ -3,7 +3,7 @@ package com.generosity.choobudo.models
 import com.google.gson.annotations.SerializedName
 
 class WebsiteResponse(
-    @SerializedName("token_key") var id: Int,
+    @SerializedName("id") var id: Int,
     @SerializedName("name") var name: String,
     @SerializedName("image") var image: String,
     @SerializedName("summary") var summary: String,

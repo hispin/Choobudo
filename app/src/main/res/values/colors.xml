@@ -24,4 +24,7 @@
     <color name="error">#E80000</color>
     <color name="grey6">#F4F6FE</color>
     <color name="grey7">#737373</color>
+    <color name="grey8">#72808D</color>
+    <color name="grey9">#0F1327</color>
+    <color name="grey10">#E6E6E6</color>
 </resources>

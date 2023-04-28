@@ -18,6 +18,6 @@ class MainScreenActivity : BaseActivity() {
         t.commit()
 
         viewModel=ViewModelProvider(this)[MainScreenViewModel::class.java]
-        viewModel?.getWebSite()
+
     }
 }

@@ -60,6 +60,8 @@
     <string name="associations">עמותות</string>
     <string name="add_logo">הוסף לוגו עמותה</string>
     <string name="choose_association">בחר עמותה</string>
+    <string name="special_for_you">במיוחד בשבילך</string>
+    <string name="search_store">חפש חנות …</string>
     <string-array name="type_organization">
         <item>עמותה</item>
         <item>חל"צ</item>
