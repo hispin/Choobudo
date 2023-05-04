@@ -1,9 +1,11 @@
 package com.generosity.choobudo.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -12,7 +14,9 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.generosity.choobudo.R
 import com.generosity.choobudo.activities.BaseActivity
+import com.generosity.choobudo.common.common.Companion.isValidation
 import com.generosity.choobudo.common.common.Companion.openMainScreen
+import com.generosity.choobudo.registration.RegisterActivity
 
 class LoginActivity : BaseActivity() {
 
@@ -22,6 +26,7 @@ class LoginActivity : BaseActivity() {
     private var etUsername:EditText?=null
     private var etPassword:EditText?=null
     private var ivLogin: ImageView?=null
+    private var ivRegistration:ImageView?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +39,12 @@ class LoginActivity : BaseActivity() {
         ivLogin?.setOnClickListener {
             doLogin()
         }
+
+        ivRegistration= findViewById(R.id.ivRegistration)
+        ivRegistration?.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+        }
+
         etUsername?.onFocusChangeListener=View.OnFocusChangeListener { v, hasFocus ->
             validationFields()
         }
@@ -51,6 +62,7 @@ class LoginActivity : BaseActivity() {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         })
 
+        setValidate(false)
 
         viewModel.isSuccess?.observe(this, Observer {
 
@@ -77,14 +89,15 @@ class LoginActivity : BaseActivity() {
      * fields validate
      */
     fun validationFields():Boolean{
-        if (TextUtils.isEmpty(etUsername?.text)) {
+        if (!TextUtils.isEmpty(etUsername?.text)
+            && isValidation(Patterns.EMAIL_ADDRESS,etUsername?.text.toString())) {
+            etUsername?.setBackgroundResource(R.drawable.shape_field_fill)
+            etUsername?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vi_user, 0)
+        } else {
             etUsername?.setBackgroundResource(R.drawable.shape_field_invalidate)
             etUsername?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_x, 0)
             setValidate(false)
             return false
-        } else {
-            etUsername?.setBackgroundResource(R.drawable.shape_field_fill)
-            etUsername?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vi_user, 0)
         }
         if (TextUtils.isEmpty(etPassword?.text)) {
             etPassword?.setBackgroundResource(R.drawable.shape_field_invalidate)

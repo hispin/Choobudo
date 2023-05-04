@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.generosity.choobudo.R
+import com.generosity.choobudo.common.common
 import com.generosity.choobudo.registration.RegisterViewModel
 
 class RegSecondFragment : Fragment() {
@@ -73,15 +75,16 @@ class RegSecondFragment : Fragment() {
             etTelNum?.setBackgroundResource(R.drawable.shape_field_fill)
             etTelNum?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vi_user, 0)
         }
-        if (TextUtils.isEmpty(etEmail?.text)) {
-            etEmail?.setBackgroundResource(R.drawable.shape_field_invalidate)
-            etEmail?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_x, 0)
-            viewModel?.setRegFirstValidate(false)
-            return false
-        } else {
-            etEmail?.setBackgroundResource(R.drawable.shape_field_fill)
-            etEmail?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vi_user, 0)
-        }
+        if (!TextUtils.isEmpty(etEmail?.text)
+            && common.isValidation(Patterns.EMAIL_ADDRESS,etEmail?.text.toString())) {//isUserNameValid(etEmail?.text.toString())) {
+                etEmail?.setBackgroundResource(R.drawable.shape_field_fill)
+                etEmail?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vi_user, 0)
+            } else {
+                etEmail?.setBackgroundResource(R.drawable.shape_field_invalidate)
+                etEmail?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_x, 0)
+                viewModel?.setRegFirstValidate(false)
+                return false
+            }
         if (TextUtils.isEmpty(etCity?.text)) {
             etCity?.setBackgroundResource(R.drawable.shape_field_invalidate)
             etCity?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_x, 0)
