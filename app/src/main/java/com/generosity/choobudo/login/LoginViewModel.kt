@@ -1,11 +1,10 @@
 package com.generosity.choobudo.login
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.generosity.choobudo.common.common
-import com.generosity.choobudo.common.setStringInPreference
+import com.generosity.choobudo.R
+import com.generosity.choobudo.common.ViewModelFather
 import com.generosity.choobudo.models.LoginRequest
 import com.generosity.choobudo.models.LoginResponse
 import com.generosity.choobudo.retrofit.Repository
@@ -15,15 +14,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class LoginViewModel(application: Application) : AndroidViewModel(application) {
+class LoginViewModel(application: Application) : ViewModelFather(application) {
 
     var loginRequest: LoginRequest?=null
     val userRepo=Repository()
     var loginResponse: MutableLiveData<LoginResponse>?=MutableLiveData()
-    var isSuccess: MutableLiveData<Boolean>?=null
 
     init {
-        isSuccess=MutableLiveData(false)
     }
 
     /**
@@ -43,19 +40,28 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                         ) {
                             loginResponse?.value= response.body()
 
-                            val cookie=response.headers()["Set-Cookie"]
-                            //save the content of cookie in share preference
-                            setStringInPreference(getApplication<Application?>().applicationContext,
-                                common.Constant.COOKIE_CONTENT,cookie)
-
-                            //save the response
-                            //registrationResponse?.value=response.body()
-                            setStringInPreference(getApplication<Application?>().applicationContext,
-                                common.Constant.COOKIE_NAME,loginResponse?.value?.token_key)
-
-                            isSuccess?.value=true
-
-
+                            when(response.code()){
+                                200-> {
+                                    if(loginResponse?.value?.token_key!=null) {
+                                        setSuccessResponse(
+                                            response.headers()["Set-Cookie"], loginResponse?.value?.token_key!!
+                                        )
+                                    }
+                                }
+                                201-> {
+                                    if(loginResponse?.value?.token_key!=null) {
+                                        setSuccessResponse(
+                                            response.headers()["Set-Cookie"], loginResponse?.value?.token_key!!
+                                        )
+                                    }
+                                }
+                                403->{
+                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        R.string.email_pass_error)
+                                }else->{
+                                    errorMsg?.value = response.code().toString()
+                                }
+                            }
                         }
 
                         override fun onFailure(call: Call<LoginResponse?>, t: Throwable) {

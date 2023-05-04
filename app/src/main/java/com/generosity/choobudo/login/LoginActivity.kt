@@ -64,6 +64,13 @@ class LoginActivity : BaseActivity() {
 
         setValidate(false)
 
+       setListener()
+    }
+
+    /**
+     * handle view model observe
+     */
+    private fun setListener() {
         viewModel.isSuccess?.observe(this, Observer {
 
             if (isAction) {
@@ -80,6 +87,19 @@ class LoginActivity : BaseActivity() {
                         resources.getString(R.string.failed_msg),
                         Toast.LENGTH_SHORT
                     ).show()
+                }
+            }
+        })
+
+        viewModel.errorMsg?.observe(this, Observer {
+            if (isAction) {
+                if (it.isNotEmpty()) {
+                    Toast.makeText(
+                        this@LoginActivity,
+                        it,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    openMainScreen(this)
                 }
             }
         })

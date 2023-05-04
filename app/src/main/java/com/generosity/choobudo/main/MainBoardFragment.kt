@@ -41,7 +41,7 @@ class MainBoardFragment : Fragment() {
         if(activity!=null) {
             viewModel=ViewModelProvider(requireActivity())[MainScreenViewModel::class.java]
             setListener()
-            viewModel?.getWebSite()
+            viewModel?.getWebSite(true)
         }
 
         return view

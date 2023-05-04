@@ -1,11 +1,13 @@
 package com.generosity.choobudo.main
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.generosity.choobudo.R
+import com.generosity.choobudo.common.ViewModelFather
 import com.generosity.choobudo.common.common
 import com.generosity.choobudo.common.getStringInPreference
+import com.generosity.choobudo.models.AssociationsResponse
 import com.generosity.choobudo.models.UserResponse
 import com.generosity.choobudo.models.WebsiteResponse
 import com.generosity.choobudo.retrofit.Repository
@@ -14,19 +16,68 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainScreenViewModel (application: Application) : AndroidViewModel(application) {
+class MainScreenViewModel (application: Application) : ViewModelFather(application) {
 
     val websiteRepo=Repository()
     var websiteResponse: MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
     var userOrders: MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
-    var isSuccess: MutableLiveData<Boolean>?=null
     var userResponse: MutableLiveData<UserResponse>?=MutableLiveData()
+    var associationsResponse: MutableLiveData<List<AssociationsResponse>>?=MutableLiveData()
 
     init {
-        isSuccess=MutableLiveData(false)
     }
 
-    fun getWebSite() {
+    /**
+     * get associations
+     */
+    fun getAssociations() {
+
+        this.viewModelScope.launch {
+            try {
+
+                val callBackGetAssociations: Callback<List<AssociationsResponse>?> =
+
+                    object : Callback<List<AssociationsResponse>?> {
+
+                        override fun onResponse(
+                            call: Call<List<AssociationsResponse>?>,
+                            response: Response<List<AssociationsResponse>?>
+                        ) {
+                            associationsResponse?.value=response.body()
+                            when(response.code()){
+                                200 -> {
+                                    isSuccess?.value=true
+                                }
+                                201 ->{
+                                    isSuccess?.value=true
+                                }
+                                403->{
+                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        R.string.email_pass_error)
+                                }else->{
+                                errorMsg?.value = response.code().toString()
+                            }
+                            }
+                        }
+
+                        override fun onFailure(
+                            call: Call<List<AssociationsResponse>?>, t: Throwable
+                        ) {
+                            isSuccess?.value=false
+                        }
+                    }
+
+                val associationResponse=websiteRepo.getAssociations()
+                associationResponse?.enqueue(callBackGetAssociations)
+
+            } catch (ex: Exception) {
+                //loginResult?.value=BaseResponse.Error(ex.message)
+            }
+        }
+    }
+
+
+    fun getWebSite(isGetUser: Boolean) {
 
             this.viewModelScope.launch {
                 try {
@@ -39,9 +90,28 @@ class MainScreenViewModel (application: Application) : AndroidViewModel(applicat
                                 call: Call<List<WebsiteResponse>?>,
                                 response: Response<List<WebsiteResponse>?>
                             ) {
-                                isSuccess?.value=true
                                 websiteResponse?.value=response.body()
-                                getUser()
+                                when(response.code()){
+                                    200 -> {
+                                        if(isGetUser) {
+                                            getUser()
+                                        }
+                                        isSuccess?.value=true
+                                    }
+                                    201 ->{
+                                        if(isGetUser) {
+                                            getUser()
+                                        }
+                                        isSuccess?.value=true
+                                    }
+                                    403->{
+                                        errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                            R.string.email_pass_error)
+                                    }else->{
+                                         errorMsg?.value = response.code().toString()
+                                    }
+                                }
+
                             }
 
                             override fun onFailure(
@@ -82,9 +152,25 @@ class MainScreenViewModel (application: Application) : AndroidViewModel(applicat
                             call: Call<UserResponse>,
                             response: Response<UserResponse>
                         ) {
-                            isSuccess?.value=true
+
                             userResponse?.value=response.body()
-                            getOrderUserById()
+
+                            when(response.code()){
+                                200-> {
+                                    getOrderUserById()
+                                    isSuccess?.value=true
+                                }
+                                201->{
+                                    getOrderUserById()
+                                    isSuccess?.value=true
+                                }
+                                403->{
+                                        errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                           R.string.email_pass_error)
+                                    }else->{
+                                        errorMsg?.value = response.code().toString()
+                                }
+                            }
                         }
 
                         override fun onFailure(

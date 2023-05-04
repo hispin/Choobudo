@@ -62,6 +62,7 @@
     <string name="choose_association">בחר עמותה</string>
     <string name="special_for_you">במיוחד בשבילך</string>
     <string name="search_store">חפש חנות …</string>
+    <string name="email_pass_error">אימייל או סיסמה שגויים</string>
     <string-array name="type_organization">
         <item>עמותה</item>
         <item>חל"צ</item>

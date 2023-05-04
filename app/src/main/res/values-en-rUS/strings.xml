@@ -62,6 +62,7 @@
     <string name="choose_association">choose association</string>
     <string name="special_for_you">special for you</string>
     <string name="search_store">search store …</string>
+    <string name="email_pass_error">invalid email or password</string>
     <string-array name="type_organization">
         <item>עמותה</item>
         <item>חל"צ</item>

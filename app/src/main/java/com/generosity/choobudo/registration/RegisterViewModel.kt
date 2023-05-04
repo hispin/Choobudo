@@ -2,12 +2,10 @@ package com.generosity.choobudo.registration
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.generosity.choobudo.common.common.Constant.COOKIE_CONTENT
-import com.generosity.choobudo.common.common.Constant.COOKIE_NAME
-import com.generosity.choobudo.common.setStringInPreference
+import com.generosity.choobudo.R
+import com.generosity.choobudo.common.ViewModelFather
 import com.generosity.choobudo.models.*
 import com.generosity.choobudo.retrofit.BaseResponse
 import com.generosity.choobudo.retrofit.Repository
@@ -17,14 +15,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RegisterViewModel(application: Application) : AndroidViewModel(application) {
+class RegisterViewModel(application: Application) : ViewModelFather(application) {
 
     //{ "email": "hag.hispin@gmail.com", "password": 1234, "first_name": "אריאל ", "last_name": " בדיקת APP API", "phone": "054-7557804", "city": " ירושלי ם ", "state": " ישראל ", "birth_day": 1, "birth_month": 1, "birth_year": 1970, "organization_guid": "8e8b988a-8af9-4383-a410-192c01f552a0", "term_accepted": true, "group_donation": 194, "user_type": 180 }
     var userContributer: UserContributer?=null
     var userAssociation: UserAssociation?=null
     val userRepo=Repository()
     var registerResult: MutableLiveData<BaseResponse<JsonObject>>?=null
-    var isSuccess: MutableLiveData<Boolean>?=null
     var registrationResponse: MutableLiveData<RegistrationResponse>?=MutableLiveData()
     var registrationAssociationResponse: MutableLiveData<RegistrationAssociationResponse>?=MutableLiveData()
     var associationsResponse: MutableLiveData<List<AssociationsResponse>>?=MutableLiveData()
@@ -34,7 +31,6 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     init {
         userContributer=UserContributer()
         userAssociation=UserAssociation()
-        isSuccess=MutableLiveData(false)
         isRegFirstValidate=MutableLiveData(false)
     }
 
@@ -56,15 +52,35 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
                             call: Call<RegistrationResponse?>,
                             response: Response<RegistrationResponse?>
                         ) {
-                            isSuccess?.value=true
                             Log.d("responseReg", "success")
                             val cookie=response.headers()["Set-Cookie"]
-                            //save the content of cookie in share preference
-                            setStringInPreference(getApplication<Application?>().applicationContext,COOKIE_CONTENT,cookie)
 
                             //save the response
                             registrationResponse?.value=response.body()
-                            setStringInPreference(getApplication<Application?>().applicationContext,COOKIE_NAME,registrationResponse?.value?.token_key)
+                            when(response.code()){
+                                200 -> {
+                                    if(registrationResponse?.value?.token_key!=null) {
+                                        setSuccessResponse(
+                                            cookie, registrationResponse?.value?.token_key!!
+                                        )
+                                    }
+                                }
+                                201->{
+                                    if(registrationResponse?.value?.token_key!=null) {
+                                        setSuccessResponse(
+                                            cookie, registrationResponse?.value?.token_key!!
+                                        )
+                                    }
+                                }
+                                403->{
+                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        R.string.email_pass_error)
+                                }else->{
+                                    errorMsg?.value = response.code().toString()
+                                }
+                            }
+
+
 
                         }
 
@@ -130,15 +146,32 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
                             call: Call<RegistrationAssociationResponse?>,
                             response: Response<RegistrationAssociationResponse?>
                         ) {
-                            isSuccess?.value=true
-                            Log.d("responseReg", "success")
-                            val cookie=response.headers()["Set-Cookie"]
-                            //save the content of cookie in share preference
-                            setStringInPreference(getApplication<Application?>().applicationContext,COOKIE_CONTENT,cookie)
-
                             //save the response
                             registrationAssociationResponse?.value=response.body()
-                            setStringInPreference(getApplication<Application?>().applicationContext,COOKIE_NAME,registrationResponse?.value?.token_key)
+                            Log.d("responseReg", "success")
+                            val cookie=response.headers()["Set-Cookie"]
+                            when(response.code()){
+                                200->  {
+                                    if(registrationResponse?.value?.token_key!=null) {
+                                        setSuccessResponse(
+                                            cookie, registrationResponse?.value?.token_key!!
+                                        )
+                                    }
+                                }
+                                201 -> {
+                                    if(registrationResponse?.value?.token_key!=null) {
+                                        setSuccessResponse(
+                                            cookie, registrationResponse?.value?.token_key!!
+                                        )
+                                    }
+                                }
+                                403->{
+                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        R.string.email_pass_error)
+                                }else->{
+                                    errorMsg?.value = response.code().toString()
+                                }
+                            }
 
                         }
 
@@ -176,8 +209,21 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
                             call: Call<List<AssociationsResponse>?>,
                             response: Response<List<AssociationsResponse>?>
                         ) {
-                            isSuccess?.value=true
                             associationsResponse?.value=response.body()
+                            when(response.code()){
+                                200 -> {
+                                    isSuccess?.value=true
+                                }
+                                201 ->{
+                                    isSuccess?.value=true
+                                }
+                                403->{
+                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        R.string.email_pass_error)
+                                }else->{
+                                     errorMsg?.value = response.code().toString()
+                                }
+                            }
                         }
 
                         override fun onFailure(
