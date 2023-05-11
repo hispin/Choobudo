@@ -16,6 +16,9 @@ import com.generosity.choobudo.R
 import com.generosity.choobudo.activities.BaseActivity
 import com.generosity.choobudo.common.common.Companion.isValidation
 import com.generosity.choobudo.common.common.Companion.openMainScreen
+import com.generosity.choobudo.common.common.Constant.PASS_KEY
+import com.generosity.choobudo.common.common.Constant.USER_KEY
+import com.generosity.choobudo.common.setStringInPreference
 import com.generosity.choobudo.registration.RegisterActivity
 
 class LoginActivity : BaseActivity() {
@@ -80,6 +83,8 @@ class LoginActivity : BaseActivity() {
                         resources.getString(R.string.success_msg),
                         Toast.LENGTH_SHORT
                     ).show()
+                    setStringInPreference(this,USER_KEY,etUsername?.text.toString())
+                    setStringInPreference(this,PASS_KEY,etPassword?.text.toString())
                     openMainScreen(this)
                 } else {
                     Toast.makeText(

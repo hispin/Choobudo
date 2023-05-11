@@ -63,7 +63,9 @@
     <string name="special_for_you">במיוחד בשבילך</string>
     <string name="search_store">חפש חנות …</string>
     <string name="email_pass_error">אימייל או סיסמה שגויים</string>
+    <string name="email_already_exist">האימייל קיים במערכת</string>
     <string-array name="type_organization">
+        <item>בחר</item>
         <item>עמותה</item>
         <item>חל"צ</item>
         <item>מטרה טובה ללא מסגרת רשמית</item>

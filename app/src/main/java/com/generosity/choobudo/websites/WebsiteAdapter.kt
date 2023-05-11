@@ -11,9 +11,14 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.generosity.choobudo.R
 import com.generosity.choobudo.models.WebsiteResponse
 
-class WebsiteAdapter (private val mList: List<WebsiteResponse>) : RecyclerView.Adapter<WebsiteAdapter.ViewHolder>() {
+class WebsiteAdapter (private val mList: List<WebsiteResponse>,private val listener: IntfcOnItemClickListener) : RecyclerView.Adapter<WebsiteAdapter.ViewHolder>() {
 
-    //private var myContext:Context?=null
+
+    interface IntfcOnItemClickListener {
+        fun onItemClick(item: WebsiteResponse?)
+
+    }
+
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,8 +26,6 @@ class WebsiteAdapter (private val mList: List<WebsiteResponse>) : RecyclerView.A
         // that is used to hold list item
         val view=
             LayoutInflater.from(parent.context).inflate(R.layout.item_website, parent, false)
-
-        //myContext = parent.context
 
         return ViewHolder(view)
     }
@@ -32,11 +35,18 @@ class WebsiteAdapter (private val mList: List<WebsiteResponse>) : RecyclerView.A
 
         val ItemsViewModel=mList[position]
 
-        Glide.with(holder.imageView.context).load(ItemsViewModel.image).transform(CircleCrop())
-            .override(200, 200).into(holder.imageView)
+        Glide.with(holder.imageView.context)
+            .load(ItemsViewModel.image)
+            .transform(CircleCrop())
+            .fitCenter()
+            //.override(200, 200)
+            .into(holder.imageView)
 
         // sets the text to the textview from our itemHolder class
         holder.textView.text=ItemsViewModel.name
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(ItemsViewModel)
+        }
 
     }
 

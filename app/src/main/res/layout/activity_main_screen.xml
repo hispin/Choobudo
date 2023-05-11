@@ -26,7 +26,10 @@
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintHorizontal_bias="0.037"
-          app:layout_constraintStart_toStartOf="parent">
+          android:id="@+id/llYulal"
+          android:clickable="true"
+          app:layout_constraintStart_toStartOf="parent"
+          >
 
           <androidx.appcompat.widget.AppCompatImageView
               android:layout_width="wrap_content"
@@ -60,11 +63,11 @@
             />
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llFaq"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:orientation="vertical"
-            android:src="@drawable/ic_yuval"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.889"
@@ -250,7 +253,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/mainBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

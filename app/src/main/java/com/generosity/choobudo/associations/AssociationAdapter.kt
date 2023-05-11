@@ -31,8 +31,12 @@ class AssociationAdapter (private val mList: List<AssociationsResponse>) : Recyc
 
         val ItemsViewModel=mList[position]
 
-        Glide.with(holder.imageView.context).load(ItemsViewModel.image).transform(CircleCrop())
-            .override(200, 200).into(holder.imageView)
+        Glide.with(holder.imageView.context)
+            .load(ItemsViewModel.image)
+            .fitCenter()
+            .transform(CircleCrop())
+            //.override(200, 200)
+            .into(holder.imageView)
 
         // sets the text to the textview from our itemHolder class
         holder.textView.text=ItemsViewModel.name

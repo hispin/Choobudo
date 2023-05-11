@@ -12,14 +12,14 @@ class UserContributer(
     var last_name: String=""
 
     @SerializedName("birth_day")
-    var birth_day: Int=0
+    var birth_day: Int?=null
 
     @SerializedName("birth_month")
-    var birth_month: Int=0
+    var birth_month: Int?=null
 
     @SerializedName("birth_year")
-    var birth_year: Int=0
+    var birth_year: Int?=null
 
     @SerializedName("organization_guid")
-    var organization_guid: String?=""
+    var organization_guid: String?=null
 }

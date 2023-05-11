@@ -35,7 +35,8 @@ class SpecialsAdapter  (private val mList: List<WebsiteResponse>) : RecyclerView
         Glide.with(holder.imageView.context)
                 .load(ItemsViewModel.image)
                 .transform( CircleCrop())
-                 .override(200,200)
+                //.override(200,200)
+                .fitCenter()
                 .into(holder.imageView)
 
         // sets the text to the textview from our itemHolder class

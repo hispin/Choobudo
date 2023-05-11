@@ -19,6 +19,7 @@ class LoginViewModel(application: Application) : ViewModelFather(application) {
     var loginRequest: LoginRequest?=null
     val userRepo=Repository()
     var loginResponse: MutableLiveData<LoginResponse>?=MutableLiveData()
+    var isAction=false
 
     init {
     }
@@ -38,6 +39,7 @@ class LoginViewModel(application: Application) : ViewModelFather(application) {
                         override fun onResponse(
                             call: Call<LoginResponse?>, response: Response<LoginResponse?>
                         ) {
+                            isAction=true
                             loginResponse?.value= response.body()
 
                             when(response.code()){
@@ -65,6 +67,7 @@ class LoginViewModel(application: Application) : ViewModelFather(application) {
                         }
 
                         override fun onFailure(call: Call<LoginResponse?>, t: Throwable) {
+                            isAction=true
                             isSuccess?.value=false
                         }
                     }

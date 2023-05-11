@@ -21,10 +21,10 @@ open class User
     var password: String=""
 
     @SerializedName("phone")
-    var phone: String=""
+    var phone: String?=null
 
     @SerializedName("city")
-    var city: String=""
+    var city: String?=null
 
     @SerializedName("state")
     var state: String=""
@@ -33,8 +33,8 @@ open class User
     var term_accepted: Boolean?=null
 
     @SerializedName("group_donations")
-    var group_donations: Int=0
+    var group_donations: Int?=null
 
     @SerializedName("user_type")
-    var user_type: Int=0
+    var user_type: Int?=null
 }

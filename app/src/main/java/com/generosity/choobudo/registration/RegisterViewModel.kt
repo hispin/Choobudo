@@ -6,14 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.generosity.choobudo.R
 import com.generosity.choobudo.common.ViewModelFather
+import com.generosity.choobudo.common.common.Constant.EMAIL_ALREADY_EXISTS
 import com.generosity.choobudo.models.*
 import com.generosity.choobudo.retrofit.BaseResponse
 import com.generosity.choobudo.retrofit.Repository
 import com.google.gson.JsonObject
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class RegisterViewModel(application: Application) : ViewModelFather(application) {
 
@@ -26,13 +29,19 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
     var registrationAssociationResponse: MutableLiveData<RegistrationAssociationResponse>?=MutableLiveData()
     var associationsResponse: MutableLiveData<List<AssociationsResponse>>?=MutableLiveData()
     var isRegFirstValidate: MutableLiveData<Boolean>?=null
+    var isEmailAlreadyExist: MutableLiveData<Boolean>?=null
 
 
     init {
         userContributer=UserContributer()
         userAssociation=UserAssociation()
         isRegFirstValidate=MutableLiveData(false)
+        isEmailAlreadyExist=MutableLiveData(null)
     }
+
+    /**
+     * contributer register
+     */
 
     fun registerContributer() {
 //         var userContributer = UserContributer("haggay","chen",1,1,1990
@@ -92,6 +101,77 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
 
 
                 val regResponse=userContributer?.let { userRepo.regContributerUser(it) }
+                regResponse?.enqueue(callBackRegistraPagador)
+
+            } catch (ex: Exception) {
+                registerResult?.value=BaseResponse.Error(ex.message)
+            }
+        }
+
+    }
+
+    /**
+     * check email contributer
+     */
+
+    fun checkEmailContributer(userContributer:UserContributer) {
+//         var userContributer = UserContributer("haggay","chen",1,1,1990
+//             ,"8e8b988a-8af9-4383-a410-192c01f552a0","hag.swead15@gmail.com","1234","0546596387","haifa","israel",true,194,180)
+
+        registerResult=MutableLiveData()
+
+        registerResult?.value=BaseResponse.Loading()
+        this.viewModelScope.launch {
+            try {
+
+                var callBackRegistraPagador: Callback<RegistrationResponse?> =
+
+                    object : Callback<RegistrationResponse?> {
+
+                        override fun onResponse(
+                            call: Call<RegistrationResponse?>,
+                            response: Response<RegistrationResponse?>
+                        ) {
+                            Log.d("responseReg", "success")
+
+                            val data=response.errorBody()!!.string()
+                            try {
+                                val jObjError=JSONObject(data)
+                                val desc=jObjError.getString("description")
+                                isEmailAlreadyExist?.value=desc.contains(EMAIL_ALREADY_EXISTS)
+                            } catch (e: java.lang.Exception) {
+                                e.printStackTrace()
+                            }
+
+                            //save the response
+                            registrationResponse?.value=response.body()
+                            when(response.code()){
+                                200 -> {
+                                    Log.d("responseReg", "200")
+                                }
+                                201->{
+                                    Log.d("responseReg", "201")
+                                }
+                                403->{
+                                    //errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    //    R.string.email_pass_error)
+                                }else->{
+                                    //errorMsg?.value = response.code().toString()
+                            }
+                            }
+
+
+
+                        }
+
+                        override fun onFailure(call: Call<RegistrationResponse?>, t: Throwable) {
+                            isSuccess?.value=false
+                            Log.d("responseReg", "failed")
+                        }
+                    }
+
+
+                val regResponse=userRepo.regContributerUser(userContributer)//userContributer?.let { userRepo.regContributerUser(it) }
                 regResponse?.enqueue(callBackRegistraPagador)
 
             } catch (ex: Exception) {

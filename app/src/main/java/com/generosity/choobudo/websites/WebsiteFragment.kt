@@ -1,5 +1,6 @@
 package com.generosity.choobudo.websites
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.generosity.choobudo.R
+import com.generosity.choobudo.common.RecyclerViewItemDecorator
 import com.generosity.choobudo.main.MainScreenViewModel
 import com.generosity.choobudo.models.WebsiteResponse
 
@@ -20,6 +21,17 @@ class WebsiteFragment : Fragment() {
     private var viewModel: MainScreenViewModel?=null
     var recWebsite: RecyclerView?=null
 
+    private var intfcCallBackFromWebsite:IntfcCallBackFromWebsite?=null
+    interface IntfcCallBackFromWebsite {
+        fun onOpenWebStore(item: WebsiteResponse?)
+
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        intfcCallBackFromWebsite = context as IntfcCallBackFromWebsite
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -28,8 +40,8 @@ class WebsiteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_website, container, false)
-        recWebsite = view.findViewById(R.id.recWebsite)
+        val view= inflater.inflate(com.generosity.choobudo.R.layout.fragment_website, container, false)
+        recWebsite = view.findViewById(com.generosity.choobudo.R.id.recWebsite)
 
 
         if(activity!=null) {
@@ -55,10 +67,16 @@ class WebsiteFragment : Fragment() {
     private fun loadWebsite(websites: ArrayList<WebsiteResponse>) {
         // set up the RecyclerView
         val horizontalLayoutManager= GridLayoutManager(requireActivity(), 2)
-            //LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+
         recWebsite?.layoutManager=horizontalLayoutManager
-        adapter=WebsiteAdapter(websites)
-        //adapter.setClickListener(this)
+
+        recWebsite?.addItemDecoration(RecyclerViewItemDecorator(10))
+
+        adapter=WebsiteAdapter(websites, object :WebsiteAdapter.IntfcOnItemClickListener{
+            override fun onItemClick(item: WebsiteResponse?) {
+                intfcCallBackFromWebsite?.onOpenWebStore(item)
+            }
+        })
         recWebsite?.adapter=adapter
     }
 

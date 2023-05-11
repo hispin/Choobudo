@@ -12,6 +12,10 @@ class common {
         const val COOKIE_CONTENT = "cookieContent"
         const val COOKIE_NAME = "cookieName"
         const val PASSWORD_VALIDATION ="^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]{4,20}\$"
+        const val URL_KEY="urlKey"
+        const val USER_KEY="userKey"
+        const val PASS_KEY="passKey"
+        const val EMAIL_ALREADY_EXISTS="EMAIL_ALREADY_EXISTS"
     }
 
     companion object {

@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import com.generosity.choobudo.R
 import com.generosity.choobudo.activities.BaseActivity
 import com.generosity.choobudo.common.common.Companion.openLogin
+import com.generosity.choobudo.models.UserContributer
 import com.generosity.choobudo.registration.fragment.*
 import kotlinx.android.synthetic.main.activity_registration.*
 
@@ -75,6 +76,34 @@ class RegisterActivity : BaseActivity() {
                     btnNextReg.setBackgroundResource(R.drawable.registration_next_disable)
                     btnNextReg.isEnabled=false
                 }
+        })
+
+        viewModel.isEmailAlreadyExist?.observe(this, Observer {
+            if(isAction) {
+                isAction=false
+                (myFragment as RegSecondFragment).emailProgressBar?.visibility=View.GONE
+                if (it) {
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        resources.getString(R.string.email_already_exist),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    //go to third wizard in registration
+                    if (myFragment is RegSecondFragment) {
+                        viewModel.setContributerStage2(
+                            (myFragment as RegSecondFragment).etTelNum?.text.toString(),
+                            (myFragment as RegSecondFragment).etEmail?.text.toString(),
+                            (myFragment as RegSecondFragment).etCity?.text.toString(),
+                            (myFragment as RegSecondFragment).etCountry?.text.toString()
+                        )
+                    }
+                    showThirdStage()
+                    typeContributer=StageContributer.three
+                    configureContributerUI()
+                    btnNextReg.text=resources.getString(R.string.registration)
+                }
+            }
         })
     }
 
@@ -211,18 +240,11 @@ class RegisterActivity : BaseActivity() {
                     }
 
                     StageContributer.two -> {
-                        if (myFragment is RegSecondFragment) {
-                            viewModel.setContributerStage2(
-                                (myFragment as RegSecondFragment).etTelNum?.text.toString(),
-                                (myFragment as RegSecondFragment).etEmail?.text.toString(),
-                                (myFragment as RegSecondFragment).etCity?.text.toString(),
-                                (myFragment as RegSecondFragment).etCountry?.text.toString()
-                            )
-                        }
-                        showThirdStage()
-                        typeContributer=StageContributer.three
-                        configureContributerUI()
-                        btnNextReg.text=resources.getString(R.string.registration)
+                        val userContributer= UserContributer()
+                        userContributer.email=(myFragment as RegSecondFragment).etEmail?.text.toString()
+                        isAction=true
+                        viewModel.checkEmailContributer(userContributer)
+                        (myFragment as RegSecondFragment).emailProgressBar?.visibility=View.VISIBLE
                     }
                     StageContributer.three -> {
                         if (myFragment is RegThirdFragment) {
