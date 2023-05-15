@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import com.generosity.choobudo.R
 import com.generosity.choobudo.activities.BaseActivity
 import com.generosity.choobudo.common.common.Companion.openLogin
+import com.generosity.choobudo.models.UserAssociation
 import com.generosity.choobudo.models.UserContributer
 import com.generosity.choobudo.registration.fragment.*
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -81,7 +82,7 @@ class RegisterActivity : BaseActivity() {
         viewModel.isEmailAlreadyExist?.observe(this, Observer {
             if(isAction) {
                 isAction=false
-                (myFragment as RegSecondFragment).emailProgressBar?.visibility=View.GONE
+                (myFragment as RegSecondAssociateFragment).emailProgressBar?.visibility=View.GONE
                 if (it) {
                     Toast.makeText(
                         this@RegisterActivity,
@@ -89,19 +90,35 @@ class RegisterActivity : BaseActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
-                    //go to third wizard in registration
-                    if (myFragment is RegSecondFragment) {
-                        viewModel.setContributerStage2(
-                            (myFragment as RegSecondFragment).etTelNum?.text.toString(),
-                            (myFragment as RegSecondFragment).etEmail?.text.toString(),
-                            (myFragment as RegSecondFragment).etCity?.text.toString(),
-                            (myFragment as RegSecondFragment).etCountry?.text.toString()
-                        )
+                    if (type == TypeUser.association) {
+                        if (myFragment is RegSecondAssociateFragment) {
+                            viewModel.setAssociationStage2(
+                                (myFragment as RegSecondAssociateFragment).etPNameContact?.text.toString(),
+                                (myFragment as RegSecondAssociateFragment).etFamilyName?.text.toString(),
+                                (myFragment as RegSecondAssociateFragment).etMobile?.text.toString(),
+                                (myFragment as RegSecondAssociateFragment).etEmail?.text.toString()
+                            )
+                        }
+                        showAssociateThirdStage()
+                        typeAssociate=StageAssociate.three
+                        configureAssociationUI()
+                        btnNextReg.text=resources.getString(R.string.next)
+
+                    }else{
+                        //go to third wizard in registration
+                        if (myFragment is RegSecondFragment) {
+                            viewModel.setContributerStage2(
+                                (myFragment as RegSecondFragment).etTelNum?.text.toString(),
+                                (myFragment as RegSecondFragment).etEmail?.text.toString(),
+                                (myFragment as RegSecondFragment).etCity?.text.toString(),
+                                (myFragment as RegSecondFragment).etCountry?.text.toString()
+                            )
+                        }
+                        showThirdStage()
+                        typeContributer=StageContributer.three
+                        configureContributerUI()
+                        btnNextReg.text=resources.getString(R.string.registration)
                     }
-                    showThirdStage()
-                    typeContributer=StageContributer.three
-                    configureContributerUI()
-                    btnNextReg.text=resources.getString(R.string.registration)
                 }
             }
         })
@@ -279,18 +296,11 @@ class RegisterActivity : BaseActivity() {
                     }
 
                     StageAssociate.two -> {
-                        if (myFragment is RegSecondAssociateFragment) {
-                            viewModel.setAssociationStage2(
-                                (myFragment as RegSecondAssociateFragment).etPNameContact?.text.toString(),
-                                (myFragment as RegSecondAssociateFragment).etFamilyName?.text.toString(),
-                                (myFragment as RegSecondAssociateFragment).etMobile?.text.toString(),
-                                (myFragment as RegSecondAssociateFragment).etEmail?.text.toString()
-                            )
-                        }
-                        showAssociateThirdStage()
-                        typeAssociate=StageAssociate.three
-                        configureAssociationUI()
-                        btnNextReg.text=resources.getString(R.string.next)
+                        val userAssociation = UserAssociation()
+                        userAssociation.email=(myFragment as RegSecondAssociateFragment).etEmail?.text.toString()
+                        isAction=true
+                        viewModel.checkEmailContributer(userAssociation)
+                        (myFragment as RegSecondAssociateFragment).emailProgressBar?.visibility=View.VISIBLE
                     }
                     StageAssociate.three -> {
                         if (myFragment is RegThirdAssociateFragment) {

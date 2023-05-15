@@ -181,6 +181,77 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
 
     }
 
+    /**
+     * check email of association
+     */
+
+    fun checkEmailContributer(userAssociation:UserAssociation) {
+//         var userContributer = UserContributer("haggay","chen",1,1,1990
+//             ,"8e8b988a-8af9-4383-a410-192c01f552a0","hag.swead15@gmail.com","1234","0546596387","haifa","israel",true,194,180)
+
+        registerResult=MutableLiveData()
+
+        registerResult?.value=BaseResponse.Loading()
+        this.viewModelScope.launch {
+            try {
+
+                var callBackRegistraPagador: Callback<RegistrationAssociationResponse?> =
+
+                    object : Callback<RegistrationAssociationResponse?> {
+
+                        override fun onResponse(
+                            call: Call<RegistrationAssociationResponse?>,
+                            response: Response<RegistrationAssociationResponse?>
+                        ) {
+                            Log.d("responseReg", "success")
+
+                            val data=response.errorBody()!!.string()
+                            try {
+                                val jObjError=JSONObject(data)
+                                val desc=jObjError.getString("description")
+                                isEmailAlreadyExist?.value=desc.contains(EMAIL_ALREADY_EXISTS)
+                            } catch (e: java.lang.Exception) {
+                                e.printStackTrace()
+                            }
+
+                            //save the response
+                            registrationAssociationResponse?.value=response.body()
+                            when(response.code()){
+                                200 -> {
+                                    Log.d("responseReg", "200")
+                                }
+                                201->{
+                                    Log.d("responseReg", "201")
+                                }
+                                403->{
+                                    //errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    //    R.string.email_pass_error)
+                                }else->{
+                                //errorMsg?.value = response.code().toString()
+                            }
+                            }
+
+
+
+                        }
+
+                        override fun onFailure(call: Call<RegistrationAssociationResponse?>, t: Throwable) {
+                            isSuccess?.value=false
+                            Log.d("responseReg", "failed")
+                        }
+                    }
+
+
+                val regResponse=userRepo.regAssociationUser(userAssociation)//userContributer?.let { userRepo.regContributerUser(it) }
+                regResponse?.enqueue(callBackRegistraPagador)
+
+            } catch (ex: Exception) {
+                registerResult?.value=BaseResponse.Error(ex.message)
+            }
+        }
+
+    }
+
     fun registerAssociation() {
 //       val userAssociation1 = UserAssociation()
 //        userAssociation1.email = "hag.hispin100@gmail.com"

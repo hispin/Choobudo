@@ -50,7 +50,7 @@
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="@+id/etCity"
         app:layout_constraintHeight_default="percent"
-
+        android:inputType="number"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintTop_toBottomOf="@+id/tvAssociateAddress"
         app:layout_constraintWidth_default="percent"
@@ -127,8 +127,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
-        android:drawableStart="@drawable/ic_vi_password"
         android:paddingStart="10dp"
+        android:inputType="number"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintStart_toStartOf="@+id/tvPostalTitle"

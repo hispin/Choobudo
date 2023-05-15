@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.generosity.choobudo.R
@@ -22,6 +23,7 @@ class RegSecondAssociateFragment : Fragment() {
     var etMobile:EditText?=null
     var etEmail:EditText?=null
     private var viewModel: RegisterViewModel?=null
+    var emailProgressBar: ProgressBar?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +62,7 @@ class RegSecondAssociateFragment : Fragment() {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         })
+        emailProgressBar=view?.findViewById(R.id.emailProgressBar)
     }
 
     /**
