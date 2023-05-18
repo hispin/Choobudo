@@ -82,7 +82,11 @@ class RegisterActivity : BaseActivity() {
         viewModel.isEmailAlreadyExist?.observe(this, Observer {
             if(isAction) {
                 isAction=false
-                (myFragment as RegSecondAssociateFragment).emailProgressBar?.visibility=View.GONE
+                if (type == TypeUser.association) {
+                    (myFragment as RegSecondAssociateFragment).emailProgressBar?.visibility=View.GONE
+                }else{
+                    (myFragment as RegSecondFragment).emailProgressBar?.visibility=View.GONE
+                }
                 if (it) {
                     Toast.makeText(
                         this@RegisterActivity,
@@ -333,6 +337,13 @@ class RegisterActivity : BaseActivity() {
                         btnNextReg.text=resources.getString(R.string.next)
                     }
                     StageAssociate.five -> {
+                        if (myFragment is RegfifthAssociateFragment) {
+                            (myFragment as RegfifthAssociateFragment).photo64?.let { it1 ->
+                                viewModel.setAssociationStage5(
+                                    it1
+                                )
+                            }
+                        }
 //                        if (myFragment is RegForthAssociateFragment) {
 //                            viewModel.setAssociationStage4(
 //                                (myFragment as RegForthAssociateFragment).etAccountName?.text.toString(),

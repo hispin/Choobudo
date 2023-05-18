@@ -31,44 +31,6 @@
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 
-    <!--    <androidx.appcompat.widget.AppCompatEditText-->
-    <!--        android:id="@+id/etAssociateAddress"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:background="@drawable/shape_field_unfill"-->
-    <!--        android:paddingStart="10dp"-->
-    <!--        app:layout_constraintHeight_default="percent"-->
-    <!--        app:layout_constraintHeight_percent="0.134"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/tvAssociateAddress"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/tvAssociateAddress"-->
-    <!--        app:layout_constraintWidth_default="percent"-->
-    <!--        app:layout_constraintWidth_percent="0.622" />-->
-
-    <!--    <androidx.appcompat.widget.AppCompatTextView-->
-    <!--        android:id="@+id/tvAssociateAddressNum"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="@string/number"-->
-    <!--        android:textColor="@color/grey1"-->
-    <!--        android:textSize="12sp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/tvAssociateAddress"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/tvAssociateAddress"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/etNumAddress"-->
-    <!--        />-->
-
-    <!--    <androidx.appcompat.widget.AppCompatEditText-->
-    <!--        android:id="@+id/etNumAddress"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:background="@drawable/shape_field_unfill"-->
-    <!--        android:paddingStart="10dp"-->
-    <!--        app:layout_constraintHeight_default="percent"-->
-    <!--        app:layout_constraintHeight_percent="0.134"-->
-
-    <!--        app:layout_constraintTop_toBottomOf="@+id/tvAssociateAddress"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/rlCity"-->
-    <!--        app:layout_constraintWidth_default="percent"-->
-    <!--        app:layout_constraintWidth_percent="0.219" />-->
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -88,7 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
-        android:drawableStart="@drawable/ic_vi_password"
+        android:inputType="number"
         android:paddingStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
@@ -97,34 +59,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tvAccountNumTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
-    <!--    <RelativeLayout-->
-    <!--        android:id="@+id/rlCity"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:background="@drawable/shape_field_unfill"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHeight_default="percent"-->
-    <!--        app:layout_constraintHeight_percent="0.134"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"-->
-    <!--        app:layout_constraintWidth_default="percent"-->
-    <!--        app:layout_constraintWidth_percent="0.93" >-->
-
-    <!--        <androidx.appcompat.widget.AppCompatSpinner-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:background="@color/transparent" />-->
-
-    <!--        <androidx.appcompat.widget.AppCompatImageView-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_alignParentEnd="true"-->
-    <!--            android:layout_centerVertical="true"-->
-    <!--            android:layout_gravity="center"-->
-    <!--            android:layout_marginEnd="5dp"-->
-    <!--            android:contentDescription="@string/app_name"-->
-    <!--            app:srcCompat="@drawable/arrow_down" />-->
-    <!--    </RelativeLayout>-->
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -140,7 +74,6 @@
         app:layout_constraintVertical_bias="0.537" />
 
 
-    <!--    nnnn-->
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etBranchName"
         android:layout_width="0dp"
@@ -196,6 +129,7 @@
         android:id="@+id/etBankNum"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:inputType="number"
         android:background="@drawable/shape_field_unfill"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"

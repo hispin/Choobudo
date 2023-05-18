@@ -50,6 +50,9 @@ class UserAssociation (
     @SerializedName("website_link")
     var website_link: String?=null
 
+    @SerializedName("image")
+    var image: String?=null
+
 
     @SerializedName("update_in_mail")
     var update_in_mail: Boolean?=null

@@ -2,9 +2,12 @@ package com.generosity.choobudo.registration.fragment
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,11 +18,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import com.generosity.choobudo.R
+import java.io.ByteArrayOutputStream
 
 
 class RegfifthAssociateFragment : Fragment() {
 
     var ivAddGallery: AppCompatImageView?=null
+    var photo64: String?=null
 
 
     private val launcher: ActivityResultLauncher<Intent> = registerForActivityResult<Intent, androidx.activity.result.ActivityResult>(
@@ -29,6 +34,9 @@ class RegfifthAssociateFragment : Fragment() {
             if (result.data != null) {
                 val photoUri: Uri?=result.data!!.data
                 ivAddGallery?.setImageURI(photoUri)
+                if (photoUri != null) {
+                    photo64=encodeImage(photoUri)
+                }
             }
             //use photoUri here
         }
@@ -53,6 +61,18 @@ class RegfifthAssociateFragment : Fragment() {
             val intent=Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             launcher.launch(intent)
         }
+    }
+
+    /**
+     * convert Uri to Base64
+     */
+    private fun encodeImage(imageUri: Uri): String? {
+        val imageStream = requireActivity().contentResolver.openInputStream(imageUri)
+        val selectedImage = BitmapFactory.decodeStream(imageStream)
+        val baos=ByteArrayOutputStream()
+        selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val b: ByteArray=baos.toByteArray()
+        return Base64.encodeToString(b, Base64.DEFAULT)
     }
 
 }

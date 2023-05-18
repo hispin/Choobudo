@@ -59,6 +59,8 @@ class RegThirdAssociateFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         })
 
+        viewModel?.setRegFirstValidate(false)
+
         return view
     }
 

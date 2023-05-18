@@ -473,6 +473,13 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
     /**
      * set stage 5 of association registration
      */
+    fun setAssociationStage5(photo64: String) {
+        userAssociation?.image = photo64
+    }
+
+    /**
+     * set stage 6 of association registration
+     */
     fun setAssociationStage6(password: String, personalAssociationLink: String, iconFirm: Boolean?, iRead: Boolean?) {
         userAssociation?.password = password
         userAssociation?.website_link = personalAssociationLink
