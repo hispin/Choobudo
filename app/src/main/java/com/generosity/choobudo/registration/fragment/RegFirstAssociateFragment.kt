@@ -147,24 +147,7 @@ class RegFirstAssociateFragment : Fragment() {
             viewModel?.setRegFirstValidate(false)
             return false
         }
-//        if (TextUtils.isEmpty(etUserFName?.text)) {
-//            etUserFName?.setBackgroundResource(R.drawable.shape_field_invalidate)
-//            etUserFName?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_x, 0)
-//            viewModel?.setRegFirstValidate(false)
-//            return false
-//        } else {
-//            etUserFName?.setBackgroundResource(R.drawable.shape_field_fill)
-//            etUserFName?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vi_user, 0)
-//        }
-//        if(associationValue!=null
-//            && associationValue?.size!! >currentPosition
-//            && associationValue?.get(currentPosition)?.equals("-1")!!){
-//
-//            if (TextUtils.isEmpty(etNotFindAssociation?.text)) {
-//                viewModel?.setRegFirstValidate(false)
-//                return false
-//            }
-//        }
+
         viewModel?.setRegFirstValidate(true)
         return true
     }

@@ -49,6 +49,7 @@ class LoginViewModel(application: Application) : ViewModelFather(application) {
                                             response.headers()["Set-Cookie"], loginResponse?.value?.token_key!!
                                         )
                                     }
+                                    isSuccess?.value=true
                                 }
                                 201-> {
                                     if(loginResponse?.value?.token_key!=null) {
@@ -56,6 +57,7 @@ class LoginViewModel(application: Application) : ViewModelFather(application) {
                                             response.headers()["Set-Cookie"], loginResponse?.value?.token_key!!
                                         )
                                     }
+                                    isSuccess?.value=true
                                 }
                                 403->{
                                     errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(

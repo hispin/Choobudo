@@ -23,9 +23,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
-        android:drawableStart="@drawable/ic_x"
         android:paddingStart="10dp"
-        android:textColor="@color/error"
+        android:enabled="false"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintStart_toStartOf="@+id/tvUserName"
@@ -50,7 +49,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
-        android:drawableStart="@drawable/ic_vi_password"
         android:gravity="start|center"
         android:hint="@string/passOrder"
         android:inputType="textPassword"
@@ -77,34 +75,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.467" />
 
-    <RelativeLayout
-        android:id="@+id/rlNumUsers"
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etNumUsers"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
+        android:gravity="start|center"
+        android:inputType="number"
+        android:paddingStart="10dp"
+        android:textSize="14sp"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.120"
         app:layout_constraintStart_toStartOf="@+id/tvNumUsers"
         app:layout_constraintTop_toBottomOf="@+id/tvNumUsers"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.281">
+        app:layout_constraintWidth_percent="0.281" />
 
-        <androidx.appcompat.widget.AppCompatSpinner
-           android:id="@+id/spNumUsers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/transparent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginEnd="5dp"
-            android:contentDescription="@string/app_name"
-            app:srcCompat="@drawable/arrow_down" />
-    </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvPersonalAssociationLink"

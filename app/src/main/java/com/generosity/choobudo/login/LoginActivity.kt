@@ -104,7 +104,7 @@ class LoginActivity : BaseActivity() {
                         it,
                         Toast.LENGTH_SHORT
                     ).show()
-                    openMainScreen(this)
+                    //openMainScreen(this)
                 }
             }
         })

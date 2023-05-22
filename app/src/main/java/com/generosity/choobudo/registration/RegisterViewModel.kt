@@ -308,6 +308,7 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
                                             cookie, registrationResponse?.value?.token_key!!
                                         )
                                     }
+                                    isSuccess?.value=true
                                 }
                                 201 -> {
                                     if(registrationResponse?.value?.token_key!=null) {
@@ -315,6 +316,7 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
                                             cookie, registrationResponse?.value?.token_key!!
                                         )
                                     }
+                                    isSuccess?.value=true
                                 }
                                 403->{
                                     errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
