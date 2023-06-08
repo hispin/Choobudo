@@ -11,19 +11,21 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.generosity.choobudo.common.RecyclerViewItemDecorator
+import com.generosity.choobudo.common.common.Constant.IS_SORTED_KEY
 import com.generosity.choobudo.main.MainScreenViewModel
 import com.generosity.choobudo.models.WebsiteResponse
 
 
 class WebsiteFragment : Fragment() {
 
+    private var isSorted: Boolean?=false
     private var adapter: WebsiteAdapter?=null
     private var viewModel: MainScreenViewModel?=null
     var recWebsite: RecyclerView?=null
 
     private var intfcCallBackFromWebsite:IntfcCallBackFromWebsite?=null
     interface IntfcCallBackFromWebsite {
-        fun onOpenWebStore(item: WebsiteResponse?)
+        fun onOpenWebStore(item: WebsiteResponse?,isScrollDown:Boolean)
 
     }
 
@@ -44,6 +46,8 @@ class WebsiteFragment : Fragment() {
         recWebsite = view.findViewById(com.generosity.choobudo.R.id.recWebsite)
 
 
+        isSorted=arguments?.getBoolean(IS_SORTED_KEY,false)
+
         if(activity!=null) {
             viewModel=ViewModelProvider(requireActivity())[MainScreenViewModel::class.java]
             setListener()
@@ -54,10 +58,14 @@ class WebsiteFragment : Fragment() {
     }
 
     private fun setListener() {
-        //viewModel.userOrders.observe()
         viewModel?.websiteResponse?.observe(requireActivity(), Observer {
             val websites:ArrayList<WebsiteResponse> =it as ArrayList<WebsiteResponse>
-            loadWebsite(websites)
+            if(isSorted == true){
+                viewModel?.sortedWebsite?.value?.let { it1 -> ArrayList(it1) }
+                    ?.let { it2 -> loadWebsite(it2) }
+            }else {
+                loadWebsite(websites)
+            }
         })
     }
 
@@ -74,7 +82,7 @@ class WebsiteFragment : Fragment() {
 
         adapter=WebsiteAdapter(websites, object :WebsiteAdapter.IntfcOnItemClickListener{
             override fun onItemClick(item: WebsiteResponse?) {
-                intfcCallBackFromWebsite?.onOpenWebStore(item)
+                intfcCallBackFromWebsite?.onOpenWebStore(item,false)
             }
         })
         recWebsite?.adapter=adapter

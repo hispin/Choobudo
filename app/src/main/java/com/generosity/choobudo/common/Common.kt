@@ -13,9 +13,11 @@ class common {
         const val COOKIE_NAME = "cookieName"
         const val PASSWORD_VALIDATION ="^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]{4,20}\$"
         const val URL_KEY="urlKey"
+        const val IS_SCROLL_DWN_KEY="isScrollDown"
         const val USER_KEY="userKey"
         const val PASS_KEY="passKey"
         const val EMAIL_ALREADY_EXISTS="EMAIL_ALREADY_EXISTS"
+        const val IS_SORTED_KEY="isSortedKey"
     }
 
     companion object {
@@ -38,7 +40,7 @@ class common {
          */
         fun isValidation(pattern:Pattern,field:String): Boolean {
             val matcher = pattern.matcher(field)
-                return matcher.matches()
+            return matcher.matches()
         }
     }
 }

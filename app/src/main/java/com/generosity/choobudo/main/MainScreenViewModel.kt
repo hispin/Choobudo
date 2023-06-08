@@ -18,14 +18,30 @@ import retrofit2.Response
 
 class MainScreenViewModel (application: Application) : ViewModelFather(application) {
 
-    val websiteRepo=Repository()
+    val generalRepo=Repository()
     var websiteResponse: MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
     var userOrders: MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
     var userResponse: MutableLiveData<UserResponse>?=MutableLiveData()
     var associationsResponse: MutableLiveData<List<AssociationsResponse>>?=MutableLiveData()
+    var sortedWebsite:MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
 
     init {
     }
+
+
+    /**
+     * get website by name
+     */
+    fun getWebsiteByName(name: String) {
+        val sortedWebsit1:ArrayList<WebsiteResponse> = ArrayList()
+        for(s1 in websiteResponse?.value!!){
+            if(s1.name == name) {
+                sortedWebsit1.add(s1)
+            }
+        }
+        sortedWebsite?.value=sortedWebsit1
+    }
+
 
     /**
      * get associations
@@ -67,7 +83,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                         }
                     }
 
-                val associationResponse=websiteRepo.getAssociations()
+                val associationResponse=generalRepo.getAssociations()
                 associationResponse?.enqueue(callBackGetAssociations)
 
             } catch (ex: Exception) {
@@ -126,7 +142,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                     val token=getStringInPreference(getApplication<Application?>().applicationContext,
                         common.Constant.COOKIE_NAME,"-1")
                     if(!cookie.equals("-1") && !token.equals("-1")) {
-                        val associationResponse=websiteRepo.getWebsite(cookie, token)
+                        val associationResponse=generalRepo.getWebsite(cookie, token)
                         associationResponse?.enqueue(callBackGetAssociations)
                     }
 
@@ -185,7 +201,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                 val token=getStringInPreference(getApplication<Application?>().applicationContext,
                     common.Constant.COOKIE_NAME,"-1")
                 if(!cookie.equals("-1") && !token.equals("-1")) {
-                    val getUserResponse=websiteRepo.getUser(cookie, token)
+                    val getUserResponse=generalRepo.getUser(cookie, token)
                     getUserResponse?.enqueue(callBackGetUser)
                 }
 

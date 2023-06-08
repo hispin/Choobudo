@@ -10,10 +10,12 @@ import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import com.generosity.choobudo.R
+import com.generosity.choobudo.common.common.Constant.IS_SCROLL_DWN_KEY
 import com.generosity.choobudo.common.common.Constant.URL_KEY
 
 class WebViewFragment : Fragment() {
 
+    private var isScrollDown: Boolean?=null
     private var webWebsite: WebView?=null
     private var url: String?=null
     private var webProgressBar:ProgressBar?=null
@@ -24,6 +26,7 @@ class WebViewFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             url=it.getString(URL_KEY)
+            isScrollDown=it.getBoolean(IS_SCROLL_DWN_KEY,false)
         }
     }
 
@@ -31,9 +34,10 @@ class WebViewFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(url: String)=WebViewFragment().apply {
+        fun newInstance(url: String, isScrollDown: Boolean)=WebViewFragment().apply {
             arguments=Bundle().apply {
                 putString(URL_KEY, url)
+                putBoolean(IS_SCROLL_DWN_KEY, isScrollDown)
             }
         }
     }
@@ -52,6 +56,7 @@ class WebViewFragment : Fragment() {
     private fun loadUrl(view: View) {
         webWebsite= view.findViewById(R.id.webWebsite) as WebView
         webWebsite?.webViewClient = WebViewClient()
+        webWebsite?.setInitialScale(1)
         webWebsite?.isScrollbarFadingEnabled = true
         webWebsite?.isHorizontalScrollBarEnabled = false
         webWebsite?.settings?.javaScriptEnabled = true
@@ -63,12 +68,20 @@ class WebViewFragment : Fragment() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
                 webProgressBar?.visibility = View.VISIBLE
+                if(isScrollDown == true) {
+                    view?.scrollY=200
+                }
             }
 
             override fun onPageCommitVisible(view: WebView?, url: String?) {
                 super.onPageCommitVisible(view, url)
                 webProgressBar?.visibility = View.GONE
             }
+
+//            override fun onPageFinished(view: WebView?, url: String?) {
+//                super.onPageFinished(view, url)
+//
+//            }
         }
 
         url?.let { webWebsite?.loadUrl(it) }
