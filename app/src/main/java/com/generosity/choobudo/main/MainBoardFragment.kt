@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.generosity.choobudo.models.Item
 import com.generosity.choobudo.models.WebsiteResponse
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -24,9 +25,11 @@ import com.google.android.material.tabs.TabLayoutMediator
 class MainBoardFragment : Fragment() {
 
     private var adapter: SpecialsAdapter?=null
+    private var opportunityAdapter: OpportunitiesAdapter?=null
     private var on_boarding_view_pager: ViewPager2?=null
     private var viewModel: MainScreenViewModel?=null
     var recSpecialForYou: RecyclerView?=null
+    var recOpportunities: RecyclerView?=null
     private var searchStore: SearchView?=null
     private  var intfcCallBackFromMainBoard:IntfcCallBackFromMainBoard?=null
 
@@ -51,13 +54,15 @@ class MainBoardFragment : Fragment() {
         val view= inflater.inflate(com.generosity.choobudo.R.layout.fragment_main_board, container, false)
         on_boarding_view_pager = view.findViewById(com.generosity.choobudo.R.id.on_boarding_view_pager)
         recSpecialForYou = view.findViewById(com.generosity.choobudo.R.id.recSpecialForYou)
-
+        recOpportunities = view.findViewById(com.generosity.choobudo.R.id.recOpportunities)
         loadBanners(view)
 
         if(activity!=null) {
             viewModel=ViewModelProvider(requireActivity())[MainScreenViewModel::class.java]
             setListener()
             viewModel?.getWebSite(true)
+            viewModel?.getOpportunities()
+
         }
 
         searchStore= view.findViewById(com.generosity.choobudo.R.id.searchStore1)
@@ -101,9 +106,21 @@ class MainBoardFragment : Fragment() {
             }
         })
 
+        viewModel?.opportunities?.observe(requireActivity(), Observer {
+            val Opportunities:ArrayList<Item> =it as ArrayList<Item>
+            loadOpportunity(Opportunities)
+        })
+
     }
 
-
+    private fun loadOpportunity(opportunities: ArrayList<Item>) {
+        // set up the RecyclerView
+        val horizontalLayoutManager=
+            LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        recOpportunities?.layoutManager=horizontalLayoutManager
+        opportunityAdapter=OpportunitiesAdapter(opportunities)
+        recOpportunities?.adapter=opportunityAdapter
+    }
 
 
     /**

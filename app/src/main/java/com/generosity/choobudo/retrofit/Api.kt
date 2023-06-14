@@ -15,6 +15,9 @@ interface Api {
     @GET("/websites/")
     fun getWebsites(): Call<List<WebsiteResponse>>
 
+    @GET("/lists/opportunities/")
+    fun getOpportunities(): Call<OpportunitiesResponse>
+
     @GET("/associations/")
     fun getAssociations(): Call<List<AssociationsResponse>>
 

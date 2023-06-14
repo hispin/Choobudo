@@ -10,6 +10,11 @@ class Repository {
         return Api.getApiWithCookie(cookie,token)?.getUser()
     }
 
+    suspend fun getOpportunities(cookie: String?, token: String?): Call<OpportunitiesResponse> {
+        return Api.getApiWithCookie(token,cookie)?.getOpportunities()!!
+
+    }
+
     suspend fun getWebsite(cookie: String?, token: String?): Call<List<WebsiteResponse>>? {
         return Api.getApiWithCookie(token,cookie)?.getWebsites()
 

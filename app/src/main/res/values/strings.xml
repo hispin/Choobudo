@@ -64,6 +64,8 @@
     <string name="stores">חנויות</string>
     <string name="associations">עמותות</string>
     <string name="content" translatable="false">content</string>
+    <string name="your_opprtunities" translatable="false">Your opportunities</string>
+
 
     <string-array name="type_organization">
         <item>בחר</item>

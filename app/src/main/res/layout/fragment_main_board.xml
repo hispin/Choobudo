@@ -7,12 +7,13 @@
     tools:context=".main.MainBoardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/conSearch"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/conBanner"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.486"
-        tools:layout_editor_absoluteX="0dp">
+
+       >
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivAdvanceSearch"
@@ -46,16 +47,16 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="3dp"
         android:id="@+id/conBanner"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/grey5"
         android:text="@string/hello_blank_fragment"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/conSpecial"
         app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.255"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.14"
+        app:layout_constraintHeight_percent="0.235"
+        app:layout_constraintTop_toBottomOf="@+id/conSearch"
         >
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/on_boarding_view_pager"
@@ -85,15 +86,19 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/conSpecial"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/conOpportunities"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.250"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.461">
-        
+        app:layout_constraintTop_toBottomOf="@+id/conBanner"
+        >
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitleSpecial"
             android:layout_width="wrap_content"
@@ -114,6 +119,44 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleSpecial"
             app:layout_constraintVertical_bias="1.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/conOpportunities"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.400"
+        app:layout_constraintTop_toBottomOf="@+id/conSpecial"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitleOpportunities"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_opprtunities"
+            android:textColor="@color/grey8"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/recOpportunities"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recOpportunities"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleOpportunities" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

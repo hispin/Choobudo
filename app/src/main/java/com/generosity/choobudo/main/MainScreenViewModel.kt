@@ -7,9 +7,7 @@ import com.generosity.choobudo.R
 import com.generosity.choobudo.common.ViewModelFather
 import com.generosity.choobudo.common.common
 import com.generosity.choobudo.common.getStringInPreference
-import com.generosity.choobudo.models.AssociationsResponse
-import com.generosity.choobudo.models.UserResponse
-import com.generosity.choobudo.models.WebsiteResponse
+import com.generosity.choobudo.models.*
 import com.generosity.choobudo.retrofit.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -24,6 +22,8 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
     var userResponse: MutableLiveData<UserResponse>?=MutableLiveData()
     var associationsResponse: MutableLiveData<List<AssociationsResponse>>?=MutableLiveData()
     var sortedWebsite:MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
+    var opportunitiesResponse: MutableLiveData<OpportunitiesResponse> = MutableLiveData()
+    var opportunities: MutableLiveData<List<Item>>?=MutableLiveData()
 
     init {
     }
@@ -41,6 +41,66 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
         }
         sortedWebsite?.value=sortedWebsit1
     }
+
+
+    /**
+     * get opportunities
+     */
+    fun getOpportunities() {
+
+        this.viewModelScope.launch {
+            try {
+
+                val callBackGetOpportunities: Callback<OpportunitiesResponse> =
+
+                    object : Callback<OpportunitiesResponse> {
+
+                        override fun onResponse(
+                            call: Call<OpportunitiesResponse>,
+                            response: Response<OpportunitiesResponse>
+                        ) {
+                            opportunitiesResponse.value=response.body()
+                            opportunities?.value = opportunitiesResponse.value?.items
+                            when(response.code()){
+                                200 -> {
+
+                                    isSuccess?.value=true
+                                }
+                                201 ->{
+                                    isSuccess?.value=true
+                                }
+                                else->{
+                                errorMsg?.value = response.code().toString()
+                            }
+                            }
+
+                        }
+
+                        override fun onFailure(
+                            call: Call<OpportunitiesResponse>, t: Throwable
+                        ) {
+                            isSuccess?.value=false
+                        }
+                    }
+
+                val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                    common.Constant.COOKIE_CONTENT,"-1")
+                val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                    common.Constant.COOKIE_NAME,"-1")
+                if(!cookie.equals("-1") && !token.equals("-1")) {
+                    val opportunityResponse=generalRepo.getOpportunities(cookie, token)
+                    opportunityResponse.enqueue(callBackGetOpportunities)
+                }
+
+            } catch (ex: Exception) {
+                //loginResult?.value=BaseResponse.Error(ex.message)
+            }
+        }
+    }
+
+
+
+    //////////////
 
 
     /**

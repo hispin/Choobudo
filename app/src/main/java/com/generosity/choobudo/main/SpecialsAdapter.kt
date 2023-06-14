@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.generosity.choobudo.R
 import com.generosity.choobudo.models.WebsiteResponse
 
@@ -34,9 +36,11 @@ class SpecialsAdapter  (private val mList: List<WebsiteResponse>) : RecyclerView
 
         Glide.with(holder.imageView.context)
                 .load(ItemsViewModel.image)
-                .transform( CircleCrop())
-                //.override(200,200)
-                .fitCenter()
+                 .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                 .transition(
+                     DrawableTransitionOptions()
+                .crossFade())
+                .override(230,230)
                 .into(holder.imageView)
 
         // sets the text to the textview from our itemHolder class
