@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.SearchAutoComplete
@@ -16,7 +17,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.generosity.choobudo.models.Item
+import com.generosity.choobudo.R
+import com.generosity.choobudo.models.Opportunity
 import com.generosity.choobudo.models.WebsiteResponse
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -107,18 +109,34 @@ class MainBoardFragment : Fragment() {
         })
 
         viewModel?.opportunities?.observe(requireActivity(), Observer {
-            val Opportunities:ArrayList<Item> =it as ArrayList<Item>
+            val Opportunities:ArrayList<Opportunity> =it as ArrayList<Opportunity>
             loadOpportunity(Opportunities)
         })
 
     }
 
-    private fun loadOpportunity(opportunities: ArrayList<Item>) {
+    private fun loadOpportunity(opportunities: ArrayList<Opportunity>) {
         // set up the RecyclerView
         val horizontalLayoutManager=
             LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         recOpportunities?.layoutManager=horizontalLayoutManager
-        opportunityAdapter=OpportunitiesAdapter(opportunities)
+        //opportunityAdapter=OpportunitiesAdapter(opportunities)
+
+        opportunityAdapter=OpportunitiesAdapter(opportunities, object : OpportunitiesAdapter.OpportunityOnItemClickListener{
+            override fun onOpportunityClick(item: Opportunity?) {
+                if(item?.website!=null) {
+                    item.website?.name?.let { viewModel?.getWebsiteByName(it) }
+                    intfcCallBackFromMainBoard?.sortWebsites()
+                }else{
+                    Toast.makeText(
+                        requireActivity(),
+                        requireActivity().resources.getString(R.string.no_website),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        })
+
         recOpportunities?.adapter=opportunityAdapter
     }
 
@@ -131,7 +149,14 @@ class MainBoardFragment : Fragment() {
         val horizontalLayoutManager=
             LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         recSpecialForYou?.layoutManager=horizontalLayoutManager
-        adapter=SpecialsAdapter(userOrders)
+        //adapter=SpecialsAdapter(userOrders)
+        adapter=SpecialsAdapter(userOrders, object : SpecialsAdapter.SpecialOnItemClickListener{
+            override fun onSpecialClick(item: WebsiteResponse?) {
+                item?.name?.let { viewModel?.getWebsiteByName(it) }
+                intfcCallBackFromMainBoard?.sortWebsites()
+
+            }
+        })
         //adapter.setClickListener(this)
         recSpecialForYou?.adapter=adapter
     }

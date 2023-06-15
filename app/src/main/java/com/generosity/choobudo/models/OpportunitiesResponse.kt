@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 class OpportunitiesResponse (
     @SerializedName("name") var name: String,
-    @SerializedName("items") var items: List<Item>
+    @SerializedName("items") var items: List<Opportunity>
 )
 
-class Item(
+class Opportunity(
     @SerializedName("name") var name: String,
     @SerializedName("image") var image: String,
     @SerializedName("link") var link: String,

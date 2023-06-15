@@ -80,8 +80,8 @@ class WebsiteFragment : Fragment() {
 
         recWebsite?.addItemDecoration(RecyclerViewItemDecorator(10))
 
-        adapter=WebsiteAdapter(websites, object :WebsiteAdapter.IntfcOnItemClickListener{
-            override fun onItemClick(item: WebsiteResponse?) {
+        adapter=WebsiteAdapter(websites, object :WebsiteAdapter.WebsiteOnItemClickListener{
+            override fun onWebsiteClick(item: WebsiteResponse?) {
                 intfcCallBackFromWebsite?.onOpenWebStore(item,false)
             }
         })

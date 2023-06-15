@@ -11,11 +11,11 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.generosity.choobudo.R
 import com.generosity.choobudo.models.WebsiteResponse
 
-class WebsiteAdapter (private val mList: List<WebsiteResponse>,private val listener: IntfcOnItemClickListener) : RecyclerView.Adapter<WebsiteAdapter.ViewHolder>() {
+class WebsiteAdapter (private val mList: List<WebsiteResponse>,private val listener: WebsiteOnItemClickListener) : RecyclerView.Adapter<WebsiteAdapter.ViewHolder>() {
 
 
-    interface IntfcOnItemClickListener {
-        fun onItemClick(item: WebsiteResponse?)
+    interface WebsiteOnItemClickListener {
+        fun onWebsiteClick(item: WebsiteResponse?)
 
     }
 
@@ -45,7 +45,7 @@ class WebsiteAdapter (private val mList: List<WebsiteResponse>,private val liste
         // sets the text to the textview from our itemHolder class
         holder.textView.text=ItemsViewModel.name
         holder.itemView.setOnClickListener {
-            listener.onItemClick(ItemsViewModel)
+            listener.onWebsiteClick(ItemsViewModel)
         }
 
     }

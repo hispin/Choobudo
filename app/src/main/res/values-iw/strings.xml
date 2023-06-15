@@ -65,6 +65,7 @@
     <string name="email_pass_error">אימייל או סיסמה שגויים</string>
     <string name="email_already_exist">האימייל קיים במערכת</string>
     <string name="your_opprtunities" translatable="false">ההזדמנויות שלך</string>
+    <string name="no_website">חסר קישור לאתר אינטרנט</string>
     <string-array name="type_organization">
         <item>בחר</item>
         <item>עמותה</item>

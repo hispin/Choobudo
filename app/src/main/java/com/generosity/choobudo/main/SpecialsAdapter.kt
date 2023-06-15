@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -13,9 +12,11 @@ import com.bumptech.glide.request.RequestOptions
 import com.generosity.choobudo.R
 import com.generosity.choobudo.models.WebsiteResponse
 
-class SpecialsAdapter  (private val mList: List<WebsiteResponse>) : RecyclerView.Adapter<SpecialsAdapter.ViewHolder>() {
+class SpecialsAdapter  (private val mList: List<WebsiteResponse>,private val listener: SpecialOnItemClickListener) : RecyclerView.Adapter<SpecialsAdapter.ViewHolder>() {
 
-    //private var myContext:Context?=null
+    interface SpecialOnItemClickListener {
+        fun onSpecialClick(item: WebsiteResponse?)
+    }
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,8 +45,10 @@ class SpecialsAdapter  (private val mList: List<WebsiteResponse>) : RecyclerView
                 .into(holder.imageView)
 
         // sets the text to the textview from our itemHolder class
-        holder.textView.text = ItemsViewModel.name
-
+        //holder.textView.text = ItemsViewModel.name
+        holder.itemView.setOnClickListener {
+            listener.onSpecialClick(ItemsViewModel)
+        }
     }
 
     // return the number of the items in the list
@@ -56,7 +59,7 @@ class SpecialsAdapter  (private val mList: List<WebsiteResponse>) : RecyclerView
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView= itemView.findViewById(R.id.ivWebsiteBanner)
-        val textView: TextView= itemView.findViewById(R.id.tvWebsiteName)
+        //val textView: TextView= itemView.findViewById(R.id.tvWebsiteName)
     }
 
 }

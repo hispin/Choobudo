@@ -23,7 +23,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
     var associationsResponse: MutableLiveData<List<AssociationsResponse>>?=MutableLiveData()
     var sortedWebsite:MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
     var opportunitiesResponse: MutableLiveData<OpportunitiesResponse> = MutableLiveData()
-    var opportunities: MutableLiveData<List<Item>>?=MutableLiveData()
+    var opportunities: MutableLiveData<List<Opportunity>>?=MutableLiveData()
 
     init {
     }

@@ -9,11 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.generosity.choobudo.R
-import com.generosity.choobudo.models.Item
+import com.generosity.choobudo.models.Opportunity
 
-class OpportunitiesAdapter (private val mList: List<Item>) : RecyclerView.Adapter<OpportunitiesAdapter.ViewHolder>() {
+class OpportunitiesAdapter (private val mList: List<Opportunity>, private val listener: OpportunityOnItemClickListener) : RecyclerView.Adapter<OpportunitiesAdapter.ViewHolder>() {
 
-    //private var myContext:Context?=null
+    interface OpportunityOnItemClickListener {
+        fun onOpportunityClick(item: Opportunity?)
+
+    }
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,7 +44,9 @@ class OpportunitiesAdapter (private val mList: List<Item>) : RecyclerView.Adapte
 
         // sets the text to the textview from our itemHolder class
         holder.textView.text = ItemsViewModel.name
-
+        holder.itemView.setOnClickListener {
+            listener.onOpportunityClick(ItemsViewModel)
+        }
     }
 
     // return the number of the items in the list

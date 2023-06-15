@@ -82,6 +82,7 @@
     <string name="search_store">חפש חנות …</string>
     <string name="email_pass_error">אימייל או סיסמה שגויים</string>
     <string name="email_already_exist">האימייל קיים במערכת</string>
+    <string name="no_website">חסר קישור לאתר אינטרנט</string>
     <color name="flavour_background_dark">#757575</color>
     <color name="flavour_background_very_dark">#75787C</color>
 
