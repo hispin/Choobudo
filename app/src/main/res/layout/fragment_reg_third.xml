@@ -7,7 +7,7 @@
     tools:context=".registration.fragment.RegFirstFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDateBirth"
+        android:id="@+id/tvPrivateName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dateBirth"
@@ -31,7 +31,7 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="@+id/etUser"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateBirth"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrivateName"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.241" />
 

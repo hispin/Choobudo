@@ -72,7 +72,7 @@ class User_type {
     @SerializedName("title")
     var title: String=""
 
-    @SerializedName("code_numberl")
+    @SerializedName("code_number")
     var code_number: Int=0
 }
 

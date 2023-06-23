@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".main.myarea.MyAreaManagerFragment"
+
+    >
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnEditUserDetails"
+        style="@style/myAreaSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_user_detaild"
+        android:text="@string/private_details"
+        android:textColor="@color/white"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llTabsContainer"
+        style="@style/myAreaSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/shape_tabs_type"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPrivateDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selected_type_bg"
+            android:text="@string/private_details"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDonationDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/unselected_type_bg"
+            android:text="@string/donation_details"
+            android:textColor="@color/grey4" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.circularreveal.CircularRevealFrameLayout
+        android:id="@+id/frMangerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

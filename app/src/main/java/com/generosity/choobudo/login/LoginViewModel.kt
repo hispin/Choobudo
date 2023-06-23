@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.generosity.choobudo.R
 import com.generosity.choobudo.common.ViewModelFather
+import com.generosity.choobudo.common.common
+import com.generosity.choobudo.common.setIntInPreference
 import com.generosity.choobudo.models.LoginRequest
 import com.generosity.choobudo.models.LoginResponse
 import com.generosity.choobudo.retrofit.Repository
@@ -47,6 +49,14 @@ class LoginViewModel(application: Application) : ViewModelFather(application) {
                                     if(loginResponse?.value?.token_key!=null) {
                                         setSuccessResponse(
                                             response.headers()["Set-Cookie"], loginResponse?.value?.token_key!!
+
+
+                                        )
+                                    }
+                                    //save the current user type : contributer/association
+                                    loginResponse?.value?.user_type2?.code_number?.let {
+                                        setIntInPreference(getApplication<Application?>().applicationContext, common.Constant.CURRENT_USER_KEY,
+                                            it
                                         )
                                     }
                                     isSuccess?.value=true
@@ -55,6 +65,12 @@ class LoginViewModel(application: Application) : ViewModelFather(application) {
                                     if(loginResponse?.value?.token_key!=null) {
                                         setSuccessResponse(
                                             response.headers()["Set-Cookie"], loginResponse?.value?.token_key!!
+                                        )
+                                    }
+                                    //save the current user type : contributer/association
+                                    loginResponse?.value?.user_type2?.code_number?.let {
+                                        setIntInPreference(getApplication<Application?>().applicationContext, common.Constant.CURRENT_USER_KEY,
+                                            it
                                         )
                                     }
                                     isSuccess?.value=true

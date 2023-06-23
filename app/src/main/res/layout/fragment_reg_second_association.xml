@@ -87,7 +87,7 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvEmailTitle"
+        android:id="@+id/tvAssociationNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email"
@@ -107,8 +107,8 @@
         android:paddingStart="10dp"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintStart_toStartOf="@+id/tvEmailTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmailTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvAssociationNameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssociationNameTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 

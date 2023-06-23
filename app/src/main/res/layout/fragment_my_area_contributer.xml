@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+
+    >
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".main.MyAreaContributerFragment"
+        >
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitleSpecial"
+            style="@style/myAreaSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/user_details"
+            android:textColor="@color/grey8"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPrivateName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/private_name"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etUserPName"
+                app:layout_constraintStart_toStartOf="@+id/etUserPName"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etUserPName"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="0dp"
+                android:background="@drawable/shape_field_unfill"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPrivateName"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAssociationNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/family_name"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etAssociationName"
+                app:layout_constraintStart_toStartOf="@+id/etAssociationName"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etAssociationName"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="0dp"
+                android:background="@drawable/shape_field_unfill"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAssociationNameTitle"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMyAssosiationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/family_name"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/rlAssociation"
+                app:layout_constraintStart_toStartOf="@+id/rlAssociation"
+                />
+
+                <RelativeLayout
+                    android:id="@+id/rlAssociation"
+                    style="@style/myAreaSectionEditText"
+                    android:layout_width="0dp"
+                    android:background="@drawable/shape_field_unfill"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMyAssosiationTitle"
+                    app:layout_constraintWidth_default="percent"
+                    app:layout_constraintWidth_percent="0.93">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spAssociation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent"
+                        android:spinnerMode="dropdown" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="5dp"
+                        android:contentDescription="@string/app_name"
+                        app:srcCompat="@drawable/arrow_down" />
+                </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNotFindAssociationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/didnt_find"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etNotFindAssociation"
+                app:layout_constraintStart_toStartOf="@+id/etNotFindAssociation"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etNotFindAssociation"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="0dp"
+                android:background="@drawable/shape_field_unfill"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvNotFindAssociationTitle"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTelNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mobile"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etTelNum"
+                app:layout_constraintStart_toStartOf="@+id/etTelNum"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etTelNum"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="0dp"
+                android:background="@drawable/shape_field_unfill"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTelNum"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEmailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etEmail"
+                app:layout_constraintStart_toStartOf="@+id/etEmail"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etEmail"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="0dp"
+                android:background="@drawable/shape_field_unfill"
+                android:inputType="textEmailAddress"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmailTitle"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/city"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etCity"
+                app:layout_constraintStart_toStartOf="@+id/etCity"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCity"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="0dp"
+                android:background="@drawable/shape_field_unfill"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCountryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/country"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etCountry"
+                app:layout_constraintStart_toStartOf="@+id/etCountry"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etCountry"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="0dp"
+                android:background="@drawable/shape_field_unfill"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCountryTitle"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBirthDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dateBirth"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etDayBirth"
+                app:layout_constraintStart_toStartOf="@+id/etDayBirth"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etDayBirth"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="@drawable/date1"
+                android:gravity="center"
+                android:hint="@string/dateBirth"
+                android:inputType="number"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.062"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvBirthDate"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.241" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etMonthBirth"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="@drawable/date1"
+                android:gravity="center"
+                android:hint="@string/dateBirth"
+                android:inputType="number"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/etDayBirth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.465"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/etDayBirth"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.241" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etYearBirth"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="@drawable/date1"
+                android:gravity="center"
+                android:hint="@string/dateBirth"
+                android:inputType="number"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/etDayBirth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.933"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/etDayBirth"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.291" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUserTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etUser"
+                app:layout_constraintStart_toStartOf="@+id/etUser"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etUser"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="0dp"
+                android:background="@drawable/shape_field_unfill"
+                android:inputType="textEmailAddress"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserTitle"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPasswordTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/etPassword"
+                app:layout_constraintStart_toStartOf="@+id/etPassword"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etPassword"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="0dp"
+                android:background="@drawable/shape_field_unfill"
+                android:inputType="textPassword"
+                android:paddingStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPasswordTitle"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/myAreaSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".registration.fragment.RegFirstFragment"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textColor="@color/grey1"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/cbIRead"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.93"
+                />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbIRead"
+                style="@style/myAreaSectionEditText"
+                android:layout_width="wrap_content"
+                android:paddingStart="10dp"
+                android:text="@string/i_red"
+                app:layout_constraintStart_toStartOf="@+id/tvDescription"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                 />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTermOfUse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/term_of_use"
+                android:textColor="@color/button_choobudo"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/cbIRead"
+                app:layout_constraintStart_toEndOf="@+id/cbIRead"
+                app:layout_constraintTop_toTopOf="@+id/cbIRead" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        <!--            <ProgressBar-->
+<!--                android:id="@+id/emailProgressBar"-->
+<!--                style="?android:attr/progressBarStyleLarge"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="visible"-->
+<!--                android:layout_gravity="center"-->
+<!--                />-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

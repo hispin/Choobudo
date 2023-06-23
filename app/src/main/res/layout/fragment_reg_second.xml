@@ -7,7 +7,7 @@
     tools:context=".registration.fragment.RegFirstFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDateBirth"
+        android:id="@+id/tvPrivateName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mobile"
@@ -29,12 +29,12 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateBirth"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrivateName"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvEmailTitle"
+        android:id="@+id/tvAssociationNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email"
@@ -57,12 +57,12 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmailTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssociationNameTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCityTitle"
+        android:id="@+id/tvMyAssosiationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/city"
@@ -83,7 +83,7 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintStart_toStartOf="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyAssosiationTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 

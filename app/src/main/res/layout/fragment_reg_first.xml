@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
     tools:context=".registration.fragment.RegFirstFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDateBirth"
+        android:id="@+id/tvPrivateName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/private_name"
@@ -28,12 +29,12 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateBirth"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrivateName"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvEmailTitle"
+        android:id="@+id/tvAssociationNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/family_name"
@@ -55,12 +56,12 @@
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmailTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvAssociationNameTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCityTitle"
+        android:id="@+id/tvMyAssosiationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/selected_association"
@@ -79,7 +80,7 @@
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
         app:layout_constraintStart_toStartOf="@+id/etAssociationName"
-        app:layout_constraintTop_toBottomOf="@+id/tvCityTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvMyAssosiationTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93">
 

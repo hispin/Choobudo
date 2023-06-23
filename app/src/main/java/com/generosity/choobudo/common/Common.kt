@@ -18,6 +18,9 @@ class common {
         const val PASS_KEY="passKey"
         const val EMAIL_ALREADY_EXISTS="EMAIL_ALREADY_EXISTS"
         const val IS_SORTED_KEY="isSortedKey"
+        const val CURRENT_USER_KEY="currentUserKey"
+        const val USER_CONTRIBUTER=180
+        const val USER_ASSOCIATION=181
     }
 
     companion object {

@@ -8,6 +8,7 @@ import com.generosity.choobudo.R
 import com.generosity.choobudo.activities.BaseActivity
 import com.generosity.choobudo.associations.AssociationFragment
 import com.generosity.choobudo.common.common.Constant.IS_SORTED_KEY
+import com.generosity.choobudo.main.myarea.MyAreaManagerFragment
 import com.generosity.choobudo.models.WebsiteResponse
 import com.generosity.choobudo.websites.WebsiteFragment
 import com.generosity.choobudo.webview.WebViewFragment
@@ -57,7 +58,11 @@ class MainScreenActivity : BaseActivity(), WebsiteFragment.IntfcCallBackFromWebs
 
         llProfile=findViewById(R.id.llProfile)
         llProfile?.setOnClickListener {
-            loadWebPage("https://www.choobudo.com/%D7%90%D7%96%D7%95%D7%A8-%D7%90%D7%99%D7%A9%D7%99/",false)
+            val myFragment=MyAreaManagerFragment()
+            val t: FragmentTransaction=supportFragmentManager.beginTransaction()
+            t.replace(R.id.frContainer, myFragment)
+            t.addToBackStack(null)
+            t.commit()
         }
         mainBoard=findViewById(R.id.mainBoard)
         mainBoard?.setOnClickListener {

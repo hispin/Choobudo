@@ -66,6 +66,16 @@
     <string name="email_already_exist">האימייל קיים במערכת</string>
     <string name="your_opprtunities" translatable="false">ההזדמנויות שלך</string>
     <string name="no_website">חסר קישור לאתר אינטרנט</string>
+    <string name="user_details">פרטי משתמש</string>
+    <string name="gather_donation_details">רכזו את כל התרומות לזכותנו:</string>
+    <string name="extent_donation">היקף התרומות שלי:</string>
+    <string name="annual">שנתי</string>
+    <string name="tillthisday">עד היום</string>
+    <string name="quarterly">רבעוני</string>
+    <string name="hundred">100</string>
+    <string name="type_money">ש\"ח</string>
+    <string name="private_details">פרטים אישיים</string>
+    <string name="donation_details">פרטי תרומות</string>
     <string-array name="type_organization">
         <item>בחר</item>
         <item>עמותה</item>

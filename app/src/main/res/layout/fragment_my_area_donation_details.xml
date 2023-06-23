@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="main.myarea.MyAreaDonationDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/myAreaSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".registration.fragment.RegFirstFragment"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMyOurDonationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gather_donation_details"
+            android:textColor="@color/grey1"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/rlOurDonation"
+            app:layout_constraintStart_toStartOf="@+id/rlOurDonation"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rlOurDonation"
+            style="@style/myAreaSectionEditText"
+            android:layout_width="0dp"
+            android:background="@drawable/shape_field_unfill"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMyOurDonationTitle"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.93">
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spOurDonation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:spinnerMode="dropdown" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/arrow_down" />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleExtentDonation"
+        style="@style/myAreaSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/extent_donation"
+        android:textColor="@color/grey8"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llTabsContainer"
+        style="@style/myAreaSection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/shape_tabs_type"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnQuarterly"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:background="@drawable/unselected_type_bg"
+            android:text="@string/quarterly"
+            android:textColor="@color/grey4" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAnnual"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:background="@drawable/selected_type_bg"
+            android:text="@string/annual"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnTillThisDay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:background="@drawable/unselected_type_bg"
+            android:text="@string/tillthisday"
+            android:textColor="@color/grey4" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        style="@style/myAreaSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/oval_sum"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hundred"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type_money"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

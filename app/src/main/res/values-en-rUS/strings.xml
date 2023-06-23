@@ -66,6 +66,16 @@
     <string name="email_already_exist">email already exist</string>
     <string name="your_opprtunities" translatable="false">ההזדמנויות שלך</string>
     <string name="no_website">there is no link of website</string>
+    <string name="user_details">user details</string>
+    <string name="gather_donation_details">Collect all donations to our credit:</string>
+    <string name="extent_donation">היקף התרומות שלי:</string>
+    <string name="annual">annual</string>
+    <string name="tillthisday">till this day</string>
+    <string name="quarterly">quarterly</string>
+    <string name="hundred">100</string>
+    <string name="type_money">ש\"ח</string>
+    <string name="private_details">private details</string>
+    <string name="donation_details">donation details</string>
     <string-array name="type_organization">
         <item>בחר</item>
         <item>עמותה</item>
