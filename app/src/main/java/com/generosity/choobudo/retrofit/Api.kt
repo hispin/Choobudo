@@ -30,6 +30,8 @@ interface Api {
 
     @POST("/user/register")
     fun userAssociationReg(@Body params: UserAssociation): Call<RegistrationAssociationResponse>
+    @POST("/user/update")
+    fun updateContributer(@Body params: UserContributer): Call<UserResponse>?
 
     companion object {
         fun getApi(): Api? {

@@ -1,6 +1,7 @@
 package com.generosity.choobudo.main
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.generosity.choobudo.R
@@ -24,6 +25,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
     var sortedWebsite:MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
     var opportunitiesResponse: MutableLiveData<OpportunitiesResponse> = MutableLiveData()
     var opportunities: MutableLiveData<List<Opportunity>>?=MutableLiveData()
+    var isEditable:MutableLiveData<Boolean> = MutableLiveData(false)
 
     init {
     }
@@ -170,13 +172,13 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                                 when(response.code()){
                                     200 -> {
                                         if(isGetUser) {
-                                            getUser()
+                                            getUser(true)
                                         }
                                         isSuccess?.value=true
                                     }
                                     201 ->{
                                         if(isGetUser) {
-                                            getUser()
+                                            getUser(true)
                                         }
                                         isSuccess?.value=true
                                     }
@@ -215,7 +217,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
     /**
      * get current user details
      */
-    fun getUser() {
+    fun getUser(isNeedOrders:Boolean) {
 
         this.viewModelScope.launch {
             try {
@@ -233,11 +235,15 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
 
                             when(response.code()){
                                 200-> {
-                                    getOrderUserById()
+                                    if(isNeedOrders) {
+                                        getOrderUserById()
+                                    }
                                     isSuccess?.value=true
                                 }
                                 201->{
-                                    getOrderUserById()
+                                    if(isNeedOrders) {
+                                        getOrderUserById()
+                                    }
                                     isSuccess?.value=true
                                 }
                                 403->{
@@ -288,5 +294,93 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
            }
            userOrders?.value = uo
        }
+    }
+
+    /**
+     * change edit/read only status
+     */
+    fun setEditable(status: Boolean) {
+         isEditable.value=status
+    }
+
+    /**
+     * update contributer
+     *
+     * */
+
+    fun updateContributer(userStatus: Int?) {
+//         var userContributer = UserContributer("haggay","chen",1,1,1990
+//             ,"8e8b988a-8af9-4383-a410-192c01f552a0","hag.swead15@gmail.com","1234","0546596387","haifa","israel",true,194,180)
+
+
+        this.viewModelScope.launch {
+            try {
+
+                var callBackGetUser: Callback<UserResponse?> =
+
+                    object : Callback<UserResponse?> {
+
+                        override fun onResponse(
+                            call: Call<UserResponse?>,
+                            response: Response<UserResponse?>
+                        ) {
+                            Log.d("responseReg", "success")
+                            //val cookie=response.headers()["Set-Cookie"]
+
+                            //save the response
+                            userResponse?.value=response.body()
+                            when(response.code()){
+                                200 -> {
+//                                    if(registrationResponse?.value?.token_key!=null) {
+//                                        setSuccessResponse(
+//                                            cookie, registrationResponse?.value?.token_key!!
+//                                        )
+//                                    }
+                                }
+                                201->{
+//                                    if(registrationResponse?.value?.token_key!=null) {
+//                                        setSuccessResponse(
+//                                            cookie, registrationResponse?.value?.token_key!!
+//                                        )
+//                                    }
+                                }
+                                403->{
+                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        R.string.email_pass_error)
+                                }else->{
+                                errorMsg?.value = response.code().toString()
+                            }
+                            }
+
+
+
+                        }
+
+                        override fun onFailure(call: Call<UserResponse?>, t: Throwable) {
+                            isSuccess?.value=false
+                            Log.d("responseReg", "failed")
+                        }
+                    }
+
+
+                val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                    common.Constant.COOKIE_CONTENT,"-1")
+                val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                    common.Constant.COOKIE_NAME,"-1")
+                if(!cookie.equals("-1") && !token.equals("-1")) {
+                    val userContributer=UserContributer()
+                    userContributer.user_type=userStatus
+                    userResponse?.value?.let {
+                        userContributer.parseUser(it)
+                        val reponse=generalRepo.updateUser(cookie, token, userContributer)
+                        reponse?.enqueue(callBackGetUser)
+                    }
+                }
+
+            } catch (ex: Exception) {
+                //registerResult?.value=BaseResponse.Error(ex.message)
+            }
+        }
+
     }
 }

@@ -60,7 +60,7 @@ class MainScreenActivity : BaseActivity(), WebsiteFragment.IntfcCallBackFromWebs
         llProfile?.setOnClickListener {
             val myFragment=MyAreaManagerFragment()
             val t: FragmentTransaction=supportFragmentManager.beginTransaction()
-            t.replace(R.id.frContainer, myFragment)
+            t.replace(R.id.frContainer, myFragment,)
             t.addToBackStack(null)
             t.commit()
         }

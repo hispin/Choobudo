@@ -8,15 +8,16 @@ class Repository {
 
     suspend fun getUser(cookie: String?, token: String?): Call<UserResponse>? {
         return Api.getApiWithCookie(cookie,token)?.getUser()
+        //return Api.getApi()?.getUser()
     }
 
     suspend fun getOpportunities(cookie: String?, token: String?): Call<OpportunitiesResponse> {
-        return Api.getApiWithCookie(token,cookie)?.getOpportunities()!!
+        return Api.getApiWithCookie(cookie,token)?.getOpportunities()!!
 
     }
 
     suspend fun getWebsite(cookie: String?, token: String?): Call<List<WebsiteResponse>>? {
-        return Api.getApiWithCookie(token,cookie)?.getWebsites()
+        return Api.getApiWithCookie(cookie,token)?.getWebsites()
 
     }
 
@@ -47,5 +48,9 @@ class Repository {
         //return Api.getApi()?.loginUser(loginRequest=loginRequest)
         return Api.getApi()?.userAssociationReg(param)
 
+    }
+
+    suspend fun updateUser(cookie: String?, token: String?, value: UserContributer): Call<UserResponse>? {
+        return value.let { Api.getApiWithCookie(cookie,token)?.updateContributer(it) }
     }
 }

@@ -102,4 +102,11 @@
         <item>@drawable/banner3</item>
     </array>
 
+    <string-array name="collect_all_donations">
+        <item>בחר</item>
+        <item>בזיכוי ישיר לעמותה</item>
+        <item>חשבון שלנו ב"עיגול לטובה"</item>
+        <item>JGIVEחשבון שלנו ב</item>
+    </string-array>
+
 </resources>

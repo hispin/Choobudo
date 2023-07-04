@@ -42,7 +42,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/transparent"
-                android:spinnerMode="dropdown" />
+                android:entries="@array/collect_all_donations"
+                android:paddingHorizontal="24dp"
+                android:spinnerMode="dropdown"
+                />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
@@ -88,18 +91,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:background="@drawable/unselected_type_bg"
+            android:background="@drawable/selected_type_bg"
             android:text="@string/quarterly"
-            android:textColor="@color/grey4" />
+            android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAnnual"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:background="@drawable/selected_type_bg"
+            android:background="@drawable/unselected_type_bg"
             android:text="@string/annual"
-            android:textColor="@color/white" />
+            android:textColor="@color/grey4" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnTillThisDay"
@@ -122,6 +125,7 @@
         android:orientation="vertical"
         >
         <TextView
+            android:id="@+id/tvSum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hundred"

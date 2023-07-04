@@ -32,7 +32,7 @@ open class User
     @SerializedName("term_accepted")
     var term_accepted: Boolean?=null
 
-    @SerializedName("group_donations")
+    @SerializedName("group_donation")
     var group_donations: Int?=null
 
     @SerializedName("user_type")

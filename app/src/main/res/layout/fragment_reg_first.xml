@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.303" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etAssociationName"
+        android:id="@+id/etUserFName"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
@@ -76,10 +76,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/shape_field_unfill"
-        app:layout_constraintEnd_toEndOf="@+id/etAssociationName"
+        app:layout_constraintEnd_toEndOf="@+id/etUserFName"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.134"
-        app:layout_constraintStart_toStartOf="@+id/etAssociationName"
+        app:layout_constraintStart_toStartOf="@+id/etUserFName"
         app:layout_constraintTop_toBottomOf="@+id/tvMyAssosiationTitle"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.93">

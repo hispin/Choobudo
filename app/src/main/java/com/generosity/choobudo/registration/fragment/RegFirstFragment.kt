@@ -136,7 +136,7 @@ class RegFirstFragment : Fragment() {
                 validationFields()
         }
 
-        etUserFName=view?.findViewById(R.id.etAssociationName)
+        etUserFName=view?.findViewById(R.id.etUserFName)
         etUserFName?.onFocusChangeListener=OnFocusChangeListener { v, hasFocus ->
             if(hasFocus) {
                 validationFields()

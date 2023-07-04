@@ -21,6 +21,7 @@ class common {
         const val CURRENT_USER_KEY="currentUserKey"
         const val USER_CONTRIBUTER=180
         const val USER_ASSOCIATION=181
+        const val IE_EDITABLE_KEY="isEditAbleKey"
     }
 
     companion object {

@@ -23,6 +23,11 @@ class UserResponse {
     @SerializedName("user_type")
     var user_type: User_type1?=null
 
+    //class
+    @SerializedName("donations_sum")
+    var donations_sum: Donation_sum?=null
+
+
     @SerializedName("first_name")
     var first_name: String=""
 
@@ -53,4 +58,16 @@ class User_type1 {
 
     @SerializedName("code_numberl")
     var code_number: Int=0
+}
+
+class Donation_sum {
+    @SerializedName("ever")
+    var ever: Float=-1.0f
+
+    @SerializedName("annual")
+    var annual: Float=-1.0f
+
+    @SerializedName("quarterly")
+    var quarterly: Float=-1.0f
+
 }
