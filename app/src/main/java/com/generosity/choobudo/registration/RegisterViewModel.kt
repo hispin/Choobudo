@@ -476,7 +476,7 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
      * set stage 5 of association registration
      */
     fun setAssociationStage5(photo64: String) {
-        userAssociation?.image = photo64
+        userAssociation?.image ="data:image/png;base64,"+photo64
     }
 
     /**

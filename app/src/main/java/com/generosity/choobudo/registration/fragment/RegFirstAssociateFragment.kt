@@ -52,7 +52,7 @@ class RegFirstAssociateFragment : Fragment() {
             setUnConfirm()
         }
         spTypeOrganization = view?.findViewById(R.id.spTypeOrganization)
-        etAssociationName = view?.findViewById(R.id.etUserFName)
+        etAssociationName = view?.findViewById(R.id.etAssociation)
         etAssociationName?.onFocusChangeListener=View.OnFocusChangeListener { v, hasFocus ->
             validationFields()
         }

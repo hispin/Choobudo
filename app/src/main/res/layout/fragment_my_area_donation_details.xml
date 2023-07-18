@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="main.myarea.MyAreaDonationDetailsFragment">
+    tools:context="main.myarea.MyAreaContributerDonationFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/myAreaSection"

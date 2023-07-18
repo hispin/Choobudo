@@ -5,6 +5,9 @@ import retrofit2.Call
 
 class Repository {
 
+    suspend fun getAssociationUser(cookie: String?, token: String?): Call<UserAssociationResponse>? {
+        return Api.getApiWithCookie(cookie,token)?.getAssociationUser()
+    }
 
     suspend fun getUser(cookie: String?, token: String?): Call<UserResponse>? {
         return Api.getApiWithCookie(cookie,token)?.getUser()
@@ -52,5 +55,9 @@ class Repository {
 
     suspend fun updateUser(cookie: String?, token: String?, value: UserContributer): Call<UserResponse>? {
         return value.let { Api.getApiWithCookie(cookie,token)?.updateContributer(it) }
+    }
+
+    fun updateAssociationUser(cookie: String?, token: String?, userAssociation: UserAssociation): Call<UserAssociationResponse>? {
+        return userAssociation.let { Api.getApiWithCookie(cookie,token)?.updateAssociation(it) }
     }
 }

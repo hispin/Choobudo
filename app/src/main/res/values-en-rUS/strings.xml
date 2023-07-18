@@ -76,6 +76,8 @@
     <string name="type_money">ש\"ח</string>
     <string name="private_details">private details</string>
     <string name="donation_details">donation details</string>
+    <string name="sum_users">amount of users:</string>
+    <string name="users">users</string>
     <string-array name="type_organization">
         <item>בחר</item>
         <item>עמותה</item>

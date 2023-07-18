@@ -93,6 +93,8 @@
     <string name="type_money">ש\"ח</string>
     <string name="private_details">פרטים אישיים</string>
     <string name="donation_details">פרטי תרומות</string>
+    <string name="sum_users">כמות המשתמשים שלי:</string>
+    <string name="users">משתמשים</string>
     <color name="flavour_background_dark">#757575</color>
     <color name="flavour_background_very_dark">#75787C</color>
 

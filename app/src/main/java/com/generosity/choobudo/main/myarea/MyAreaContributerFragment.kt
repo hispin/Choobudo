@@ -53,18 +53,14 @@ class MyAreaContributerFragment : Fragment() {
 
     private var isEditable: Boolean?=false
 
-    private  var callbackListener: CallbackListener?=null
+    private  var callbackListener: CallBackMyAreaListener?=null
 
-    interface CallbackListener {
-        fun enableUpdate(status: Boolean?)
-
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
             // check if parent Fragment implements listener
-            if (parentFragment is CallbackListener) {
-                callbackListener = parentFragment as CallbackListener
+            if (parentFragment is CallBackMyAreaListener) {
+                callbackListener = parentFragment as CallBackMyAreaListener
             } else {
                 throw RuntimeException("The parent fragment must implement OnChildFragmentInteractionListener");
             }
@@ -208,8 +204,9 @@ class MyAreaContributerFragment : Fragment() {
         etUser = view?.findViewById(R.id.etUser)
     }
 
-
-
+    /**
+     * toggle fields as enable/disabled
+     */
     fun toggleEditReadOnlyStatus(isEditStatus: Boolean){
         etUserPName?.isEnabled = isEditStatus
         etUserFName?.isEnabled = isEditStatus
@@ -443,43 +440,6 @@ class MyAreaContributerFragment : Fragment() {
             etAny?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vi_user, 0)
             callbackListener?.enableUpdate(true)
         }
-//        if (TextUtils.isEmpty(etUserFName?.text)) {
-//            etUserFName?.setBackgroundResource(R.drawable.shape_field_invalidate)
-//            etUserFName?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_x, 0)
-//            viewModel?.setRegFirstValidate(false)
-//            return false
-//        } else {
-//            etUserFName?.setBackgroundResource(R.drawable.shape_field_fill)
-//            etUserFName?.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vi_user, 0)
-//        }
-//        if(associationValue!=null
-//            && associationValue?.size!! >currentPosition
-//            && associationValue?.get(currentPosition)?.equals("-1")!!){
-//
-//            if (TextUtils.isEmpty(etNotFindAssociation?.text)) {
-//                viewModel?.setRegFirstValidate(false)
-//                return false
-//            }
-//        }
-//        viewModel?.setRegFirstValidate(true)
         return true
     }
-//    companion object {
-//        /**
-//         * Use this factory method to create a new instance of
-//         * this fragment using the provided parameters.
-//         *
-//         * @param param1 Parameter 1.
-//         * @param param2 Parameter 2.
-//         * @return A new instance of fragment MyAreaContributerFragment.
-//         */
-//        // TODO: Rename and change types and number of parameters
-//        @JvmStatic
-//        fun newInstance(param1: String, param2: String)=MyAreaContributerFragment().apply {
-//            arguments=Bundle().apply {
-//                putString(ARG_PARAM1, param1)
-//                putString(ARG_PARAM2, param2)
-//            }
-//        }
-//    }
 }

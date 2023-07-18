@@ -10,6 +10,9 @@ import retrofit2.http.POST
 interface Api {
 
     @GET("/user/")
+    fun getAssociationUser(): Call<UserAssociationResponse>
+
+    @GET("/user/")
     fun getUser(): Call<UserResponse>
 
     @GET("/websites/")
@@ -32,6 +35,8 @@ interface Api {
     fun userAssociationReg(@Body params: UserAssociation): Call<RegistrationAssociationResponse>
     @POST("/user/update")
     fun updateContributer(@Body params: UserContributer): Call<UserResponse>?
+    @POST("/user/update")
+    fun updateAssociation(@Body params: UserAssociation): Call<UserAssociationResponse>?
 
     companion object {
         fun getApi(): Api? {

@@ -10,18 +10,20 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.generosity.choobudo.common.common
+import com.generosity.choobudo.common.common.Constant.USER_ASSOCIATION
 import com.generosity.choobudo.common.common.Constant.USER_CONTRIBUTER
 import com.generosity.choobudo.common.getIntInPreference
 import com.generosity.choobudo.main.MainScreenViewModel
 
 
-class MyAreaManagerFragment : Fragment() , MyAreaContributerFragment.CallbackListener {
+class MyAreaManagerFragment : Fragment() , CallBackMyAreaListener {
 
     var btnPrivateDetails:Button?=null
     var btnDonationDetails:Button?=null
     var btnEditUserDetails:Button?=null
     var btnSave:Button?=null
     val TAG_CONTRIBUTER="MyAreaContributerFragment"
+    val TAG_ASSOCIATION="MyAreaAssociationFragment"
     private var viewModel: MainScreenViewModel?=null
     var userStatus:Int? = -1
 
@@ -46,6 +48,9 @@ class MyAreaManagerFragment : Fragment() , MyAreaContributerFragment.CallbackLis
 
         if(userStatus==USER_CONTRIBUTER) {
             openMyFragment(MyAreaContributerFragment.newInstance(false), TAG_CONTRIBUTER)
+            setReadOnlyStatus()
+        }else if(userStatus== USER_ASSOCIATION) {
+            openMyFragment(MyAreaAssociationFragment.newInstance(false), TAG_ASSOCIATION)
             setReadOnlyStatus()
         }
 
@@ -80,13 +85,24 @@ class MyAreaManagerFragment : Fragment() , MyAreaContributerFragment.CallbackLis
     private fun initView(view: View?) {
         btnPrivateDetails = view?.findViewById(com.generosity.choobudo.R.id.btnPrivateDetails)
         btnPrivateDetails?.setOnClickListener {
-            setPrivateContributingStatus()
-            openMyFragment(MyAreaContributerFragment(),"MyAreaContributerFragment")
+            if(userStatus==USER_CONTRIBUTER) {
+               setPrivateContributingStatus()
+               openMyFragment(MyAreaContributerFragment(),"MyAreaContributerFragment")
+            }else if(userStatus== USER_ASSOCIATION) {
+                setPrivateContributingStatus()
+                openMyFragment(MyAreaAssociationFragment(),"MyAreaAssociationFragment")
+            }
         }
         btnDonationDetails = view?.findViewById(com.generosity.choobudo.R.id.btnDonationDetails)
         btnDonationDetails?.setOnClickListener {
-            setDonationDetailsStatus()
-            openMyFragment(MyAreaDonationDetailsFragment(),"MyAreaDonationDetailsFragment")
+            if(userStatus==USER_CONTRIBUTER) {
+               setDonationDetailsStatus()
+               openMyFragment(MyAreaContributerDonationFragment(),"MyAreaDonationDetailsFragment")
+            }else if(userStatus== USER_ASSOCIATION) {
+               setDonationDetailsStatus()
+                openMyFragment(MyAreaAssociationDonationFragment(),"MyAreaAssociationDonationFragment")
+
+            }
         }
         btnEditUserDetails= view?.findViewById(com.generosity.choobudo.R.id.btnEditUserDetails)
         btnEditUserDetails?.setOnClickListener {
@@ -94,8 +110,14 @@ class MyAreaManagerFragment : Fragment() , MyAreaContributerFragment.CallbackLis
         }
         btnSave= view?.findViewById(com.generosity.choobudo.R.id.btnSave)
         btnSave?.setOnClickListener {
-            setReadOnlyStatus()
-            viewModel?.updateContributer(userStatus)
+            if(userStatus==USER_CONTRIBUTER) {
+                setReadOnlyStatus()
+                viewModel?.updateContributer(userStatus)
+            }else if(userStatus== USER_ASSOCIATION) {
+                setReadOnlyStatus()
+                viewModel?.updateAssociation(userStatus)
+            }
+
         }
     }
 

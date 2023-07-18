@@ -21,6 +21,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
     var websiteResponse: MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
     var userOrders: MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
     var userResponse: MutableLiveData<UserResponse>?=MutableLiveData()
+    var userAssociationResponse:MutableLiveData<UserAssociationResponse>?=MutableLiveData()
     var associationsResponse: MutableLiveData<List<AssociationsResponse>>?=MutableLiveData()
     var sortedWebsite:MutableLiveData<List<WebsiteResponse>>?=MutableLiveData()
     var opportunitiesResponse: MutableLiveData<OpportunitiesResponse> = MutableLiveData()
@@ -214,6 +215,64 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
             }
         }
 
+
+    /**
+     * get current association user details
+     */
+    fun getAssociationUser() {
+
+        this.viewModelScope.launch {
+            try {
+
+                val callBackGetUser: Callback<UserAssociationResponse> =
+
+                    object : Callback<UserAssociationResponse> {
+
+                        override fun onResponse(
+                            call: Call<UserAssociationResponse>,
+                            response: Response<UserAssociationResponse>
+                        ) {
+
+                            when(response.code()){
+                                200-> {
+                                    userAssociationResponse?.value=response.body()
+                                    isSuccess?.value=true
+                                }
+                                201->{
+                                    userAssociationResponse?.value=response.body()
+                                    isSuccess?.value=true
+                                }
+                                403->{
+                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        R.string.email_pass_error)
+                                }else->{
+                                errorMsg?.value = response.code().toString()
+                            }
+                            }
+                        }
+
+                        override fun onFailure(
+                            call: Call<UserAssociationResponse>, t: Throwable
+                        ) {
+                            isSuccess?.value=false
+                        }
+                    }
+
+                val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                    common.Constant.COOKIE_CONTENT,"-1")
+                val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                    common.Constant.COOKIE_NAME,"-1")
+                if(!cookie.equals("-1") && !token.equals("-1")) {
+                    val getUserResponse=generalRepo.getAssociationUser(cookie, token)
+                    getUserResponse?.enqueue(callBackGetUser)
+                }
+
+            } catch (ex: Exception) {
+                //loginResult?.value=BaseResponse.Error(ex.message)
+            }
+        }
+    }
+
     /**
      * get current user details
      */
@@ -302,6 +361,90 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
     fun setEditable(status: Boolean) {
          isEditable.value=status
     }
+
+
+    /**
+     * update contributer
+     *
+     * */
+
+    fun updateAssociation(userStatus: Int?) {
+//         var userContributer = UserContributer("haggay","chen",1,1,1990
+//             ,"8e8b988a-8af9-4383-a410-192c01f552a0","hag.swead15@gmail.com","1234","0546596387","haifa","israel",true,194,180)
+
+
+        this.viewModelScope.launch {
+            try {
+
+                var callBackGetUser: Callback<UserAssociationResponse?> =
+
+                    object : Callback<UserAssociationResponse?> {
+
+                        override fun onResponse(
+                            call: Call<UserAssociationResponse?>,
+                            response: Response<UserAssociationResponse?>
+                        ) {
+                            Log.d("responseReg", "success")
+                            //val cookie=response.headers()["Set-Cookie"]
+
+                            //save the response
+                            userAssociationResponse?.value=response.body()
+
+                            when(response.code()){
+                                200 -> {
+//                                    if(registrationResponse?.value?.token_key!=null) {
+//                                        setSuccessResponse(
+//                                            cookie, registrationResponse?.value?.token_key!!
+//                                        )
+//                                    }
+                                }
+                                201->{
+//                                    if(registrationResponse?.value?.token_key!=null) {
+//                                        setSuccessResponse(
+//                                            cookie, registrationResponse?.value?.token_key!!
+//                                        )
+//                                    }
+                                }
+                                403->{
+                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        R.string.email_pass_error)
+                                }else->{
+                                errorMsg?.value = response.code().toString()
+                            }
+                            }
+
+
+
+                        }
+
+                        override fun onFailure(call: Call<UserAssociationResponse?>, t: Throwable) {
+                            isSuccess?.value=false
+                            Log.d("responseReg", "failed")
+                        }
+                    }
+
+
+                val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                    common.Constant.COOKIE_CONTENT,"-1")
+                val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                    common.Constant.COOKIE_NAME,"-1")
+                if(!cookie.equals("-1") && !token.equals("-1")) {
+                    val userAssociation=UserAssociation()
+                    userAssociation.user_type=userStatus
+                    userAssociationResponse?.value?.let {
+                        userAssociation.parseAssociationUser(it)
+                        val reponse=generalRepo.updateAssociationUser(cookie, token, userAssociation)
+                        reponse?.enqueue(callBackGetUser)
+                    }
+                }
+
+            } catch (ex: Exception) {
+                var n = 10
+            }
+        }
+
+    }
+
 
     /**
      * update contributer
