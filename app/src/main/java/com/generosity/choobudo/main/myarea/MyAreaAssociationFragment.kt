@@ -1,14 +1,31 @@
 package com.generosity.choobudo.main.myarea
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Spinner
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -16,8 +33,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.generosity.choobudo.R
 import com.generosity.choobudo.common.common
+import com.generosity.choobudo.common.common.Constant.INTRUDUCTION_IMAGE
 import com.generosity.choobudo.main.MainScreenViewModel
 import com.generosity.choobudo.models.UserAssociationResponse
+import java.io.ByteArrayOutputStream
 
 
 class MyAreaAssociationFragment : Fragment() {
@@ -56,6 +75,7 @@ class MyAreaAssociationFragment : Fragment() {
 
     private  var callbackListener: CallBackMyAreaListener?=null
 
+    var photo64: String?=null
 
 
     override fun onAttach(context: Context) {
@@ -66,6 +86,59 @@ class MyAreaAssociationFragment : Fragment() {
         } else {
             throw RuntimeException("The parent fragment must implement OnChildFragmentInteractionListener");
         }
+    }
+
+
+    private val launcher: ActivityResultLauncher<Intent> = registerForActivityResult<Intent, androidx.activity.result.ActivityResult>(
+        ActivityResultContracts.StartActivityForResult(),
+        ActivityResultCallback<ActivityResult> { result: ActivityResult ->
+            if ((result.resultCode == Activity.RESULT_OK && result.data != null)) {
+                if (result.data != null) {
+                    val photoUri: Uri?=result.data!!.data
+                    if(photoUri!=null) {
+                        val bitmap=if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                            ImageDecoder.decodeBitmap(
+                                ImageDecoder.createSource(
+                                    requireContext().contentResolver,
+                                    photoUri
+                                )
+                            )
+                        } else {
+                            MediaStore.Images.Media.getBitmap(
+                                requireContext().contentResolver,
+                                photoUri
+                            )
+                        }
+                        ivAddGallery?.setImageBitmap(bitmap)
+                        if (bitmap != null) {
+                            photo64=convertBitmapToBase64(bitmap)
+                            viewModel?.userAssociationResponse?.value?.image  = INTRUDUCTION_IMAGE+photo64
+                        }
+                    }
+                }
+            }
+        })
+
+    /**
+     * convert bitmap to base 64
+     */
+    fun convertBitmapToBase64(bitmap: Bitmap): String? {
+        val outputStream=ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+        return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT)
+    }
+
+    /**
+     * convert Uri to Base64
+     */
+    private fun encodeImage(imageUri: Uri): String? {
+        val imageStream = requireActivity().contentResolver.openInputStream(imageUri)
+        val selectedImage = BitmapFactory.decodeStream(imageStream)
+        val baos=ByteArrayOutputStream()
+        selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val b: ByteArray=baos.toByteArray()
+        var test= Base64.encodeToString(b, Base64.DEFAULT)
+        return Base64.encodeToString(b, Base64.DEFAULT)
     }
 
     companion object {
@@ -126,6 +199,10 @@ class MyAreaAssociationFragment : Fragment() {
         etBranchName = view?.findViewById(R.id.etBranchName)
         etBranchNum = view?.findViewById(R.id.etBranchNum)
         ivAddGallery = view?.findViewById(R.id.ivAddGallery)
+        ivAddGallery?.setOnClickListener {
+            val intent=Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            launcher.launch(intent)
+        }
         etUserName = view?.findViewById(R.id.etUserName)
         //etNumUsers = view?.findViewById(R.id.etNumUsers)
         etPersonalAssociationLink = view?.findViewById(R.id.etPersonalAssociationLink)

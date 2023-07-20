@@ -114,6 +114,7 @@ class UserAssociation (
             && userResponse.bank_branch_num.isDigitsOnly()) {
             this.bank_branch_num=userResponse.bank_branch_num.toInt()
         }
+        this.image = userResponse.image
     }
 
 }

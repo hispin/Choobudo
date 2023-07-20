@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
@@ -35,12 +37,37 @@ class RegfifthAssociateFragment : Fragment() {
                 val photoUri: Uri?=result.data!!.data
                 ivAddGallery?.setImageURI(photoUri)
                 if (photoUri != null) {
-                    photo64=encodeImage(photoUri)
+                    val bitmap=if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        ImageDecoder.decodeBitmap(
+                            ImageDecoder.createSource(
+                                requireContext().contentResolver,
+                                photoUri
+                            )
+                        )
+                    } else {
+                        MediaStore.Images.Media.getBitmap(
+                            requireContext().contentResolver,
+                            photoUri
+                        )
+                    }
+                    ivAddGallery?.setImageBitmap(bitmap)
+                    if (bitmap != null) {
+                        photo64=convertBitmapToBase64(bitmap)
+                    }
                 }
             }
             //use photoUri here
         }
     })
+
+    /**
+     * convert bitmap to base 64
+     */
+    fun convertBitmapToBase64(bitmap: Bitmap): String? {
+        val outputStream=ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+        return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

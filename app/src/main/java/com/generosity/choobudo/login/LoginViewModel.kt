@@ -55,7 +55,7 @@ class LoginViewModel(application: Application) : ViewModelFather(application) {
                                     }
                                     //save the current user type : contributer/association
                                     loginResponse?.value?.user_type2?.code_number?.let {
-                                        setIntInPreference(getApplication<Application?>().applicationContext, common.Constant.CURRENT_USER_KEY,
+                                        setIntInPreference(getApplication<Application>().applicationContext, common.Constant.CURRENT_USER_KEY,
                                             it
                                         )
                                     }
@@ -69,14 +69,14 @@ class LoginViewModel(application: Application) : ViewModelFather(application) {
                                     }
                                     //save the current user type : contributer/association
                                     loginResponse?.value?.user_type2?.code_number?.let {
-                                        setIntInPreference(getApplication<Application?>().applicationContext, common.Constant.CURRENT_USER_KEY,
+                                        setIntInPreference(getApplication<Application>().applicationContext, common.Constant.CURRENT_USER_KEY,
                                             it
                                         )
                                     }
                                     isSuccess?.value=true
                                 }
                                 403->{
-                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                         R.string.email_pass_error)
                                 }else->{
                                     errorMsg?.value = response.code().toString()

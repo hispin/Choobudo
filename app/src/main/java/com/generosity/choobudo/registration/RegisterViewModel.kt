@@ -7,7 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.generosity.choobudo.R
 import com.generosity.choobudo.common.ViewModelFather
 import com.generosity.choobudo.common.common.Constant.EMAIL_ALREADY_EXISTS
-import com.generosity.choobudo.models.*
+import com.generosity.choobudo.common.common.Constant.INTRUDUCTION_IMAGE
+import com.generosity.choobudo.models.AssociationsResponse
+import com.generosity.choobudo.models.RegistrationAssociationResponse
+import com.generosity.choobudo.models.RegistrationResponse
+import com.generosity.choobudo.models.UserAssociation
+import com.generosity.choobudo.models.UserContributer
 import com.generosity.choobudo.retrofit.BaseResponse
 import com.generosity.choobudo.retrofit.Repository
 import com.google.gson.JsonObject
@@ -53,7 +58,7 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
         this.viewModelScope.launch {
             try {
 
-                var callBackRegistraPagador: Callback<RegistrationResponse?> =
+                val callBackRegistraPagador: Callback<RegistrationResponse?> =
 
                     object : Callback<RegistrationResponse?> {
 
@@ -82,7 +87,7 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
                                     }
                                 }
                                 403->{
-                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                         R.string.email_pass_error)
                                 }else->{
                                     errorMsg?.value = response.code().toString()
@@ -319,7 +324,7 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
                                     isSuccess?.value=true
                                 }
                                 403->{
-                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                         R.string.email_pass_error)
                                 }else->{
                                     errorMsg?.value = response.code().toString()
@@ -371,7 +376,7 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
                                     isSuccess?.value=true
                                 }
                                 403->{
-                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                         R.string.email_pass_error)
                                 }else->{
                                      errorMsg?.value = response.code().toString()
@@ -476,7 +481,7 @@ class RegisterViewModel(application: Application) : ViewModelFather(application)
      * set stage 5 of association registration
      */
     fun setAssociationStage5(photo64: String) {
-        userAssociation?.image ="data:image/png;base64,"+photo64
+        userAssociation?.image =INTRUDUCTION_IMAGE+photo64
     }
 
     /**

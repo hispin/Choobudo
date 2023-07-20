@@ -23,12 +23,15 @@ open class ViewModelFather (application: Application) : AndroidViewModel(applica
     ) {
         //val cookie=response.headers()["Set-Cookie"]
         //save the content of cookie in share preference
-        setStringInPreference(getApplication<Application?>().applicationContext,
-            common.Constant.COOKIE_CONTENT,cookie)
+        setStringInPreference(
+            context=getApplication<Application>().applicationContext,
+            key=common.Constant.COOKIE_CONTENT,
+            value=cookie
+        )
 
         //save the response
         //registrationResponse?.value=response.body()
-        setStringInPreference(getApplication<Application?>().applicationContext,
+        setStringInPreference(getApplication<Application>().applicationContext,
             common.Constant.COOKIE_NAME,tokenKey)
 
         isSuccess?.value=true

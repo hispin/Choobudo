@@ -22,6 +22,7 @@ class common {
         const val USER_CONTRIBUTER=180
         const val USER_ASSOCIATION=181
         const val IE_EDITABLE_KEY="isEditAbleKey"
+        const val INTRUDUCTION_IMAGE="data:image/png;base64,"
     }
 
     companion object {

@@ -8,7 +8,14 @@ import com.generosity.choobudo.R
 import com.generosity.choobudo.common.ViewModelFather
 import com.generosity.choobudo.common.common
 import com.generosity.choobudo.common.getStringInPreference
-import com.generosity.choobudo.models.*
+import com.generosity.choobudo.models.AssociationsResponse
+import com.generosity.choobudo.models.OpportunitiesResponse
+import com.generosity.choobudo.models.Opportunity
+import com.generosity.choobudo.models.UserAssociation
+import com.generosity.choobudo.models.UserAssociationResponse
+import com.generosity.choobudo.models.UserContributer
+import com.generosity.choobudo.models.UserResponse
+import com.generosity.choobudo.models.WebsiteResponse
 import com.generosity.choobudo.retrofit.Repository
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -86,9 +93,9 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                         }
                     }
 
-                val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                val cookie=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_CONTENT,"-1")
-                val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                val token=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_NAME,"-1")
                 if(!cookie.equals("-1") && !token.equals("-1")) {
                     val opportunityResponse=generalRepo.getOpportunities(cookie, token)
@@ -131,7 +138,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                                     isSuccess?.value=true
                                 }
                                 403->{
-                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                         R.string.email_pass_error)
                                 }else->{
                                 errorMsg?.value = response.code().toString()
@@ -184,7 +191,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                                         isSuccess?.value=true
                                     }
                                     403->{
-                                        errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                             R.string.email_pass_error)
                                     }else->{
                                          errorMsg?.value = response.code().toString()
@@ -200,9 +207,9 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                             }
                         }
 
-                    val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                    val cookie=getStringInPreference(getApplication<Application>().applicationContext,
                         common.Constant.COOKIE_CONTENT,"-1")
-                    val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                    val token=getStringInPreference(getApplication<Application>().applicationContext,
                         common.Constant.COOKIE_NAME,"-1")
                     if(!cookie.equals("-1") && !token.equals("-1")) {
                         val associationResponse=generalRepo.getWebsite(cookie, token)
@@ -243,7 +250,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                                     isSuccess?.value=true
                                 }
                                 403->{
-                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                         R.string.email_pass_error)
                                 }else->{
                                 errorMsg?.value = response.code().toString()
@@ -258,9 +265,9 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                         }
                     }
 
-                val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                val cookie=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_CONTENT,"-1")
-                val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                val token=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_NAME,"-1")
                 if(!cookie.equals("-1") && !token.equals("-1")) {
                     val getUserResponse=generalRepo.getAssociationUser(cookie, token)
@@ -306,7 +313,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                                     isSuccess?.value=true
                                 }
                                 403->{
-                                        errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                        errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                            R.string.email_pass_error)
                                     }else->{
                                         errorMsg?.value = response.code().toString()
@@ -321,9 +328,9 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                         }
                     }
 
-                val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                val cookie=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_CONTENT,"-1")
-                val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                val token=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_NAME,"-1")
                 if(!cookie.equals("-1") && !token.equals("-1")) {
                     val getUserResponse=generalRepo.getUser(cookie, token)
@@ -376,7 +383,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
         this.viewModelScope.launch {
             try {
 
-                var callBackGetUser: Callback<UserAssociationResponse?> =
+                val callBackGetUser: Callback<UserAssociationResponse?> =
 
                     object : Callback<UserAssociationResponse?> {
 
@@ -406,7 +413,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
 //                                    }
                                 }
                                 403->{
-                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                         R.string.email_pass_error)
                                 }else->{
                                 errorMsg?.value = response.code().toString()
@@ -424,9 +431,9 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                     }
 
 
-                val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                val cookie=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_CONTENT,"-1")
-                val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                val token=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_NAME,"-1")
                 if(!cookie.equals("-1") && !token.equals("-1")) {
                     val userAssociation=UserAssociation()
@@ -488,7 +495,7 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
 //                                    }
                                 }
                                 403->{
-                                    errorMsg?.value=getApplication<Application?>().applicationContext.resources.getString(
+                                    errorMsg?.value=getApplication<Application>().applicationContext.resources.getString(
                                         R.string.email_pass_error)
                                 }else->{
                                 errorMsg?.value = response.code().toString()
@@ -506,9 +513,9 @@ class MainScreenViewModel (application: Application) : ViewModelFather(applicati
                     }
 
 
-                val cookie=getStringInPreference(getApplication<Application?>().applicationContext,
+                val cookie=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_CONTENT,"-1")
-                val token=getStringInPreference(getApplication<Application?>().applicationContext,
+                val token=getStringInPreference(getApplication<Application>().applicationContext,
                     common.Constant.COOKIE_NAME,"-1")
                 if(!cookie.equals("-1") && !token.equals("-1")) {
                     val userContributer=UserContributer()
