@@ -1,5 +1,7 @@
 package com.generosity.choobudo.retrofit
 
+import com.generosity.choobudo.login.ResetUser
+import com.generosity.choobudo.login.ResetUserResponse
 import com.generosity.choobudo.models.*
 import retrofit2.Call
 import retrofit2.http.Body
@@ -37,6 +39,8 @@ interface Api {
     fun updateContributer(@Body params: UserContributer): Call<UserResponse>?
     @POST("/user/update")
     fun updateAssociation(@Body params: UserAssociation): Call<UserAssociationResponse>?
+    @POST("/user/reset-password")
+    fun resetPassword(@Body param: ResetUser): Call<ResetUserResponse>?
 
     companion object {
         fun getApi(): Api? {

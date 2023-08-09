@@ -1,6 +1,18 @@
 package com.generosity.choobudo.retrofit
 
-import com.generosity.choobudo.models.*
+import com.generosity.choobudo.login.ResetUser
+import com.generosity.choobudo.login.ResetUserResponse
+import com.generosity.choobudo.models.AssociationsResponse
+import com.generosity.choobudo.models.LoginRequest
+import com.generosity.choobudo.models.LoginResponse
+import com.generosity.choobudo.models.OpportunitiesResponse
+import com.generosity.choobudo.models.RegistrationAssociationResponse
+import com.generosity.choobudo.models.RegistrationResponse
+import com.generosity.choobudo.models.UserAssociation
+import com.generosity.choobudo.models.UserAssociationResponse
+import com.generosity.choobudo.models.UserContributer
+import com.generosity.choobudo.models.UserResponse
+import com.generosity.choobudo.models.WebsiteResponse
 import retrofit2.Call
 
 class Repository {
@@ -59,5 +71,9 @@ class Repository {
 
     fun updateAssociationUser(cookie: String?, token: String?, userAssociation: UserAssociation): Call<UserAssociationResponse>? {
         return userAssociation.let { Api.getApiWithCookie(cookie,token)?.updateAssociation(it) }
+    }
+
+    fun resetPassword(param: ResetUser): Call<ResetUserResponse>? {
+        return Api.getApi()?.resetPassword(param)
     }
 }

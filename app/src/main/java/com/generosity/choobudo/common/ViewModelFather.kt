@@ -3,15 +3,18 @@ package com.generosity.choobudo.common
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.generosity.choobudo.common.common.Constant.RESULT_RESET_PASSWORD_NONE
 
 open class ViewModelFather (application: Application) : AndroidViewModel(application) {
 
     var isSuccess: MutableLiveData<Boolean>?=null
     var errorMsg: MutableLiveData<String>?=null
+    var resultRequest:MutableLiveData<Int>?=null
 
     init {
         isSuccess=MutableLiveData(false)
         errorMsg = MutableLiveData("")
+        resultRequest = MutableLiveData(RESULT_RESET_PASSWORD_NONE)
     }
 
     /**

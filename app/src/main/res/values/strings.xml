@@ -95,6 +95,10 @@
     <string name="donation_details">פרטי תרומות</string>
     <string name="sum_users">כמות המשתמשים שלי:</string>
     <string name="users">משתמשים</string>
+    <string name="i_remembered">נזכרתי</string>
+    <string name="reset_password">שחזור סיסמה</string>
+    <string name="error">שגיאה</string>
+    <string name="response_reset_password">הודעה עם קישור זמני לאיפוס הסיסמה נשלחה לכתובת האימייל שהזנת (אם היא קיימת באתר). אם לא קיבלת את ההודעה - בדוק בספאם, או וודא שכתובת האימייל אכן רשומה באתר.</string>
     <color name="flavour_background_dark">#757575</color>
     <color name="flavour_background_very_dark">#75787C</color>
 

@@ -23,6 +23,11 @@ class common {
         const val USER_ASSOCIATION=181
         const val IE_EDITABLE_KEY="isEditAbleKey"
         const val INTRUDUCTION_IMAGE="data:image/png;base64,"
+        const val NORMAL_LOGIN = 0
+        const val FORGOT_PASSWORD_LOGIN = 1
+        const val RESULT_RESET_PASSWORD_NONE = 0
+        const val RESULT_RESET_PASSWORD_SUCCESS = 1
+        const val RESULT_RESET_PASSWORD_FAILED = 2
     }
 
     companion object {

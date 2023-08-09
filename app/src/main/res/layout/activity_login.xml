@@ -6,6 +6,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/main_bg">
 
+    <ProgressBar
+        android:id="@+id/pbLogin"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
@@ -32,6 +42,7 @@
         app:layout_constraintVertical_bias="0.158" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@id/tvUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -63,6 +74,7 @@
         />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -95,6 +107,7 @@
         />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id = "@+id/tvForgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -104,7 +117,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/etUsername"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468" />
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintVertical_bias="0.468"
+        />
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -128,6 +144,7 @@
             app:srcCompat="@drawable/button_connect" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvConnection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -147,6 +164,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.650">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="gone"
+            />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivRegistration"
@@ -176,7 +204,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        android:visibility="gone"
+        app:layout_constraintVertical_bias="0.715"
+        />
 
     <View
         android:layout_width="98dp"
@@ -186,7 +216,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        android:visibility="gone"
+        app:layout_constraintVertical_bias="0.715"
+        />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
@@ -198,7 +230,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/vEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/vEnd" />
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/vEnd"
+        />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivLoginFacebook"
@@ -212,7 +246,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.801"
-        app:srcCompat="@drawable/login_facebook" />
+        android:visibility="gone"
+        app:srcCompat="@drawable/login_facebook"
+        />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivLoginGoogle"
@@ -226,6 +262,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.801"
-        app:srcCompat="@drawable/login_google" />
+        android:visibility="gone"
+        app:srcCompat="@drawable/login_google"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
